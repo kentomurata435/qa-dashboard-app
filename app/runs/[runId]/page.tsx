@@ -195,7 +195,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
   };
    
   const handlePaste = (
-    e: React.ClipboardEvent<HTMLInputElement | HTMLSelectElement>,
+    e: React.ClipboardEvent<HTMLElement>,
     startIndex: number,
     startField: 'tester' | 'status'
   ) => {
@@ -528,21 +528,19 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                   <td className="p-2 align-top text-slate-900 font-medium whitespace-pre-wrap break-words leading-relaxed font-sans">
                     {tc.expected || '-'}
                   </td>
-                  <td className="p-2 align-top bg-blue-50/30">
+                  <td className="p-2 align-top bg-blue-50/30" onPaste={(e) => handlePaste(e, index, 'tester')}>
                     <input
                       type="text"
                       value={result.tester || ''}
                       onChange={(e) => updateResult(tc.id, { tester: e.target.value }, false)}
-                      onPaste={(e) => handlePaste(e, index, 'tester')}
                       placeholder="担当者"
                       className="w-full p-1 text-xs border border-slate-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 bg-white"
                     />
                   </td>
-                  <td className="p-2 align-top">
+                  <td className="p-2 align-top" onPaste={(e) => handlePaste(e, index, 'status')}>
                     <select
                       value={result.status || 'UNTESTED'}
                       onChange={(e) => updateResult(tc.id, { status: e.target.value as any }, true)}
-                      onPaste={(e) => handlePaste(e, index, 'status')}
                       className={`w-full p-1.5 text-xs font-bold rounded border cursor-pointer ${
                         result.status === 'PASSED'
                           ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
