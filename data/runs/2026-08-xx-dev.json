@@ -2,7 +2,7 @@
   "id": "2026-08-xx-dev",
   "title": "2026-08-xx DEV環境 スルーテスト",
   "createdAt": "2026-08-07T06:51:05.632Z",
-  "updatedAt": "2026-08-07T06:53:40.616Z",
+  "updatedAt": "2026-08-07T06:56:50.406Z",
   "results": {
     "TC-001": {
       "status": "PASSED",
@@ -25,8 +25,8 @@
     "TC-004": {
       "status": "AUTOMATED",
       "tester": "",
-      "note": "",
-      "updatedAt": "2026-08-07T06:53:14.723Z"
+      "note": "flacy ",
+      "updatedAt": "2026-08-07T06:56:49.597Z"
     },
     "TC-005": {
       "status": "PASSED",
