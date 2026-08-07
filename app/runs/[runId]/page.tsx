@@ -136,7 +136,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     };
     const newRunData = { ...runData, results: newResults };
     setRunData(newRunData);
-
+ 
     if (immediate) {
       autoSave(newRunData);
     } else {
@@ -145,7 +145,94 @@ export default function RunPage({ params }: { params: { runId: string } }) {
       saveTimerRef.current = setTimeout(() => autoSave(newRunData), 800);
     }
   };
-
+ 
+  const normalizeStatus = (input: string): TestResult['status'] | undefined => {
+    const normalized = input.trim().replace(/\u3000/g, ' ').toLowerCase();
+    const statusMap: Record<string, TestResult['status']> = {
+      untested: 'UNTESTED', '未実施': 'UNTESTED',
+      passed: 'PASSED', ok: 'PASSED', 合格: 'PASSED', pass: 'PASSED',
+      failed: 'FAILED', ng: 'FAILED', 不合格: 'FAILED', fail: 'FAILED',
+      blocked: 'BLOCKED', 保留: 'BLOCKED',
+      excluded: 'EXCLUDED', 対象外: 'EXCLUDED',
+      automated: 'AUTOMATED', 自動化: 'AUTOMATED',
+    };
+    return statusMap[normalized];
+  };
+ 
+  const parsePasteRow = (
+    cells: string[],
+    startField: 'tester' | 'status'
+  ): Partial<Pick<TestResult, 'tester' | 'status'>> => {
+    const values = cells.map((cell) => cell.trim()).filter((value) => value.length > 0);
+    if (values.length === 0) return {};
+ 
+    const firstStatus = normalizeStatus(values[0]);
+    const secondStatus = values.length > 1 ? normalizeStatus(values[1]) : undefined;
+ 
+    if (startField === 'tester') {
+      if (values.length === 1) {
+        return { tester: values[0] };
+      }
+      if (firstStatus && !secondStatus) {
+        return { status: firstStatus, tester: values[1] };
+      }
+      return {
+        tester: values[0],
+        ...(secondStatus ? { status: secondStatus } : {}),
+      };
+    }
+ 
+    if (values.length === 1) {
+      return firstStatus ? { status: firstStatus } : {};
+    }
+    if (!firstStatus && secondStatus) {
+      return { tester: values[0], status: secondStatus };
+    }
+    return {
+      ...(firstStatus ? { status: firstStatus } : {}),
+      tester: values[1],
+    };
+  };
+   
+  const handlePaste = (
+    e: React.ClipboardEvent<HTMLInputElement | HTMLSelectElement>,
+    startIndex: number,
+    startField: 'tester' | 'status'
+  ) => {
+    if (!runData) return;
+    const text = e.clipboardData.getData('text/plain');
+    if (!text) return;
+    e.preventDefault();
+  
+    const rows = text.replace(/\r\n/g, '\n').replace(/\r/g, '\n').split('\n');
+    const newResults = { ...runData.results };
+    let hasUpdate = false;
+  
+    rows.forEach((row, rowOffset) => {
+      if (!row.trim()) return;
+      const cells = row.split('\t');
+      const rowIndex = startIndex + rowOffset;
+      if (rowIndex >= filteredCases.length) return;
+      const caseId = filteredCases[rowIndex].id;
+      const current = newResults[caseId] || { status: 'UNTESTED', tester: '', note: '' };
+      const parsed = parsePasteRow(cells, startField);
+      if (Object.keys(parsed).length === 0) return;
+  
+      newResults[caseId] = {
+        ...current,
+        ...parsed,
+        updatedAt: new Date().toISOString(),
+      };
+      hasUpdate = true;
+    });
+ 
+    if (!hasUpdate) return;
+ 
+    const newRunData = { ...runData, results: newResults };
+    setRunData(newRunData);
+    autoSave(newRunData);
+  };
+ 
   const handleBatchApplyTester = () => {
     if (selectedIds.size === 0 || !batchTester.trim()) return;
     const newResults = { ...runData.results };
@@ -315,24 +402,29 @@ export default function RunPage({ params }: { params: { runId: string } }) {
           </div>
 
           {/* 一括「実施者」割り当て */}
-          <div className="flex items-center gap-2 border-l border-slate-600 pl-4">
-            <span className="text-xs text-slate-300">
-              選択中: <strong className="text-blue-400">{selectedIds.size}</strong> 件
-            </span>
-            <input
-              type="text"
-              value={batchTester}
-              onChange={(e) => setBatchTester(e.target.value)}
-              placeholder="実施者名 (例: 村田)"
-              className="px-2.5 py-1.5 text-xs text-slate-900 rounded bg-white w-32 focus:outline-none"
-            />
-            <button
-              onClick={handleBatchApplyTester}
-              disabled={selectedIds.size === 0 || !batchTester.trim()}
-              className="px-3 py-1.5 text-xs bg-blue-600 hover:bg-blue-500 disabled:bg-slate-600 text-white rounded font-bold transition shadow-sm"
-            >
-              一括適用
-            </button>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 border-l border-slate-600 pl-4">
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-slate-300">
+                選択中: <strong className="text-blue-400">{selectedIds.size}</strong> 件
+              </span>
+              <input
+                type="text"
+                value={batchTester}
+                onChange={(e) => setBatchTester(e.target.value)}
+                placeholder="実施者名 (例: 村田)"
+                className="px-2.5 py-1.5 text-xs text-slate-900 rounded bg-white w-32 focus:outline-none"
+              />
+              <button
+                onClick={handleBatchApplyTester}
+                disabled={selectedIds.size === 0 || !batchTester.trim()}
+                className="px-3 py-1.5 text-xs bg-blue-600 hover:bg-blue-500 disabled:bg-slate-600 text-white rounded font-bold transition shadow-sm"
+              >
+                一括適用
+              </button>
+            </div>
+            <div className="text-[10px] text-slate-300">
+              実施者列・ステータス列に Excel から複数行貼り付けができます。
+            </div>
           </div>
         </div>
       </div>
@@ -390,7 +482,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
             </tr>
           </thead>
           <tbody className="text-xs">
-            {filteredCases.map((tc: any) => {
+            {filteredCases.map((tc: any, index: number) => {
               const result = runData.results?.[tc.id] || {
                 status: 'UNTESTED',
                 tester: tc.defaultTester || '',
@@ -441,6 +533,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                       type="text"
                       value={result.tester || ''}
                       onChange={(e) => updateResult(tc.id, { tester: e.target.value }, false)}
+                      onPaste={(e) => handlePaste(e, index, 'tester')}
                       placeholder="担当者"
                       className="w-full p-1 text-xs border border-slate-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 bg-white"
                     />
@@ -449,6 +542,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                     <select
                       value={result.status || 'UNTESTED'}
                       onChange={(e) => updateResult(tc.id, { status: e.target.value as any }, true)}
+                      onPaste={(e) => handlePaste(e, index, 'status')}
                       className={`w-full p-1.5 text-xs font-bold rounded border cursor-pointer ${
                         result.status === 'PASSED'
                           ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
