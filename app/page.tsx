@@ -14,14 +14,12 @@ export default function HomePage() {
   const [newTitle, setNewTitle] = useState('');
   const [creating, setCreating] = useState(false);
 
-  // 全テスト取得（最新順に並び替え）
   const fetchRuns = async () => {
     setLoading(true);
     try {
       const res = await fetch(`/api/runs?t=${Date.now()}`, { cache: 'no-store' });
       const data = await res.json();
       if (Array.isArray(data)) {
-        // 新しい順（作成日時降順）にソート
         data.sort((a, b) => new Date(b.createdAt || 0).getTime() - new Date(a.createdAt || 0).getTime());
         setRuns(data);
       }
@@ -39,7 +37,6 @@ export default function HomePage() {
     setNewTitle(`${today} STG環境 スルーテスト`);
   }, []);
 
-  // 新規作成処理
   const handleCreateRun = async (e: React.FormEvent) => {
     e.preventDefault();
     setCreating(true);
@@ -79,7 +76,6 @@ export default function HomePage() {
     }
   };
 
-  // テスト削除処理
   const handleDeleteRun = async (runId: string, title: string) => {
     if (!confirm(`「${title}」を本当に削除しますか？\n（GitHub上のデータも削除されます）`)) return;
 
@@ -90,7 +86,7 @@ export default function HomePage() {
 
       if (res.ok) {
         alert('テスト項目書を削除しました。');
-        fetchRuns(); // 一覧更新
+        fetchRuns();
       } else {
         alert('削除に失敗しました。');
       }
@@ -187,64 +183,106 @@ export default function HomePage() {
           {runs.map((run: any) => {
             const resultsList = Object.values(run.results || {}) as any[];
             const total = resultsList.length;
-            const passed = resultsList.filter((r) => r.status === 'PASSED').length;
-            const failed = resultsList.filter((r) => r.status === 'FAILED').length;
+            
+            // 6区分集計
+            const ok = resultsList.filter((r) => r.status === 'PASSED').length;
+            const ng = resultsList.filter((r) => r.status === 'FAILED').length;
             const blocked = resultsList.filter((r) => r.status === 'BLOCKED').length;
-            const untested = total - (passed + failed + blocked);
+            const excluded = resultsList.filter((r) => r.status === 'EXCLUDED').length;
+            const automated = resultsList.filter((r) => r.status === 'AUTOMATED').length;
+            const untested = total - (ok + ng + blocked + excluded + automated);
 
-            const progress = total > 0 ? Math.round(((passed + failed + blocked) / total) * 100) : 0;
+            const progress = total > 0 ? Math.round(((total - untested) / total) * 100) : 0;
 
             return (
               <div
                 key={run.id}
-                className="bg-white rounded-xl shadow-sm border border-slate-300 p-5 hover:shadow transition flex flex-col justify-between gap-4"
+                style={{
+                  border: '1px solid #cbd5e1',
+                  borderRadius: '12px',
+                  padding: '16px',
+                  backgroundColor: '#ffffff',
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  gap: '12px'
+                }}
               >
-                <div className="space-y-3">
-                  {/* ID & 進捗バッジ */}
-                  <div className="flex items-center justify-between gap-2 border-b border-slate-100 pb-2">
-                    <span className="font-mono text-[11px] font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded border border-slate-200">
+                <div>
+                  {/* 1. タイトル ＆ 削除ボタン（タイトルの右） */}
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '8px', borderBottom: '1px solid #f1f5f9', paddingBottom: '8px' }}>
+                    <h2 style={{ fontSize: '15px', fontWeight: 'bold', color: '#0f172a', margin: 0, lineHeight: '1.4' }}>
+                      {run.title}
+                    </h2>
+                    <button
+                      onClick={() => handleDeleteRun(run.id, run.title)}
+                      title="削除する"
+                      style={{
+                        border: '1px solid #fecdd3',
+                        backgroundColor: '#fff1f2',
+                        color: '#e11d48',
+                        padding: '3px 8px',
+                        borderRadius: '6px',
+                        fontSize: '11px',
+                        fontWeight: 'bold',
+                        cursor: 'pointer',
+                        whiteSpace: 'nowrap'
+                      }}
+                    >
+                      🗑️ 削除
+                    </button>
+                  </div>
+
+                  {/* 2. タイトルの下に ID と 進捗 */}
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '8px', fontSize: '11px' }}>
+                    <span style={{ fontFamily: 'monospace', fontWeight: 'bold', backgroundColor: '#f1f5f9', color: '#475569', padding: '2px 8px', borderRadius: '4px', border: '1px solid #e2e8f0' }}>
                       ID: {run.id}
                     </span>
-                    <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded border border-blue-100">
+                    <span style={{ fontWeight: 'bold', color: '#2563eb', backgroundColor: '#eff6ff', padding: '2px 8px', borderRadius: '4px', border: '1px solid #dbeafe' }}>
                       進捗 {progress}%
                     </span>
                   </div>
 
-                  {/* タイトル */}
-                  <h2 className="text-sm font-bold text-slate-900 leading-snug">{run.title}</h2>
-
-                  {/* 進捗プログレスバー */}
-                  <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden flex border border-slate-200">
-                    <div className="bg-emerald-500 h-full" style={{ width: `${total ? (passed / total) * 100 : 0}%` }} />
-                    <div className="bg-red-500 h-full" style={{ width: `${total ? (failed / total) * 100 : 0}%` }} />
-                    <div className="bg-amber-500 h-full" style={{ width: `${total ? (blocked / total) * 100 : 0}%` }} />
+                  {/* 3. 進捗バー */}
+                  <div style={{ width: '100%', backgroundColor: '#f1f5f9', height: '8px', borderRadius: '9999px', overflow: 'hidden', display: 'flex', marginTop: '10px', border: '1px solid #e2e8f0' }}>
+                    <div style={{ width: `${total ? (ok / total) * 100 : 0}%`, backgroundColor: '#10b981' }} />
+                    <div style={{ width: `${total ? (ng / total) * 100 : 0}%`, backgroundColor: '#ef4444' }} />
+                    <div style={{ width: `${total ? (blocked / total) * 100 : 0}%`, backgroundColor: '#f59e0b' }} />
+                    <div style={{ width: `${total ? (automated / total) * 100 : 0}%`, backgroundColor: '#3b82f6' }} />
+                    <div style={{ width: `${total ? (excluded / total) * 100 : 0}%`, backgroundColor: '#94a3b8' }} />
                   </div>
 
-                  {/* 内訳数字 */}
-                  <div className="grid grid-cols-4 text-center text-[10px] font-semibold bg-slate-50 p-2 rounded-lg border border-slate-200">
-                    <div><span className="text-emerald-700 block text-xs font-bold">{passed}</span>Pass</div>
-                    <div><span className="text-red-700 block text-xs font-bold">{failed}</span>Fail</div>
-                    <div><span className="text-amber-700 block text-xs font-bold">{blocked}</span>Hold</div>
-                    <div><span className="text-slate-500 block text-xs font-bold">{untested}</span>未実施</div>
+                  {/* 4. 6区分内訳 (未実施、OK、NG、保留、対象外、自動化) */}
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '6px', marginTop: '10px', backgroundColor: '#f8fafc', padding: '8px', borderRadius: '8px', border: '1px solid #e2e8f0', textAlign: 'center', fontSize: '10px' }}>
+                    <div><span style={{ display: 'block', fontWeight: 'bold', color: '#64748b', fontSize: '12px' }}>{untested}</span>未実施</div>
+                    <div><span style={{ display: 'block', fontWeight: 'bold', color: '#059669', fontSize: '12px' }}>{ok}</span>OK</div>
+                    <div><span style={{ display: 'block', fontWeight: 'bold', color: '#dc2626', fontSize: '12px' }}>{ng}</span>NG</div>
+                    <div><span style={{ display: 'block', fontWeight: 'bold', color: '#d97706', fontSize: '12px' }}>{blocked}</span>保留</div>
+                    <div><span style={{ display: 'block', fontWeight: 'bold', color: '#475569', fontSize: '12px' }}>{excluded}</span>対象外</div>
+                    <div><span style={{ display: 'block', fontWeight: 'bold', color: '#2563eb', fontSize: '12px' }}>{automated}</span>自動化</div>
                   </div>
                 </div>
 
-                {/* ボタンエリア */}
-                <div className="flex items-center gap-2 pt-2 border-t border-slate-100">
-                  <Link
-                    href={`/runs/${run.id}`}
-                    className="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-lg text-xs transition shadow-sm"
-                  >
-                    このテストを開いて実施 →
-                  </Link>
-                  <button
-                    onClick={() => handleDeleteRun(run.id, run.title)}
-                    title="このテスト項目書を削除"
-                    className="px-2.5 py-2 bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 rounded-lg text-xs font-bold transition"
-                  >
-                    🗑️ 削除
-                  </button>
-                </div>
+                {/* 5. 開くボタン */}
+                <Link
+                  href={`/runs/${run.id}`}
+                  style={{
+                    display: 'block',
+                    width: '100%',
+                    textAlign: 'center',
+                    backgroundColor: '#2563eb',
+                    color: '#ffffff',
+                    fontWeight: 'bold',
+                    padding: '8px 0',
+                    borderRadius: '8px',
+                    fontSize: '12px',
+                    textDecoration: 'none',
+                    marginTop: '8px'
+                  }}
+                >
+                  このテストを開いて実施 →
+                </Link>
               </div>
             );
           })}

@@ -5,7 +5,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import casesData from '@/data/cases.json';
 
 interface TestResult {
-  status: 'UNTESTED' | 'PASSED' | 'FAILED' | 'BLOCKED';
+  status: 'UNTESTED' | 'PASSED' | 'FAILED' | 'BLOCKED' | 'EXCLUDED' | 'AUTOMATED';
   tester: string;
   note: string;
   updatedAt: string;
@@ -18,13 +18,11 @@ export default function RunPage({ params }: { params: { runId: string } }) {
   const [saveStatus, setSaveStatus] = useState<'saved' | 'saving' | 'error'>('saved');
   const saveTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // 選択・検索
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   const [batchTester, setBatchTester] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('ALL');
 
-  // 列幅可変サイズ
   const [colWidths, setColWidths] = useState<{ [key: string]: number }>({
     check: 40,
     id: 90,
@@ -38,7 +36,6 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     note: 200,
   });
 
-  // 列幅ドラッグ調整
   const startResizing = (colKey: string, e: React.MouseEvent) => {
     e.preventDefault();
     const startX = e.clientX;
@@ -230,10 +227,12 @@ export default function RunPage({ params }: { params: { runId: string } }) {
               className="px-3 py-1.5 text-xs text-slate-900 rounded bg-white border border-slate-300 font-semibold focus:outline-none"
             >
               <option value="ALL">すべてのステータス</option>
-              <option value="UNTESTED">UNTESTED (未実施)</option>
-              <option value="PASSED">PASSED (合格)</option>
-              <option value="FAILED">FAILED (不合格)</option>
-              <option value="BLOCKED">BLOCKED (保留)</option>
+              <option value="UNTESTED">未実施</option>
+              <option value="PASSED">OK</option>
+              <option value="FAILED">NG</option>
+              <option value="BLOCKED">保留</option>
+              <option value="EXCLUDED">対象外</option>
+              <option value="AUTOMATED">自動化</option>
             </select>
           </div>
 
@@ -373,18 +372,24 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                       onChange={(e) => updateResult(tc.id, { status: e.target.value as any }, true)}
                       className={`w-full p-1.5 text-xs font-bold rounded border cursor-pointer ${
                         result.status === 'PASSED'
-                          ? 'bg-green-100 text-green-800 border-green-300'
+                          ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
                           : result.status === 'FAILED'
-                          ? 'bg-red-100 text-red-800 border-red-300'
+                          ? 'bg-rose-100 text-rose-800 border-rose-300'
                           : result.status === 'BLOCKED'
                           ? 'bg-amber-100 text-amber-800 border-amber-300'
+                          : result.status === 'AUTOMATED'
+                          ? 'bg-blue-100 text-blue-800 border-blue-300'
+                          : result.status === 'EXCLUDED'
+                          ? 'bg-slate-200 text-slate-700 border-slate-300'
                           : 'bg-slate-100 text-slate-600 border-slate-300'
                       }`}
                     >
-                      <option value="UNTESTED">UNTESTED</option>
-                      <option value="PASSED">PASSED</option>
-                      <option value="FAILED">FAILED</option>
-                      <option value="BLOCKED">BLOCKED</option>
+                      <option value="UNTESTED">未実施</option>
+                      <option value="PASSED">OK</option>
+                      <option value="FAILED">NG</option>
+                      <option value="BLOCKED">保留</option>
+                      <option value="EXCLUDED">対象外</option>
+                      <option value="AUTOMATED">自動化</option>
                     </select>
                   </td>
                   <td className="p-2 align-top">
