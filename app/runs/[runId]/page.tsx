@@ -1,6 +1,7 @@
+// app/runs/[runId]/page.tsx
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import casesData from '@/data/cases.json';
 
 interface TestResult {
@@ -13,14 +14,15 @@ export default function RunPage({ params }: { params: { runId: string } }) {
   const { runId } = params;
   const [runData, setRunData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [saving, setSaving] = useState(false);
-  const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+  const [saveStatus, setSaveStatus] = useState<'saved' | 'saving' | 'error'>('saved');
+  const saveTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  useEffect(() => {
-    // クライアント側でJSONデータを動的に取得 (初期状態)
-    import(`@/data/runs/${runId}.json`)
+  // 1. 最新データの取得
+  const fetchLatestData = useCallback(() => {
+    fetch(`/api/test-run?runId=${runId}&t=${Date.now()}`)
+      .then((res) => res.json())
       .then((data) => {
-        setRunData(data.default || data);
+        setRunData(data);
         setLoading(false);
       })
       .catch((err) => {
@@ -29,6 +31,47 @@ export default function RunPage({ params }: { params: { runId: string } }) {
       });
   }, [runId]);
 
+  // 初回読み込み & 10秒ごとの自動同期（複数人での同期用）
+  useEffect(() => {
+    fetchLatestData();
+    const interval = setInterval(() => {
+      // 自分が保存中でない場合のみバックグラウンドで最新データに更新
+      if (saveStatus !== 'saving') {
+        fetchLatestData();
+      }
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, [runId, saveStatus, fetchLatestData]);
+
+  // 2. 自動保存API呼び出し
+  const autoSave = useCallback(async (updatedData: any) => {
+    setSaveStatus('saving');
+    try {
+      const res = await fetch('/api/test-run', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          runId,
+          data: {
+            ...updatedData,
+            updatedAt: new Date().toISOString(),
+          },
+        }),
+      });
+
+      if (res.ok) {
+        setSaveStatus('saved');
+      } else {
+        setSaveStatus('error');
+      }
+    } catch (err) {
+      console.error(err);
+      setSaveStatus('error');
+    }
+  }, [runId]);
+
+  // 3. ステータス変更（即時自動保存）
   const handleStatusChange = (caseId: string, status: TestResult['status']) => {
     if (!runData) return;
     const newResults = {
@@ -39,9 +82,12 @@ export default function RunPage({ params }: { params: { runId: string } }) {
         updatedAt: new Date().toISOString(),
       },
     };
-    setRunData({ ...runData, results: newResults });
+    const newRunData = { ...runData, results: newResults };
+    setRunData(newRunData);
+    autoSave(newRunData); // 即時保存
   };
 
+  // 4. メモ変更（タイマーによる自動保存）
   const handleNoteChange = (caseId: string, note: string) => {
     if (!runData) return;
     const newResults = {
@@ -52,64 +98,48 @@ export default function RunPage({ params }: { params: { runId: string } }) {
         updatedAt: new Date().toISOString(),
       },
     };
-    setRunData({ ...runData, results: newResults });
-  };
+    const newRunData = { ...runData, results: newResults };
+    setRunData(newRunData);
 
-  const handleSaveToGithub = async () => {
-    setSaving(true);
-    setMessage(null);
-
-    try {
-      const res = await fetch('/api/test-run', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          runId,
-          data: {
-            ...runData,
-            updatedAt: new Date().toISOString(),
-          },
-        }),
-      });
-
-      const resData = await res.json();
-      if (res.ok) {
-        setMessage({ type: 'success', text: 'GitHubへのCommit & Pushが成功しました！' });
-      } else {
-        throw new Error(resData.error || '保存に失敗しました');
-      }
-    } catch (err: any) {
-      setMessage({ type: 'error', text: err.message });
-    } finally {
-      setSaving(false);
-    }
+    // 入力が止まってから0.8秒後に自動保存
+    setSaveStatus('saving');
+    if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
+    saveTimerRef.current = setTimeout(() => {
+      autoSave(newRunData);
+    }, 800);
   };
 
   if (loading) return <div className="p-8 text-center text-slate-500">データを読み込み中...</div>;
-  if (!runData) return <div className="p-8 text-center text-red-500">対象の実行データが見つかりませんでした ({runId}.json)</div>;
+  if (!runData || runData.error) return <div className="p-8 text-center text-red-500">対象の実行データが見つかりませんでした</div>;
 
   return (
     <div className="space-y-6">
-      {/* ヘッダー情報 */}
+      {/* ヘッダー＆保存ステータス表示 */}
       <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between md:items-center gap-4">
         <div>
           <h1 className="text-2xl font-bold text-slate-800">{runData.title}</h1>
           <p className="text-sm text-slate-500 mt-1">Run ID: {runData.id}</p>
         </div>
-        <button
-          onClick={handleSaveToGithub}
-          disabled={saving}
-          className="bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-5 py-2.5 rounded-lg shadow-sm transition disabled:opacity-50"
-        >
-          {saving ? 'GitHubへ保存中...' : 'GitHubへ結果を保存'}
-        </button>
-      </div>
 
-      {message && (
-        <div className={`p-4 rounded-lg text-sm font-medium ${message.type === 'success' ? 'bg-green-100 text-green-800 border border-green-200' : 'bg-red-100 text-red-800 border border-red-200'}`}>
-          {message.text}
+        {/* リアルタイム保存インジケーター */}
+        <div className="flex items-center gap-2 text-sm font-medium">
+          {saveStatus === 'saving' && (
+            <span className="flex items-center text-amber-600 bg-amber-50 px-3 py-1.5 rounded-full border border-amber-200">
+              <span className="animate-spin mr-2">🔄</span> 自動保存中...
+            </span>
+          )}
+          {saveStatus === 'saved' && (
+            <span className="flex items-center text-emerald-600 bg-emerald-50 px-3 py-1.5 rounded-full border border-emerald-200">
+              ✓ クラウド（GitHub）に保存済み
+            </span>
+          )}
+          {saveStatus === 'error' && (
+            <span className="flex items-center text-red-600 bg-red-50 px-3 py-1.5 rounded-full border border-red-200">
+              ⚠️ 保存エラーが発生しました
+            </span>
+          )}
         </div>
-      )}
+      </div>
 
       {/* テストケース一覧 */}
       <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
@@ -123,7 +153,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-200 text-sm">
-            {casesData.map((tc) => {
+            {casesData.map((tc: any) => {
               const result = runData.results?.[tc.id] || { status: 'UNTESTED', note: '' };
 
               return (
@@ -140,7 +170,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                     <select
                       value={result.status}
                       onChange={(e) => handleStatusChange(tc.id, e.target.value as any)}
-                      className={`w-full p-2 text-xs font-bold rounded-md border ${
+                      className={`w-full p-2 text-xs font-bold rounded-md border cursor-pointer transition ${
                         result.status === 'PASSED'
                           ? 'bg-green-50 border-green-300 text-green-700'
                           : result.status === 'FAILED'
