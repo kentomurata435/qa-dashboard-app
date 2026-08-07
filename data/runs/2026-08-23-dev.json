@@ -2,7 +2,7 @@
   "id": "2026-08-23-dev",
   "title": "2026-08-23 開発環境 リリース前検証",
   "createdAt": "2026-08-23T10:00:00Z",
-  "updatedAt": "2026-08-07T06:28:22.907Z",
+  "updatedAt": "2026-08-07T06:45:32.636Z",
   "results": {
     "TC-001": {
       "status": "PASSED",
@@ -10,9 +10,9 @@
       "updatedAt": "2026-08-23T10:05:00Z"
     },
     "TC-002": {
-      "status": "FAILED",
+      "status": "PASSED",
       "note": "エラー文言のフォントサイズが仕様と異なる",
-      "updatedAt": "2026-08-23T10:10:00Z"
+      "updatedAt": "2026-08-07T06:45:32.636Z"
     },
     "TC-003": {
       "status": "PASSED",
