@@ -31,10 +31,8 @@ export default function RunPage({ params }: { params: { runId: string } }) {
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   const [batchTester, setBatchTester] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
-  const [editingCell, setEditingCell] = useState<{ rowIndex: number } | null>(null);
-  const [editValue, setEditValue] = useState('');
 
-  // ステータス複数選択フィルター State (初期値はすべてON)
+  // ステータスフィルター
   const [statusFilterOpen, setStatusFilterOpen] = useState(false);
   const [selectedStatuses, setSelectedStatuses] = useState<Set<string>>(
     new Set(['UNTESTED', 'PASSED', 'FAILED', 'BLOCKED', 'EXCLUDED', 'AUTOMATED'])
@@ -138,7 +136,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     };
     const newRunData = { ...runData, results: newResults };
     setRunData(newRunData);
-  
+
     if (immediate) {
       autoSave(newRunData);
     } else {
@@ -147,136 +145,67 @@ export default function RunPage({ params }: { params: { runId: string } }) {
       saveTimerRef.current = setTimeout(() => autoSave(newRunData), 800);
     }
   };
- 
-  const focusCellEditor = (rowIndex: number, initialValue: string) => {
-    setEditingCell({ rowIndex });
-    setEditValue(initialValue);
-  };
- 
-  const commitCellEdit = () => {
-    if (!editingCell || !runData) {
-      setEditingCell(null);
-      return;
-    }
-    const caseId = filteredCases[editingCell.rowIndex]?.id;
-    if (!caseId) {
-      setEditingCell(null);
-      return;
-    }
-    const value = editValue.trim();
-    updateResult(caseId, { tester: value }, false);
-    setEditingCell(null);
-  };
- 
-  const moveEditor = (rowIndex: number, direction: 'next' | 'prev' | 'up' | 'down') => {
-    let nextRow = rowIndex;
 
-    if (direction === 'next' || direction === 'down') {
-      nextRow = Math.min(rowIndex + 1, filteredCases.length - 1);
-    } else if (direction === 'prev' || direction === 'up') {
-      nextRow = Math.max(rowIndex - 1, 0);
-    }
+  // テキスト文字から正規ステータスへのマッピング
+  const mapStatusText = (val: string): TestResult['status'] => {
+    const v = val.toUpperCase().trim();
+    if (v === 'OK' || v === 'PASSED' || v === '合格' || v === 'PASS') return 'PASSED';
+    if (v === 'NG' || v === 'FAILED' || v === '不合格' || v === 'FAIL') return 'FAILED';
+    if (v === '保留' || v === 'BLOCKED' || v === 'HOLD') return 'BLOCKED';
+    if (v === '対象外' || v === 'EXCLUDED') return 'EXCLUDED';
+    if (v === '自動化' || v === 'AUTOMATED') return 'AUTOMATED';
+    return 'UNTESTED';
+  };
 
-    if (nextRow < 0 || nextRow >= filteredCases.length) {
-      setEditingCell(null);
-      return;
-    }
+  // SpreadJS風: Excel / スプレッドシートからのコピペ (Ctrl + V) 対応
+  const handlePaste = (startCaseId: string, fieldType: 'tester' | 'status' | 'note', e: React.ClipboardEvent) => {
+    const pastedData = e.clipboardData.getData('text');
+    if (!pastedData) return;
 
-    const caseId = filteredCases[nextRow]?.id;
-    const nextValue = caseId ? (runData.results?.[caseId]?.tester || '') : '';
-    setEditingCell({ rowIndex: nextRow });
-    setEditValue(nextValue);
-  };
- 
-  const normalizeStatus = (input: string): TestResult['status'] | undefined => {
-    const normalized = input.trim().replace(/\u3000/g, ' ').toLowerCase();
-    const statusMap: Record<string, TestResult['status']> = {
-      untested: 'UNTESTED', '未実施': 'UNTESTED',
-      passed: 'PASSED', ok: 'PASSED', 合格: 'PASSED', pass: 'PASSED',
-      failed: 'FAILED', ng: 'FAILED', 不合格: 'FAILED', fail: 'FAILED',
-      blocked: 'BLOCKED', 保留: 'BLOCKED',
-      excluded: 'EXCLUDED', 対象外: 'EXCLUDED',
-      automated: 'AUTOMATED', 自動化: 'AUTOMATED',
-    };
-    return statusMap[normalized];
-  };
- 
-  const parsePasteRow = (
-    cells: string[],
-    startField: 'tester' | 'status'
-  ): Partial<Pick<TestResult, 'tester' | 'status'>> => {
-    const values = cells.map((cell) => cell.trim()).filter((value) => value.length > 0);
-    if (values.length === 0) return {};
- 
-    const firstStatus = normalizeStatus(values[0]);
-    const secondStatus = values.length > 1 ? normalizeStatus(values[1]) : undefined;
- 
-    if (startField === 'tester') {
-      if (values.length === 1) {
-        return { tester: values[0] };
-      }
-      if (firstStatus && !secondStatus) {
-        return { status: firstStatus, tester: values[1] };
-      }
-      return {
-        tester: values[0],
-        ...(secondStatus ? { status: secondStatus } : {}),
-      };
-    }
- 
-    if (values.length === 1) {
-      return firstStatus ? { status: firstStatus } : {};
-    }
-    if (!firstStatus && secondStatus) {
-      return { tester: values[0], status: secondStatus };
-    }
-    return {
-      ...(firstStatus ? { status: firstStatus } : {}),
-      tester: values[1],
-    };
-  };
-   
-  const handlePaste = (
-    e: React.ClipboardEvent<HTMLElement>,
-    startIndex: number,
-    startField: 'tester' | 'status'
-  ) => {
-    if (!runData) return;
-    const text = e.clipboardData.getData('text/plain');
-    if (!text) return;
+    // Excelのタブ区切り・改行テキストを分解
+    const rows = pastedData.trim().split(/\r?\n/).map((r) => r.split('\t'));
+    if (rows.length === 0) return;
+
     e.preventDefault();
-  
-    const rows = text.replace(/\r\n/g, '\n').replace(/\r/g, '\n').split('\n');
+
+    const caseIndex = casesData.findIndex((c: any) => c.id === startCaseId);
+    if (caseIndex === -1) return;
+
     const newResults = { ...runData.results };
-    let hasUpdate = false;
-  
-    rows.forEach((row, rowOffset) => {
-      if (!row.trim()) return;
-      const cells = row.split('\t');
-      const rowIndex = startIndex + rowOffset;
-      if (rowIndex >= filteredCases.length) return;
-      const caseId = filteredCases[rowIndex].id;
-      const current = newResults[caseId] || { status: 'UNTESTED', tester: '', note: '' };
-      const parsed = parsePasteRow(cells, startField);
-      if (Object.keys(parsed).length === 0) return;
-  
-      newResults[caseId] = {
-        ...current,
-        ...parsed,
-        updatedAt: new Date().toISOString(),
-      };
-      hasUpdate = true;
+
+    rows.forEach((rowCells, rIdx) => {
+      const targetCase = casesData[caseIndex + rIdx];
+      if (!targetCase) return;
+
+      const current = newResults[targetCase.id] || { status: 'UNTESTED', tester: '', note: '' };
+
+      if (fieldType === 'tester') {
+        newResults[targetCase.id] = { ...current, tester: rowCells[0] || '', updatedAt: new Date().toISOString() };
+      } else if (fieldType === 'status') {
+        newResults[targetCase.id] = { ...current, status: mapStatusText(rowCells[0] || ''), updatedAt: new Date().toISOString() };
+      } else if (fieldType === 'note') {
+        newResults[targetCase.id] = { ...current, note: rowCells[0] || '', updatedAt: new Date().toISOString() };
+      }
     });
- 
-    if (!hasUpdate) return;
- 
+
     const newRunData = { ...runData, results: newResults };
     setRunData(newRunData);
     autoSave(newRunData);
-    setEditingCell(null);
-    setEditValue('');
   };
- 
+
+  // SpreadJS風: Enterキーでの下方向セル移動
+  const handleKeyDown = (caseId: string, fieldType: string, e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      const caseIndex = casesData.findIndex((c: any) => c.id === caseId);
+      if (caseIndex !== -1 && caseIndex + 1 < casesData.length) {
+        const nextCaseId = casesData[caseIndex + 1].id;
+        const nextElem = document.getElementById(`input-${fieldType}-${nextCaseId}`);
+        if (nextElem) nextElem.focus();
+      }
+    }
+  };
+
   const handleBatchApplyTester = () => {
     if (selectedIds.size === 0 || !batchTester.trim()) return;
     const newResults = { ...runData.results };
@@ -309,7 +238,6 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     setSelectedIds(next);
   };
 
-  // ステータスフィルターの個別切替
   const toggleStatusFilter = (key: string) => {
     const next = new Set(selectedStatuses);
     if (next.has(key)) next.delete(key);
@@ -317,7 +245,6 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     setSelectedStatuses(next);
   };
 
-  // ステータスフィルターの全選択 / 全解除
   const toggleAllStatusFilters = () => {
     if (selectedStatuses.size === ALL_STATUSES.length) {
       setSelectedStatuses(new Set());
@@ -329,7 +256,6 @@ export default function RunPage({ params }: { params: { runId: string } }) {
   if (loading) return <div className="p-8 text-center text-slate-500 font-medium">データを読み込み中...</div>;
   if (!runData || runData.error) return <div className="p-8 text-center text-red-500 font-medium">対象のテスト項目書が見つかりませんでした</div>;
 
-  // フィルタリング処理（検索窓 ＋ ステータスチェックボックス）
   const filteredCases = casesData.filter((tc: any) => {
     const result = runData.results?.[tc.id] || {};
     const matchesSearch =
@@ -375,11 +301,10 @@ export default function RunPage({ params }: { params: { runId: string } }) {
         </div>
       </div>
 
-      {/* 検索・ステータス複数チェックボックス・一括操作バー */}
+      {/* 検索・一括操作バー */}
       <div className="bg-slate-800 text-white p-3.5 rounded-xl shadow space-y-2">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-3 flex-1 min-w-[280px]">
-            {/* 検索入力 */}
             <input
               type="text"
               value={searchQuery}
@@ -388,7 +313,6 @@ export default function RunPage({ params }: { params: { runId: string } }) {
               className="w-full max-w-xs px-3 py-1.5 text-xs text-slate-900 rounded bg-white border border-slate-300 focus:outline-none"
             />
 
-            {/* ステータス複数選択チェックボックスメニュー */}
             <div className="relative">
               <button
                 type="button"
@@ -402,7 +326,6 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                 <span className="text-[10px]">▼</span>
               </button>
 
-              {/* ポップアップドロップダウン */}
               {statusFilterOpen && (
                 <div className="absolute left-0 mt-1 w-52 bg-white text-slate-900 border border-slate-300 rounded-lg shadow-xl z-30 p-2.5 space-y-1.5">
                   <div className="flex justify-between items-center pb-1.5 border-b border-slate-200 text-[11px] font-bold">
@@ -445,35 +368,29 @@ export default function RunPage({ params }: { params: { runId: string } }) {
             </div>
           </div>
 
-          {/* 一括「実施者」割り当て */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 border-l border-slate-600 pl-4">
-            <div className="flex items-center gap-2">
-              <span className="text-xs text-slate-300">
-                選択中: <strong className="text-blue-400">{selectedIds.size}</strong> 件
-              </span>
-              <input
-                type="text"
-                value={batchTester}
-                onChange={(e) => setBatchTester(e.target.value)}
-                placeholder="実施者名 (例: 村田)"
-                className="px-2.5 py-1.5 text-xs text-slate-900 rounded bg-white w-32 focus:outline-none"
-              />
-              <button
-                onClick={handleBatchApplyTester}
-                disabled={selectedIds.size === 0 || !batchTester.trim()}
-                className="px-3 py-1.5 text-xs bg-blue-600 hover:bg-blue-500 disabled:bg-slate-600 text-white rounded font-bold transition shadow-sm"
-              >
-                一括適用
-              </button>
-            </div>
-            <div className="text-[10px] text-slate-300">
-              表のセルをクリックして直接編集できます。実施者は入力、結果ステータスはプルダウンから選択できます。Excel から複数行貼り付けも可能です。
-            </div>
+          <div className="flex items-center gap-2 border-l border-slate-600 pl-4">
+            <span className="text-xs text-slate-300">
+              選択中: <strong className="text-blue-400">{selectedIds.size}</strong> 件
+            </span>
+            <input
+              type="text"
+              value={batchTester}
+              onChange={(e) => setBatchTester(e.target.value)}
+              placeholder="実施者名 (例: 村田)"
+              className="px-2.5 py-1.5 text-xs text-slate-900 rounded bg-white w-32 focus:outline-none"
+            />
+            <button
+              onClick={handleBatchApplyTester}
+              disabled={selectedIds.size === 0 || !batchTester.trim()}
+              className="px-3 py-1.5 text-xs bg-blue-600 hover:bg-blue-500 disabled:bg-slate-600 text-white rounded font-bold transition shadow-sm"
+            >
+              一括適用
+            </button>
           </div>
         </div>
       </div>
 
-      {/* メインテーブル */}
+      {/* メインテーブル（SpreadJS風コピペ・Enter移動機能付き） */}
       <div className="bg-white rounded-xl shadow-sm border border-slate-300 overflow-x-auto qa-table-container">
         <table className="text-left border-collapse table-fixed w-max">
           <thead>
@@ -526,7 +443,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
             </tr>
           </thead>
           <tbody className="text-xs">
-            {filteredCases.map((tc: any, index: number) => {
+            {filteredCases.map((tc: any) => {
               const result = runData.results?.[tc.id] || {
                 status: 'UNTESTED',
                 tester: tc.defaultTester || '',
@@ -572,58 +489,30 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                   <td className="p-2 align-top text-slate-900 font-medium whitespace-pre-wrap break-words leading-relaxed font-sans">
                     {tc.expected || '-'}
                   </td>
-                  <td className="p-2 align-top bg-blue-50/30" onPaste={(e) => handlePaste(e, index, 'tester')}>
+
+                  {/* 実施者（SpreadJS風コピペ ＆ Enter移動対応） */}
+                  <td className="p-2 align-top bg-blue-50/30">
                     <input
+                      id={`input-tester-${tc.id}`}
                       type="text"
-                      value={editingCell?.rowIndex === index ? editValue : result.tester || ''}
-                      onFocus={() => focusCellEditor(index, result.tester || '')}
-                      onChange={(e) => {
-                        if (editingCell?.rowIndex === index) {
-                          setEditValue(e.target.value);
-                        }
-                      }}
-                      onBlur={commitCellEdit}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter') {
-                          e.preventDefault();
-                          commitCellEdit();
-                          moveEditor(index, 'down');
-                        } else if (e.key === 'Tab') {
-                          e.preventDefault();
-                          commitCellEdit();
-                          moveEditor(index, 'next');
-                        } else if (e.key === 'ArrowDown') {
-                          e.preventDefault();
-                          commitCellEdit();
-                          moveEditor(index, 'down');
-                        } else if (e.key === 'ArrowUp') {
-                          e.preventDefault();
-                          commitCellEdit();
-                          moveEditor(index, 'up');
-                        } else if (e.key === 'ArrowRight') {
-                          e.preventDefault();
-                          commitCellEdit();
-                          moveEditor(index, 'next');
-                        } else if (e.key === 'ArrowLeft') {
-                          e.preventDefault();
-                          commitCellEdit();
-                          moveEditor(index, 'prev');
-                        } else if (e.key === 'Escape') {
-                          setEditingCell(null);
-                        }
-                      }}
-                      className={`min-h-[2rem] w-full p-1 text-xs border rounded focus:outline-none focus:ring-1 focus:ring-blue-500 bg-white ${
-                        editingCell?.rowIndex === index
-                          ? 'border-blue-500'
-                          : 'border-slate-300'
-                      }`}
+                      value={result.tester || ''}
+                      onChange={(e) => updateResult(tc.id, { tester: e.target.value }, false)}
+                      onPaste={(e) => handlePaste(tc.id, 'tester', e)}
+                      onKeyDown={(e) => handleKeyDown(tc.id, 'tester', e)}
+                      placeholder="担当者"
+                      className="w-full p-1 text-xs border border-slate-300 rounded font-medium focus:outline-none focus:ring-2 focus:ring-blue-600 bg-white"
                     />
                   </td>
-                  <td className="p-2 align-top" onPaste={(e) => handlePaste(e, index, 'status')}>
+
+                  {/* 結果ステータス（SpreadJS風コピペ ＆ Enter移動対応） */}
+                  <td className="p-2 align-top">
                     <select
+                      id={`input-status-${tc.id}`}
                       value={result.status || 'UNTESTED'}
-                      onChange={(e) => updateResult(tc.id, { status: e.target.value as TestResult['status'] }, true)}
-                      className={`min-h-[2rem] w-full p-1 text-xs font-bold rounded border focus:outline-none focus:ring-1 focus:ring-blue-500 ${
+                      onChange={(e) => updateResult(tc.id, { status: e.target.value as any }, true)}
+                      onPaste={(e) => handlePaste(tc.id, 'status', e)}
+                      onKeyDown={(e) => handleKeyDown(tc.id, 'status', e)}
+                      className={`w-full p-1.5 text-xs font-bold rounded border cursor-pointer focus:ring-2 focus:ring-blue-600 ${
                         result.status === 'PASSED'
                           ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
                           : result.status === 'FAILED'
@@ -637,20 +526,25 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                           : 'bg-slate-100 text-slate-600 border-slate-300'
                       }`}
                     >
-                      {ALL_STATUSES.map((item) => (
-                        <option key={item.key} value={item.key}>
-                          {item.label}
-                        </option>
-                      ))}
+                      <option value="UNTESTED">未実施</option>
+                      <option value="PASSED">OK</option>
+                      <option value="FAILED">NG</option>
+                      <option value="BLOCKED">保留</option>
+                      <option value="EXCLUDED">対象外</option>
+                      <option value="AUTOMATED">自動化</option>
                     </select>
                   </td>
+
+                  {/* 備考（SpreadJS風コピペ対応） */}
                   <td className="p-2 align-top">
                     <textarea
+                      id={`input-note-${tc.id}`}
                       rows={2}
                       value={result.note || ''}
                       onChange={(e) => updateResult(tc.id, { note: e.target.value }, false)}
+                      onPaste={(e) => handlePaste(tc.id, 'note', e)}
                       placeholder="備考・不具合リンク"
-                      className="w-full p-1 border border-slate-300 rounded text-xs focus:outline-none focus:ring-1 focus:ring-blue-500 resize-y bg-white"
+                      className="w-full p-1 border border-slate-300 rounded text-xs focus:outline-none focus:ring-2 focus:ring-blue-600 resize-y bg-white"
                     />
                   </td>
                 </tr>
