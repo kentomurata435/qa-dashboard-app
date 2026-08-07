@@ -17,7 +17,6 @@ export default function RunPage({ params }: { params: { runId: string } }) {
   const [saveStatus, setSaveStatus] = useState<'saved' | 'saving' | 'error'>('saved');
   const saveTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // 1. 最新データの取得
   const fetchLatestData = useCallback(() => {
     fetch(`/api/test-run?runId=${runId}&t=${Date.now()}`)
       .then((res) => res.json())
@@ -31,20 +30,16 @@ export default function RunPage({ params }: { params: { runId: string } }) {
       });
   }, [runId]);
 
-  // 初回読み込み & 10秒ごとの自動同期（複数人での同期用）
   useEffect(() => {
     fetchLatestData();
     const interval = setInterval(() => {
-      // 自分が保存中でない場合のみバックグラウンドで最新データに更新
       if (saveStatus !== 'saving') {
         fetchLatestData();
       }
     }, 10000);
-
     return () => clearInterval(interval);
   }, [runId, saveStatus, fetchLatestData]);
 
-  // 2. 自動保存API呼び出し
   const autoSave = useCallback(async (updatedData: any) => {
     setSaveStatus('saving');
     try {
@@ -71,7 +66,6 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     }
   }, [runId]);
 
-  // 3. ステータス変更（即時自動保存）
   const handleStatusChange = (caseId: string, status: TestResult['status']) => {
     if (!runData) return;
     const newResults = {
@@ -84,10 +78,9 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     };
     const newRunData = { ...runData, results: newResults };
     setRunData(newRunData);
-    autoSave(newRunData); // 即時保存
+    autoSave(newRunData);
   };
 
-  // 4. メモ変更（タイマーによる自動保存）
   const handleNoteChange = (caseId: string, note: string) => {
     if (!runData) return;
     const newResults = {
@@ -101,7 +94,6 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     const newRunData = { ...runData, results: newResults };
     setRunData(newRunData);
 
-    // 入力が止まってから0.8秒後に自動保存
     setSaveStatus('saving');
     if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
     saveTimerRef.current = setTimeout(() => {
@@ -113,15 +105,14 @@ export default function RunPage({ params }: { params: { runId: string } }) {
   if (!runData || runData.error) return <div className="p-8 text-center text-red-500">対象の実行データが見つかりませんでした</div>;
 
   return (
-    <div className="space-y-6">
-      {/* ヘッダー＆保存ステータス表示 */}
+    <div className="space-y-6 max-w-[1600px] mx-auto">
+      {/* ヘッダー情報 */}
       <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between md:items-center gap-4">
         <div>
           <h1 className="text-2xl font-bold text-slate-800">{runData.title}</h1>
-          <p className="text-sm text-slate-500 mt-1">Run ID: {runData.id}</p>
+          <p className="text-sm text-slate-500 mt-1">Run ID: {runData.id} | テスト項目数: {casesData.length} 件</p>
         </div>
 
-        {/* リアルタイム保存インジケーター */}
         <div className="flex items-center gap-2 text-sm font-medium">
           {saveStatus === 'saving' && (
             <span className="flex items-center text-amber-600 bg-amber-50 px-3 py-1.5 rounded-full border border-amber-200">
@@ -141,42 +132,71 @@ export default function RunPage({ params }: { params: { runId: string } }) {
         </div>
       </div>
 
-      {/* テストケース一覧 */}
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-        <table className="w-full text-left border-collapse">
+      {/* テストケーステーブル */}
+      <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-x-auto">
+        <table className="w-full text-left border-collapse min-w-[1200px]">
           <thead>
-            <tr className="bg-slate-50 border-b border-slate-200 text-xs text-slate-500 uppercase tracking-wider">
-              <th className="p-4">ID / カテゴリ</th>
-              <th className="p-4">テストケース内容</th>
-              <th className="p-4 w-48">ステータス</th>
-              <th className="p-4">メモ / バグ情報</th>
+            <tr className="bg-slate-100 border-b border-slate-200 text-xs text-slate-600 uppercase font-semibold">
+              <th className="p-3 w-20">ID</th>
+              <th className="p-3 w-40">画面 / 機能</th>
+              <th className="p-3 w-48">前提条件</th>
+              <th className="p-3">確認手順</th>
+              <th className="p-3">確認内容（期待値）</th>
+              <th className="p-3 w-36">結果ステータス</th>
+              <th className="p-3 w-48">備考・バグ情報</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-200 text-sm">
+          <tbody className="divide-y divide-slate-200 text-xs">
             {casesData.map((tc: any) => {
               const result = runData.results?.[tc.id] || { status: 'UNTESTED', note: '' };
 
               return (
-                <tr key={tc.id} className="hover:bg-slate-50 transition">
-                  <td className="p-4 align-top">
-                    <span className="font-mono font-bold text-slate-700">{tc.id}</span>
-                    <span className="block text-xs text-slate-400 mt-1">{tc.category}</span>
+                <tr key={tc.id} className="hover:bg-slate-50/80 transition">
+                  {/* ID & 重要度 */}
+                  <td className="p-3 align-top font-mono">
+                    <span className="font-bold text-slate-800">{tc.id}</span>
+                    {tc.priority && (
+                      <span className={`block mt-1 text-[10px] w-max px-1.5 py-0.5 rounded font-bold ${
+                        tc.priority === 'A' ? 'bg-red-100 text-red-700' : 'bg-slate-100 text-slate-600'
+                      }`}>
+                        重要度 {tc.priority}
+                      </span>
+                    )}
                   </td>
-                  <td className="p-4 align-top">
-                    <div className="font-semibold text-slate-800">{tc.title}</div>
-                    <div className="text-xs text-slate-500 mt-1">{tc.description}</div>
+
+                  {/* 画面 / 機能 */}
+                  <td className="p-3 align-top">
+                    <div className="font-bold text-slate-800">{tc.screen || '-'}</div>
+                    <div className="text-slate-500 mt-0.5">{tc.feature || '-'}</div>
                   </td>
-                  <td className="p-4 align-top">
+
+                  {/* 前提条件 */}
+                  <td className="p-3 align-top text-slate-600 whitespace-pre-line">
+                    {tc.precondition || '-'}
+                  </td>
+
+                  {/* 確認手順 */}
+                  <td className="p-3 align-top text-slate-800 whitespace-pre-line leading-relaxed">
+                    {tc.steps || '-'}
+                  </td>
+
+                  {/* 確認内容 */}
+                  <td className="p-3 align-top text-slate-800 font-medium whitespace-pre-line leading-relaxed">
+                    {tc.expected || '-'}
+                  </td>
+
+                  {/* 結果ステータス */}
+                  <td className="p-3 align-top">
                     <select
                       value={result.status}
                       onChange={(e) => handleStatusChange(tc.id, e.target.value as any)}
-                      className={`w-full p-2 text-xs font-bold rounded-md border cursor-pointer transition ${
+                      className={`w-full p-2 text-xs font-bold rounded-md border cursor-pointer ${
                         result.status === 'PASSED'
-                          ? 'bg-green-50 border-green-300 text-green-700'
+                          ? 'bg-green-100 border-green-300 text-green-800'
                           : result.status === 'FAILED'
-                          ? 'bg-red-50 border-red-300 text-red-700'
+                          ? 'bg-red-100 border-red-300 text-red-800'
                           : result.status === 'BLOCKED'
-                          ? 'bg-amber-50 border-amber-300 text-amber-700'
+                          ? 'bg-amber-100 border-amber-300 text-amber-800'
                           : 'bg-slate-100 border-slate-300 text-slate-600'
                       }`}
                     >
@@ -186,13 +206,15 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                       <option value="BLOCKED">BLOCKED</option>
                     </select>
                   </td>
-                  <td className="p-4 align-top">
-                    <input
-                      type="text"
+
+                  {/* 備考入力 */}
+                  <td className="p-3 align-top">
+                    <textarea
+                      rows={2}
                       value={result.note || ''}
                       onChange={(e) => handleNoteChange(tc.id, e.target.value)}
-                      placeholder="備考・不具合リンクなど"
-                      className="w-full p-2 text-xs border border-slate-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
+                      placeholder="備考・メモ"
+                      className="w-full p-1.5 border border-slate-300 rounded text-xs focus:outline-none focus:ring-1 focus:ring-blue-500 resize-y"
                     />
                   </td>
                 </tr>
