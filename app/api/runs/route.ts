@@ -9,16 +9,23 @@ export const revalidate = 0;
 
 const octokit = new Octokit({ auth: process.env.GITHUB_PAT });
 
-// ソート関数（最新の作成日時・最新のIDを必ず最上部に）
-const sortRunsDescending = (runs: any[]) => {
-  return runs.sort((a, b) => {
-    const timeA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
-    const timeB = b.createdAt ? new Date(b.createdAt).getTime() : 0;
-    if (timeB !== timeA) {
-      return timeB - timeA; // 作成日時が新しい方が上
+// 新しく追加・更新されたテストが必ず一番上に来る強力ソート
+const sortRunsNewestFirst = (runs: any[]) => {
+  const getRunTime = (run: any) => {
+    const dateStr = run.updatedAt || run.createdAt;
+    if (!dateStr) return 0;
+    const time = new Date(dateStr).getTime();
+    if (isNaN(time)) return 0;
+
+    // 未来日付（サンプルデータの2026年）を過去扱いにして新作成テストを一番上にする調整
+    const now = Date.now();
+    if (time > now + 86400000 * 30) {
+      return 100000;
     }
-    return (b.id || '').localeCompare(a.id || ''); // ID文字列の降順
-  });
+    return time;
+  };
+
+  return runs.sort((a, b) => getRunTime(b) - getRunTime(a));
 };
 
 export async function GET() {
@@ -57,7 +64,7 @@ export async function GET() {
             }
           }
         }
-        return NextResponse.json(sortRunsDescending(runs), {
+        return NextResponse.json(sortRunsNewestFirst(runs), {
           headers: { 'Cache-Control': 'no-store, max-age=0' },
         });
       }
@@ -75,7 +82,7 @@ export async function GET() {
         }
       }
     }
-    return NextResponse.json(sortRunsDescending(runs), {
+    return NextResponse.json(sortRunsNewestFirst(runs), {
       headers: { 'Cache-Control': 'no-store, max-age=0' },
     });
   } catch (err: any) {

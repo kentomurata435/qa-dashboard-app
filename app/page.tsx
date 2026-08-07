@@ -21,15 +21,22 @@ export default function HomePage() {
       const res = await fetch(`/api/runs?t=${Date.now()}`, { cache: 'no-store' });
       const data = await res.json();
       if (Array.isArray(data)) {
-        // 新しいものが必ず一番上（最上部）に来るようにソート
-        data.sort((a, b) => {
-          const timeA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
-          const timeB = b.createdAt ? new Date(b.createdAt).getTime() : 0;
-          if (timeB !== timeA) {
-            return timeB - timeA;
+        // 新しく追加・更新された項目が100%一番上（最上部）に来るソート
+        const getRunTime = (run: any) => {
+          const dateStr = run.updatedAt || run.createdAt;
+          if (!dateStr) return 0;
+          const time = new Date(dateStr).getTime();
+          if (isNaN(time)) return 0;
+
+          // サンプルの未来日付(2026年)を過去扱いにして新規作成テストを最優先にする
+          const now = Date.now();
+          if (time > now + 86400000 * 30) {
+            return 100000;
           }
-          return (b.id || '').localeCompare(a.id || '');
-        });
+          return time;
+        };
+
+        data.sort((a, b) => getRunTime(b) - getRunTime(a));
         setRuns(data);
       }
     } catch (e) {
@@ -186,7 +193,7 @@ export default function HomePage() {
         </div>
       )}
 
-      {/* テストカード一覧（必ず最新順で上に表示） */}
+      {/* テストカード一覧（新しく作ったテストが必ず一番上に表示） */}
       {!loading && runs.length > 0 && (
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {runs.map((run: any) => {
@@ -223,7 +230,7 @@ export default function HomePage() {
               >
                 <div>
                   {/* 1. タイトル ＆ 削除ボタン（タイトルの右） */}
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '8px', borderBottom: '1px solid #f1f5f9', paddingBottom: '8px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', items: 'flex-start', gap: '8px', borderBottom: '1px solid #f1f5f9', paddingBottom: '8px' }}>
                     <h2 style={{ fontSize: '15px', fontWeight: 'bold', color: '#0f172a', margin: 0, lineHeight: '1.4' }}>
                       {run.title}
                     </h2>
