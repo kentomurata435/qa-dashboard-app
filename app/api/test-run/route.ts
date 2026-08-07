@@ -1,67 +1,68 @@
-// app/api/runs/route.ts
+// app/api/create-run/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { Octokit } from '@octokit/rest';
+import casesData from '@/data/cases.json';
+import { commitJsonFile } from '@/lib/github';
 import fs from 'fs';
 import path from 'path';
 
 export const dynamic = 'force-dynamic';
-const octokit = new Octokit({ auth: process.env.GITHUB_PAT });
 
-export async function GET() {
-  const runs: any[] = [];
-
-  // 1. GitHub APIから一覧を取得（Vercel本番環境用）
-  if (process.env.GITHUB_PAT && process.env.GITHUB_OWNER && process.env.GITHUB_REPO) {
-    try {
-      const res = await octokit.repos.getContent({
-        owner: process.env.GITHUB_OWNER,
-        repo: process.env.GITHUB_REPO,
-        path: 'data/runs',
-        ref: process.env.GITHUB_BRANCH || 'main',
-        headers: { 'cache-control': 'no-cache' }
-      });
-
-      if (Array.isArray(res.data)) {
-        for (const file of res.data) {
-          if (file.name.endsWith('.json')) {
-            const fileRes = await octokit.repos.getContent({
-              owner: process.env.GITHUB_OWNER,
-              repo: process.env.GITHUB_REPO,
-              path: file.path,
-              ref: process.env.GITHUB_BRANCH || 'main',
-              headers: { 'cache-control': 'no-cache' }
-            });
-
-            if (!Array.isArray(fileRes.data) && 'content' in fileRes.data) {
-              const content = Buffer.from(fileRes.data.content, 'base64').toString('utf-8');
-              runs.push(JSON.parse(content));
-            }
-          }
-        }
-        // 日付順（新しい順）に並び替え
-        runs.sort((a, b) => new Date(b.createdAt || 0).getTime() - new Date(a.createdAt || 0).getTime());
-        return NextResponse.json(runs);
-      }
-    } catch (err) {
-      console.warn('GitHubからの全件読み込みをスキップ、ローカルを参照します');
-    }
-  }
-
-  // 2. ローカルから一覧を取得（ローカルPC開発用）
+export async function POST(req: NextRequest) {
   try {
-    const runsDir = path.join(process.cwd(), 'data/runs');
-    if (fs.existsSync(runsDir)) {
-      const files = fs.readdirSync(runsDir);
-      for (const file of files) {
-        if (file.endsWith('.json')) {
-          const content = fs.readFileSync(path.join(runsDir, file), 'utf-8');
-          runs.push(JSON.parse(content));
-        }
-      }
+    const body = await req.json();
+    let { runId, title } = body;
+
+    if (!runId || !title) {
+      return NextResponse.json({ error: 'runId と title は必須です' }, { status: 400 });
     }
-    runs.sort((a, b) => new Date(b.createdAt || 0).getTime() - new Date(a.createdAt || 0).getTime());
-    return NextResponse.json(runs);
-  } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+
+    // 実行IDの安全化（カッコや全角、特殊文字をハイフンに自動変換）
+    const sanitizedRunId = runId
+      .replace(/[^\w-]/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, '');
+
+    if (!sanitizedRunId) {
+      return NextResponse.json({ error: '実行IDに有効な英数字が含まれていません' }, { status: 400 });
+    }
+
+    // 全テストケースを UNTESTED 状態で初期化
+    const initialResults: Record<string, any> = {};
+    casesData.forEach((tc: any) => {
+      initialResults[tc.id] = {
+        status: 'UNTESTED',
+        tester: tc.defaultTester || '',
+        note: '',
+        updatedAt: '',
+      };
+    });
+
+    const newRunData = {
+      id: sanitizedRunId,
+      title: title,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      results: initialResults,
+    };
+
+    // 1. ローカル書き込み（ローカル開発用）
+    try {
+      const localPath = path.join(process.cwd(), `data/runs/${sanitizedRunId}.json`);
+      fs.writeFileSync(localPath, JSON.stringify(newRunData, null, 2), 'utf-8');
+    } catch (e) {}
+
+    // 2. GitHubへCommit & Push
+    if (process.env.GITHUB_PAT) {
+      const filePath = `data/runs/${sanitizedRunId}.json`;
+      const commitMessage = `chore(qa): create new test run ${sanitizedRunId}`;
+      await commitJsonFile(filePath, newRunData, commitMessage);
+    } else {
+      return NextResponse.json({ error: 'GITHUB_PAT環境変数がVercelに設定されていません' }, { status: 500 });
+    }
+
+    return NextResponse.json({ success: true, runId: sanitizedRunId });
+  } catch (error: any) {
+    console.error('Create Run Error:', error);
+    return NextResponse.json({ error: error.message || '作成に失敗しました' }, { status: 500 });
   }
 }

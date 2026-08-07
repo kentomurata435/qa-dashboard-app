@@ -31,7 +31,6 @@ export default function HomePage() {
 
   useEffect(() => {
     fetchRuns();
-    // デフォルトのID・タイトル生成
     const today = new Date().toISOString().split('T')[0];
     setNewRunId(`${today}-stg`);
     setNewTitle(`${today} STG環境 スルーテスト`);
@@ -48,12 +47,19 @@ export default function HomePage() {
         body: JSON.stringify({ runId: newRunId, title: newTitle }),
       });
 
-      if (res.ok) {
+      const responseText = await res.text();
+      let data;
+      try {
+        data = JSON.parse(responseText);
+      } catch (err) {
+        throw new Error(`サーバーエラーが発生しました (${res.status})。実行IDにカッコなどの特殊文字が含まれていないか確認してください。`);
+      }
+
+      if (res.ok && data.success) {
         alert('新しいスルーテスト項目書を作成しました！');
-        window.location.href = `/runs/${newRunId}`;
+        window.location.href = `/runs/${data.runId}`;
       } else {
-        const err = await res.json();
-        alert(`作成失敗: ${err.error}`);
+        alert(`作成失敗: ${data.error || 'エラーが発生しました'}`);
       }
     } catch (err: any) {
       alert(`エラー: ${err.message}`);
@@ -85,15 +91,18 @@ export default function HomePage() {
             <h2 className="text-lg font-bold text-slate-900 border-b pb-2">新規スルーテストの作成</h2>
             <form onSubmit={handleCreateRun} className="space-y-4">
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">実行ID（半角英数字・ハイフン）</label>
+                <label className="block text-xs font-bold text-slate-700 mb-1">
+                  実行ID（英数字・ハイフン推奨）
+                </label>
                 <input
                   type="text"
                   required
                   value={newRunId}
                   onChange={(e) => setNewRunId(e.target.value)}
-                  placeholder="例: 2026-09-01-stg"
+                  placeholder="例: 2026-08-23-dev-Test"
                   className="w-full p-2 border border-slate-300 rounded text-sm font-mono focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
+                <p className="text-[10px] text-slate-400 mt-1">※カッコや特殊文字は自動でハイフンに変換されます</p>
               </div>
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1">テストタイトル</label>
@@ -102,7 +111,7 @@ export default function HomePage() {
                   required
                   value={newTitle}
                   onChange={(e) => setNewTitle(e.target.value)}
-                  placeholder="例: 2026/09/01 STG環境 スルーテスト"
+                  placeholder="例: 2026/08/23 DEV環境 スルーテスト"
                   className="w-full p-2 border border-slate-300 rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
@@ -164,14 +173,12 @@ export default function HomePage() {
 
                   <h2 className="text-base font-bold text-slate-900 leading-snug mb-3">{run.title}</h2>
 
-                  {/* 進捗プログレスバー */}
                   <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden flex mb-3 border border-slate-200">
                     <div className="bg-emerald-500 h-full" style={{ width: `${total ? (passed / total) * 100 : 0}%` }} />
                     <div className="bg-red-500 h-full" style={{ width: `${total ? (failed / total) * 100 : 0}%` }} />
                     <div className="bg-amber-500 h-full" style={{ width: `${total ? (blocked / total) * 100 : 0}%` }} />
                   </div>
 
-                  {/* 内訳数字 */}
                   <div className="grid grid-cols-4 text-center text-[11px] font-semibold bg-slate-50 p-2 rounded-lg mb-4 border border-slate-100">
                     <div><span className="text-emerald-700 block text-xs font-bold">{passed}</span>Pass</div>
                     <div><span className="text-red-700 block text-xs font-bold">{failed}</span>Fail</div>
