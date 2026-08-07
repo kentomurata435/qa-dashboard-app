@@ -230,7 +230,7 @@ export default function HomePage() {
               >
                 <div>
                   {/* 1. タイトル ＆ 削除ボタン（タイトルの右） */}
-                  <div style={{ display: 'flex', justifyContent: 'space-between', items: 'flex-start', gap: '8px', borderBottom: '1px solid #f1f5f9', paddingBottom: '8px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '8px', borderBottom: '1px solid #f1f5f9', paddingBottom: '8px' }}>
                     <h2 style={{ fontSize: '15px', fontWeight: 'bold', color: '#0f172a', margin: 0, lineHeight: '1.4' }}>
                       {run.title}
                     </h2>
