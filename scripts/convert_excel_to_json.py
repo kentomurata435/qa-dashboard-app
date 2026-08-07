@@ -13,10 +13,8 @@ def convert_excel_to_json(excel_path, output_json_path):
         xl = pd.ExcelFile(excel_path)
         sheet_name = "機能一覧" if "機能一覧" in xl.sheet_names else xl.sheet_names[0]
 
-        # 生データとして一旦全行読み込み
         raw_df = pd.read_excel(excel_path, sheet_name=sheet_name, header=None)
 
-        # 「ID」と「確認手順」や「重要度」が含まれるヘッダー行を自動検索
         header_row_idx = None
         for idx, row in raw_df.iterrows():
             row_str = " ".join([str(val) for val in row.values if not pd.isna(val)])
@@ -25,12 +23,11 @@ def convert_excel_to_json(excel_path, output_json_path):
                 break
 
         if header_row_idx is None:
-            header_row_idx = 1 # デフォルト2行目
+            header_row_idx = 1
 
-        # 自動判別したヘッダー行で正しく読み込み
         df = pd.read_excel(excel_path, sheet_name=sheet_name, header=header_row_idx)
 
-        # カラム名を揺らぎ吸収して取得する関数
+        # テキスト整形関数（改行コードの統一）
         def get_cell_value(row, keywords):
             for col in row.index:
                 col_str = str(col).strip()
@@ -38,7 +35,8 @@ def convert_excel_to_json(excel_path, output_json_path):
                     if kw in col_str:
                         val = row[col]
                         if not pd.isna(val) and str(val).strip() != "" and str(val).strip().lower() != "nan":
-                            return str(val).strip()
+                            # \r\n や \r を \n に統一してトリム
+                            return str(val).replace('\r\n', '\n').replace('\r', '\n').strip()
             return ""
 
         cases = []
@@ -70,10 +68,6 @@ def convert_excel_to_json(excel_path, output_json_path):
             json.dump(cases, f, ensure_ascii=False, indent=2)
 
         print(f"成功: シート [{sheet_name}] から {len(cases)} 件のテストケースを出力しました。")
-        
-        # 確認用ログ表示
-        p_count = len([c for c in cases if c['priority']])
-        print(f"➜ 「重要度 (A/B/C等)」の取得件数: {p_count} / {len(cases)} 件")
 
     except Exception as e:
         print(f"変換エラーが発生しました: {e}")

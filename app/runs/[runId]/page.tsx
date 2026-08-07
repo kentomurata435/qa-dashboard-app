@@ -18,7 +18,6 @@ export default function RunPage({ params }: { params: { runId: string } }) {
   const [saveStatus, setSaveStatus] = useState<'saved' | 'saving' | 'error'>('saved');
   const saveTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // 一括選択・検索フィルタ用 State
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   const [batchTester, setBatchTester] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
@@ -66,7 +65,6 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     }
   }, [runId]);
 
-  // 結果の更新汎用関数
   const updateResult = (caseId: string, fields: Partial<TestResult>, immediate = true) => {
     if (!runData) return;
     const current = runData.results?.[caseId] || { status: 'UNTESTED', tester: '', note: '' };
@@ -90,7 +88,6 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     }
   };
 
-  // 一括で「実施者」を変更
   const handleBatchApplyTester = () => {
     if (selectedIds.size === 0 || !batchTester.trim()) return;
     const newResults = { ...runData.results };
@@ -105,10 +102,9 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     const newRunData = { ...runData, results: newResults };
     setRunData(newRunData);
     autoSave(newRunData);
-    setSelectedIds(new Set()); // 選択解除
+    setSelectedIds(new Set());
   };
 
-  // チェックボックス全選択 / 解除
   const toggleSelectAll = (filteredCases: any[]) => {
     if (selectedIds.size === filteredCases.length) {
       setSelectedIds(new Set());
@@ -117,7 +113,6 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     }
   };
 
-  // チェックボックス個別切り替え
   const toggleSelect = (id: string) => {
     const next = new Set(selectedIds);
     if (next.has(id)) next.delete(id);
@@ -128,7 +123,6 @@ export default function RunPage({ params }: { params: { runId: string } }) {
   if (loading) return <div className="p-8 text-center text-slate-500">データを読み込み中...</div>;
   if (!runData || runData.error) return <div className="p-8 text-center text-red-500">データが見つかりませんでした</div>;
 
-  // フィルタリング処理
   const filteredCases = casesData.filter((tc: any) => {
     const result = runData.results?.[tc.id] || {};
     const matchesSearch =
@@ -174,10 +168,9 @@ export default function RunPage({ params }: { params: { runId: string } }) {
         </div>
       </div>
 
-      {/* 検索・絞り込み ＆ 一括操作ツールバー */}
+      {/* 検索・一括操作ツールバー */}
       <div className="bg-slate-900 text-white p-4 rounded-xl shadow-md space-y-3">
         <div className="flex flex-wrap items-center justify-between gap-3">
-          {/* 検索・ステータスフィルタ */}
           <div className="flex items-center gap-3 flex-1 min-w-[280px]">
             <input
               type="text"
@@ -199,7 +192,6 @@ export default function RunPage({ params }: { params: { runId: string } }) {
             </select>
           </div>
 
-          {/* 一括「実施者」割り当てエリア */}
           <div className="flex items-center gap-2 border-l border-slate-700 pl-4">
             <span className="text-xs text-slate-300">
               選択中: <strong className="text-blue-400">{selectedIds.size}</strong> 件
@@ -222,13 +214,13 @@ export default function RunPage({ params }: { params: { runId: string } }) {
         </div>
       </div>
 
-      {/* メインテーブル */}
-      <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+      {/* メインテーブル（格子枠線付き） */}
+      <div className="bg-white rounded-xl border border-slate-300 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[1300px]">
             <thead>
-              <tr className="bg-slate-100 border-b border-slate-200 text-[11px] text-slate-600 font-bold uppercase tracking-wider">
-                <th className="p-3 w-10 text-center">
+              <tr className="bg-slate-100 text-[11px] text-slate-700 font-bold uppercase border-b border-slate-300">
+                <th className="p-2.5 border-r border-slate-300 w-10 text-center">
                   <input
                     type="checkbox"
                     checked={selectedIds.size > 0 && selectedIds.size === filteredCases.length}
@@ -236,14 +228,14 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                     className="rounded cursor-pointer"
                   />
                 </th>
-                <th className="p-3 w-24">ID</th>
-                <th className="p-3 w-40">画面 / 機能</th>
-                <th className="p-3 w-48">前提条件</th>
-                <th className="p-3">確認手順</th>
-                <th className="p-3">確認内容（期待値）</th>
-                <th className="p-3 w-28 bg-blue-50/50 text-blue-900">実施者</th>
-                <th className="p-3 w-36">結果ステータス</th>
-                <th className="p-3 w-44">備考・バグ情報</th>
+                <th className="p-2.5 border-r border-slate-300 w-24">ID</th>
+                <th className="p-2.5 border-r border-slate-300 w-40">画面 / 機能</th>
+                <th className="p-2.5 border-r border-slate-300 w-52">前提条件</th>
+                <th className="p-2.5 border-r border-slate-300 min-w-[280px]">確認手順</th>
+                <th className="p-2.5 border-r border-slate-300 min-w-[280px]">確認内容（期待値）</th>
+                <th className="p-2.5 border-r border-slate-300 w-28 bg-blue-50/80 text-blue-900">実施者</th>
+                <th className="p-2.5 border-r border-slate-300 w-36">結果ステータス</th>
+                <th className="p-2.5 w-44">備考・バグ情報</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-200 text-xs">
@@ -258,10 +250,12 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                 return (
                   <tr
                     key={tc.id}
-                    className={`hover:bg-blue-50/30 transition ${isSelected ? 'bg-blue-50/60' : ''}`}
+                    className={`hover:bg-blue-50/40 transition border-b border-slate-200 ${
+                      isSelected ? 'bg-blue-50/70' : ''
+                    }`}
                   >
                     {/* チェックボックス */}
-                    <td className="p-3 text-center align-top">
+                    <td className="p-2.5 text-center align-top border-r border-slate-200">
                       <input
                         type="checkbox"
                         checked={isSelected}
@@ -271,40 +265,40 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                     </td>
 
                     {/* ID */}
-                    <td className="p-3 align-top font-mono">
+                    <td className="p-2.5 align-top font-mono border-r border-slate-200">
                       <span className="font-bold text-slate-800">{tc.id}</span>
                       {tc.priority && (
                         <span className={`block mt-1 text-[10px] w-max px-1.5 py-0.2 rounded font-bold ${
                           tc.priority === 'A' ? 'bg-red-100 text-red-700' : 'bg-slate-100 text-slate-600'
                         }`}>
-                          {tc.priority}
+                          重要度 {tc.priority}
                         </span>
                       )}
                     </td>
 
                     {/* 画面 / 機能 */}
-                    <td className="p-3 align-top">
+                    <td className="p-2.5 align-top border-r border-slate-200">
                       <div className="font-bold text-slate-800">{tc.screen || '-'}</div>
                       <div className="text-slate-500 mt-0.5">{tc.feature || '-'}</div>
                     </td>
 
-                    {/* 前提条件 */}
-                    <td className="p-3 align-top text-slate-600 whitespace-pre-line leading-relaxed">
+                    {/* 前提条件（改行対応） */}
+                    <td className="p-2.5 align-top border-r border-slate-200 text-slate-600 whitespace-pre-wrap break-words leading-relaxed font-sans">
                       {tc.precondition || '-'}
                     </td>
 
-                    {/* 確認手順 */}
-                    <td className="p-3 align-top text-slate-800 whitespace-pre-line leading-relaxed font-sans">
+                    {/* 確認手順（改行対応） */}
+                    <td className="p-2.5 align-top border-r border-slate-200 text-slate-800 whitespace-pre-wrap break-words leading-relaxed font-sans">
                       {tc.steps || '-'}
                     </td>
 
-                    {/* 確認内容 */}
-                    <td className="p-3 align-top text-slate-900 font-medium whitespace-pre-line leading-relaxed">
+                    {/* 確認内容（改行対応） */}
+                    <td className="p-2.5 align-top border-r border-slate-200 text-slate-900 font-medium whitespace-pre-wrap break-words leading-relaxed font-sans">
                       {tc.expected || '-'}
                     </td>
 
-                    {/* 実施者（確認内容の直後） */}
-                    <td className="p-3 align-top bg-blue-50/20">
+                    {/* 実施者 */}
+                    <td className="p-2.5 align-top border-r border-slate-200 bg-blue-50/20">
                       <input
                         type="text"
                         value={result.tester || ''}
@@ -315,7 +309,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                     </td>
 
                     {/* 結果ステータス */}
-                    <td className="p-3 align-top">
+                    <td className="p-2.5 align-top border-r border-slate-200">
                       <select
                         value={result.status || 'UNTESTED'}
                         onChange={(e) => updateResult(tc.id, { status: e.target.value as any }, true)}
@@ -337,7 +331,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                     </td>
 
                     {/* 備考 */}
-                    <td className="p-3 align-top">
+                    <td className="p-2.5 align-top">
                       <textarea
                         rows={2}
                         value={result.note || ''}
