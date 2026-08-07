@@ -1,0 +1,28 @@
+{
+  "id": "2026-08-23-dev",
+  "title": "2026-08-23 開発環境 リリース前検証",
+  "createdAt": "2026-08-23T10:00:00Z",
+  "updatedAt": "2026-08-23T10:00:00Z",
+  "results": {
+    "TC-001": {
+      "status": "PASSED",
+      "note": "問題なし",
+      "updatedAt": "2026-08-23T10:05:00Z"
+    },
+    "TC-002": {
+      "status": "FAILED",
+      "note": "エラー文言のフォントサイズが仕様と異なる",
+      "updatedAt": "2026-08-23T10:10:00Z"
+    },
+    "TC-003": {
+      "status": "UNTESTED",
+      "note": "",
+      "updatedAt": ""
+    },
+    "TC-004": {
+      "status": "UNTESTED",
+      "note": "",
+      "updatedAt": ""
+    }
+  }
+}
