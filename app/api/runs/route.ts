@@ -5,12 +5,24 @@ import fs from 'fs';
 import path from 'path';
 
 export const dynamic = 'force-dynamic';
-export const revalidate = 0; // キャッシュ完全無効化
+export const revalidate = 0;
 
 const octokit = new Octokit({ auth: process.env.GITHUB_PAT });
 
+// ソート関数（最新の作成日時・最新のIDを必ず最上部に）
+const sortRunsDescending = (runs: any[]) => {
+  return runs.sort((a, b) => {
+    const timeA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+    const timeB = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+    if (timeB !== timeA) {
+      return timeB - timeA; // 作成日時が新しい方が上
+    }
+    return (b.id || '').localeCompare(a.id || ''); // ID文字列の降順
+  });
+};
+
 export async function GET() {
-  const runs: any[] = [];
+  let runs: any[] = [];
 
   if (process.env.GITHUB_PAT && process.env.GITHUB_OWNER && process.env.GITHUB_REPO) {
     try {
@@ -45,8 +57,7 @@ export async function GET() {
             }
           }
         }
-        runs.sort((a, b) => new Date(b.createdAt || 0).getTime() - new Date(a.createdAt || 0).getTime());
-        return NextResponse.json(runs, {
+        return NextResponse.json(sortRunsDescending(runs), {
           headers: { 'Cache-Control': 'no-store, max-age=0' },
         });
       }
@@ -64,8 +75,7 @@ export async function GET() {
         }
       }
     }
-    runs.sort((a, b) => new Date(b.createdAt || 0).getTime() - new Date(a.createdAt || 0).getTime());
-    return NextResponse.json(runs, {
+    return NextResponse.json(sortRunsDescending(runs), {
       headers: { 'Cache-Control': 'no-store, max-age=0' },
     });
   } catch (err: any) {

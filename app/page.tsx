@@ -21,7 +21,15 @@ export default function HomePage() {
       const res = await fetch(`/api/runs?t=${Date.now()}`, { cache: 'no-store' });
       const data = await res.json();
       if (Array.isArray(data)) {
-        data.sort((a, b) => new Date(b.createdAt || 0).getTime() - new Date(a.createdAt || 0).getTime());
+        // 新しいものが必ず一番上（最上部）に来るようにソート
+        data.sort((a, b) => {
+          const timeA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+          const timeB = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+          if (timeB !== timeA) {
+            return timeB - timeA;
+          }
+          return (b.id || '').localeCompare(a.id || '');
+        });
         setRuns(data);
       }
     } catch (e) {
@@ -178,13 +186,12 @@ export default function HomePage() {
         </div>
       )}
 
-      {/* テストカード一覧（正確な526件をマスターとして再集計） */}
+      {/* テストカード一覧（必ず最新順で上に表示） */}
       {!loading && runs.length > 0 && (
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {runs.map((run: any) => {
-            const total = casesData.length; // マスター全件数 (526件など)
+            const total = casesData.length;
 
-            // 正確にマスター件数ベースで集計
             let ok = 0, ng = 0, blocked = 0, excluded = 0, automated = 0;
 
             casesData.forEach((tc: any) => {
@@ -215,7 +222,7 @@ export default function HomePage() {
                 }}
               >
                 <div>
-                  {/* 1. タイトル ＆ 削除ボタン */}
+                  {/* 1. タイトル ＆ 削除ボタン（タイトルの右） */}
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '8px', borderBottom: '1px solid #f1f5f9', paddingBottom: '8px' }}>
                     <h2 style={{ fontSize: '15px', fontWeight: 'bold', color: '#0f172a', margin: 0, lineHeight: '1.4' }}>
                       {run.title}
@@ -239,7 +246,7 @@ export default function HomePage() {
                     </button>
                   </div>
 
-                  {/* 2. タイトルの下に ID と 正確な進捗率 */}
+                  {/* 2. タイトルの下に ID と 進捗 */}
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '8px', fontSize: '11px' }}>
                     <span style={{ fontFamily: 'monospace', fontWeight: 'bold', backgroundColor: '#f1f5f9', color: '#475569', padding: '2px 8px', borderRadius: '4px', border: '1px solid #e2e8f0' }}>
                       ID: {run.id}
@@ -249,7 +256,7 @@ export default function HomePage() {
                     </span>
                   </div>
 
-                  {/* 3. 正確な進捗バー */}
+                  {/* 3. 進捗バー */}
                   <div style={{ width: '100%', backgroundColor: '#f1f5f9', height: '8px', borderRadius: '9999px', overflow: 'hidden', display: 'flex', marginTop: '10px', border: '1px solid #e2e8f0' }}>
                     <div style={{ width: `${total ? (ok / total) * 100 : 0}%`, backgroundColor: '#10b981' }} />
                     <div style={{ width: `${total ? (ng / total) * 100 : 0}%`, backgroundColor: '#ef4444' }} />
@@ -258,7 +265,7 @@ export default function HomePage() {
                     <div style={{ width: `${total ? (excluded / total) * 100 : 0}%`, backgroundColor: '#94a3b8' }} />
                   </div>
 
-                  {/* 4. 正確な6区分内訳 (全526件の内訳) */}
+                  {/* 4. 6区分内訳 */}
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '6px', marginTop: '10px', backgroundColor: '#f8fafc', padding: '8px', borderRadius: '8px', border: '1px solid #e2e8f0', textAlign: 'center', fontSize: '10px' }}>
                     <div><span style={{ display: 'block', fontWeight: 'bold', color: '#64748b', fontSize: '12px' }}>{untested}</span>未実施</div>
                     <div><span style={{ display: 'block', fontWeight: 'bold', color: '#059669', fontSize: '12px' }}>{ok}</span>OK</div>
