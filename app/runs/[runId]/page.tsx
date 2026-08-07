@@ -167,25 +167,50 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     if (editingCell.field === 'tester') {
       updateResult(caseId, { tester: value }, false);
     } else {
-      const normalized = value ? normalizeStatus(value) : 'UNTESTED';
-      if (normalized) {
-        updateResult(caseId, { status: normalized }, true);
+      if (value === '') {
+        updateResult(caseId, { status: 'UNTESTED' }, true);
+      } else {
+        const normalized = normalizeStatus(value);
+        if (normalized) {
+          updateResult(caseId, { status: normalized }, true);
+        }
       }
     }
     setEditingCell(null);
   };
  
-  const moveEditor = (rowIndex: number, field: 'tester' | 'status') => {
-    const next = field === 'tester'
-      ? { rowIndex, field: 'status' as const }
-      : { rowIndex: Math.min(rowIndex + 1, filteredCases.length - 1), field: 'tester' as const };
-    if (next.rowIndex >= filteredCases.length) {
+  const moveEditor = (rowIndex: number, field: 'tester' | 'status', direction: 'next' | 'prev' | 'up' | 'down') => {
+    let nextRow = rowIndex;
+    let nextField: 'tester' | 'status' = field;
+ 
+    if (direction === 'next') {
+      if (field === 'tester') {
+        nextField = 'status';
+      } else {
+        nextRow = Math.min(rowIndex + 1, filteredCases.length - 1);
+        nextField = 'tester';
+      }
+    } else if (direction === 'prev') {
+      if (field === 'status') {
+        nextField = 'tester';
+      } else {
+        nextRow = Math.max(rowIndex - 1, 0);
+        nextField = 'status';
+      }
+    } else if (direction === 'down') {
+      nextRow = Math.min(rowIndex + 1, filteredCases.length - 1);
+    } else if (direction === 'up') {
+      nextRow = Math.max(rowIndex - 1, 0);
+    }
+ 
+    if (nextRow < 0 || nextRow >= filteredCases.length) {
       setEditingCell(null);
       return;
     }
-    const caseId = filteredCases[next.rowIndex]?.id;
-    const nextValue = caseId ? (runData.results?.[caseId]?.[next.field] || '') : '';
-    setEditingCell(next);
+ 
+    const caseId = filteredCases[nextRow]?.id;
+    const nextValue = caseId ? (runData.results?.[caseId]?.[nextField] || '') : '';
+    setEditingCell({ rowIndex: nextRow, field: nextField });
     setEditValue(nextValue);
   };
  
@@ -586,94 +611,106 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                     {tc.expected || '-'}
                   </td>
                   <td className="p-2 align-top bg-blue-50/30" onPaste={(e) => handlePaste(e, index, 'tester')}>
-                    {editingCell?.rowIndex === index && editingCell.field === 'tester' ? (
-                      <input
-                        autoFocus
-                        value={editValue}
-                        onChange={(e) => setEditValue(e.target.value)}
-                        onBlur={() => commitCellEdit()}
-                        onKeyDown={(e) => {
-                          if (e.key === 'Enter') {
-                            e.preventDefault();
-                            commitCellEdit();
-                            moveEditor(index, 'tester');
-                          } else if (e.key === 'Tab') {
-                            e.preventDefault();
-                            commitCellEdit();
-                            moveEditor(index, 'tester');
-                          }
-                        }}
-                        className="min-h-[2rem] w-full p-1 text-xs border border-slate-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 bg-white"
-                      />
-                    ) : (
-                      <div
-                        tabIndex={0}
-                        onFocus={() => focusCellEditor(index, 'tester', result.tester || '')}
-                        onClick={() => focusCellEditor(index, 'tester', result.tester || '')}
-                        className={`min-h-[2rem] w-full p-1 text-xs border border-slate-300 rounded cursor-text bg-white whitespace-pre-wrap break-words ${
-                          editingCell?.rowIndex === index && editingCell.field === 'tester'
-                            ? 'ring-2 ring-blue-500'
-                            : ''
-                        }`}
-                      >
-                        {result.tester || ''}
-                      </div>
-                    )}
+                    <input
+                      type="text"
+                      value={editingCell?.rowIndex === index && editingCell.field === 'tester' ? editValue : result.tester || ''}
+                      onFocus={() => focusCellEditor(index, 'tester', result.tester || '')}
+                      onChange={(e) => {
+                        if (editingCell?.rowIndex === index && editingCell.field === 'tester') {
+                          setEditValue(e.target.value);
+                        }
+                      }}
+                      onBlur={commitCellEdit}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          e.preventDefault();
+                          commitCellEdit();
+                          moveEditor(index, 'tester', 'down');
+                        } else if (e.key === 'Tab') {
+                          e.preventDefault();
+                          commitCellEdit();
+                          moveEditor(index, 'tester', 'next');
+                        } else if (e.key === 'ArrowDown') {
+                          e.preventDefault();
+                          commitCellEdit();
+                          moveEditor(index, 'tester', 'down');
+                        } else if (e.key === 'ArrowUp') {
+                          e.preventDefault();
+                          commitCellEdit();
+                          moveEditor(index, 'tester', 'up');
+                        } else if (e.key === 'ArrowRight') {
+                          e.preventDefault();
+                          commitCellEdit();
+                          moveEditor(index, 'tester', 'next');
+                        } else if (e.key === 'ArrowLeft') {
+                          e.preventDefault();
+                          commitCellEdit();
+                          moveEditor(index, 'tester', 'prev');
+                        } else if (e.key === 'Escape') {
+                          setEditingCell(null);
+                        }
+                      }}
+                      className={`min-h-[2rem] w-full p-1 text-xs border rounded focus:outline-none focus:ring-1 focus:ring-blue-500 bg-white ${
+                        editingCell?.rowIndex === index && editingCell.field === 'tester'
+                          ? 'border-blue-500'
+                          : 'border-slate-300'
+                      }`}
+                    />
                   </td>
                   <td className="p-2 align-top" onPaste={(e) => handlePaste(e, index, 'status')}>
-                    {editingCell?.rowIndex === index && editingCell.field === 'status' ? (
-                      <input
-                        autoFocus
-                        value={editValue}
-                        onChange={(e) => setEditValue(e.target.value)}
-                        onBlur={() => commitCellEdit()}
-                        onKeyDown={(e) => {
-                          if (e.key === 'Enter') {
-                            e.preventDefault();
-                            commitCellEdit();
-                            moveEditor(index, 'status');
-                          } else if (e.key === 'Tab') {
-                            e.preventDefault();
-                            commitCellEdit();
-                            moveEditor(index, 'status');
-                          }
-                        }}
-                        className={`min-h-[2rem] w-full p-1 text-xs font-bold rounded border cursor-text focus:outline-none focus:ring-1 focus:ring-blue-500 ${
-                          result.status === 'PASSED'
-                            ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
-                            : result.status === 'FAILED'
-                            ? 'bg-rose-100 text-rose-800 border-rose-300'
-                            : result.status === 'BLOCKED'
-                            ? 'bg-amber-100 text-amber-800 border-amber-300'
-                            : result.status === 'AUTOMATED'
-                            ? 'bg-blue-100 text-blue-800 border-blue-300'
-                            : result.status === 'EXCLUDED'
-                            ? 'bg-slate-200 text-slate-700 border-slate-300'
-                            : 'bg-slate-100 text-slate-600 border-slate-300'
-                        }`}
-                      />
-                    ) : (
-                      <div
-                        tabIndex={0}
-                        onFocus={() => focusCellEditor(index, 'status', getStatusLabel(result.status || 'UNTESTED'))}
-                        onClick={() => focusCellEditor(index, 'status', getStatusLabel(result.status || 'UNTESTED'))}
-                        className={`min-h-[2rem] w-full p-1 text-xs font-bold rounded border cursor-text whitespace-pre-wrap break-words ${
-                          result.status === 'PASSED'
-                            ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
-                            : result.status === 'FAILED'
-                            ? 'bg-rose-100 text-rose-800 border-rose-300'
-                            : result.status === 'BLOCKED'
-                            ? 'bg-amber-100 text-amber-800 border-amber-300'
-                            : result.status === 'AUTOMATED'
-                            ? 'bg-blue-100 text-blue-800 border-blue-300'
-                            : result.status === 'EXCLUDED'
-                            ? 'bg-slate-200 text-slate-700 border-slate-300'
-                            : 'bg-slate-100 text-slate-600 border-slate-300'
-                        } ${editingCell?.rowIndex === index && editingCell.field === 'status' ? 'ring-2 ring-blue-500' : ''}`}
-                      >
-                        {getStatusLabel(result.status || 'UNTESTED')}
-                      </div>
-                    )}
+                    <input
+                      type="text"
+                      value={editingCell?.rowIndex === index && editingCell.field === 'status' ? editValue : getStatusLabel(result.status || 'UNTESTED')}
+                      onFocus={() => focusCellEditor(index, 'status', getStatusLabel(result.status || 'UNTESTED'))}
+                      onChange={(e) => {
+                        if (editingCell?.rowIndex === index && editingCell.field === 'status') {
+                          setEditValue(e.target.value);
+                        }
+                      }}
+                      onBlur={commitCellEdit}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          e.preventDefault();
+                          commitCellEdit();
+                          moveEditor(index, 'status', 'next');
+                        } else if (e.key === 'Tab') {
+                          e.preventDefault();
+                          commitCellEdit();
+                          moveEditor(index, 'status', 'next');
+                        } else if (e.key === 'ArrowDown') {
+                          e.preventDefault();
+                          commitCellEdit();
+                          moveEditor(index, 'status', 'down');
+                        } else if (e.key === 'ArrowUp') {
+                          e.preventDefault();
+                          commitCellEdit();
+                          moveEditor(index, 'status', 'up');
+                        } else if (e.key === 'ArrowRight') {
+                          e.preventDefault();
+                          commitCellEdit();
+                          moveEditor(index, 'status', 'next');
+                        } else if (e.key === 'ArrowLeft') {
+                          e.preventDefault();
+                          commitCellEdit();
+                          moveEditor(index, 'status', 'prev');
+                        } else if (e.key === 'Escape') {
+                          setEditingCell(null);
+                        }
+                      }}
+                      className={`min-h-[2rem] w-full p-1 text-xs font-bold rounded border cursor-text focus:outline-none focus:ring-1 focus:ring-blue-500 ${
+                        result.status === 'PASSED'
+                          ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
+                          : result.status === 'FAILED'
+                          ? 'bg-rose-100 text-rose-800 border-rose-300'
+                          : result.status === 'BLOCKED'
+                          ? 'bg-amber-100 text-amber-800 border-amber-300'
+                          : result.status === 'AUTOMATED'
+                          ? 'bg-blue-100 text-blue-800 border-blue-300'
+                          : result.status === 'EXCLUDED'
+                          ? 'bg-slate-200 text-slate-700 border-slate-300'
+                          : 'bg-slate-100 text-slate-600 border-slate-300'
+                      } ${editingCell?.rowIndex === index && editingCell.field === 'status' ? 'ring-2 ring-blue-500' : ''}`}
+                    />
                   </td>
                   <td className="p-2 align-top">
                     <textarea
