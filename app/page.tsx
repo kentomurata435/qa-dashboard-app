@@ -21,7 +21,6 @@ export default function HomePage() {
       const res = await fetch(`/api/runs?t=${Date.now()}`, { cache: 'no-store' });
       const data = await res.json();
       if (Array.isArray(data)) {
-        // 「作成日時 (createdAt)」の順番で固定（テスト実施で順番が変動しない）
         const getCreationTime = (run: any) => {
           const dateStr = run.createdAt;
           if (!dateStr) return 0;
@@ -40,7 +39,7 @@ export default function HomePage() {
       }
     } catch (e) {
       console.error(e);
-    } finally {
+    } fontally {
       setLoading(false);
     }
   };
@@ -116,7 +115,7 @@ export default function HomePage() {
       <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 border-b border-slate-200 pb-4">
         <div>
           <h1 className="text-2xl font-bold text-slate-900 tracking-tight">スルーテスト項目書 一覧</h1>
-          <p className="text-xs text-slate-500 mt-1">全 {casesData.length} 件のテストケースマスターを管理</p>
+          <p className="text-xs text-slate-500 mt-1">テストケースマスタを管理</p>
         </div>
         <button
           onClick={() => setShowModal(true)}
@@ -192,7 +191,7 @@ export default function HomePage() {
         </div>
       )}
 
-      {/* テストカード一覧（作成日順で固定） */}
+      {/* テストカード一覧 */}
       {!loading && runs.length > 0 && (
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {runs.map((run: any) => {
@@ -228,7 +227,7 @@ export default function HomePage() {
                 }}
               >
                 <div>
-                  {/* 1. タイトル ＆ 削除ボタン（タイトルの右） */}
+                  {/* 1. タイトル ＆ 削除ボタン */}
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '8px', borderBottom: '1px solid #f1f5f9', paddingBottom: '8px' }}>
                     <h2 style={{ fontSize: '15px', fontWeight: 'bold', color: '#0f172a', margin: 0, lineHeight: '1.4' }}>
                       {run.title}

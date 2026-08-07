@@ -2,13 +2,21 @@
   "id": "2026-08-xx-stg",
   "title": "2026-08-xx STG環境 スルーテスト",
   "createdAt": "2026-08-07T06:52:35.430Z",
+<<<<<<< HEAD
   "updatedAt": "2026-08-07T08:51:10.781Z",
+=======
+  "updatedAt": "2026-08-07T08:52:26.540Z",
+>>>>>>> bfb5eb86197ad08e0853e4c606bbef2b122f3f5b
   "results": {
     "TC-001": {
       "status": "PASSED",
       "tester": "Auto",
       "note": "",
+<<<<<<< HEAD
       "updatedAt": "2026-08-07T08:51:06.254Z"
+=======
+      "updatedAt": "2026-08-07T08:52:19.798Z"
+>>>>>>> bfb5eb86197ad08e0853e4c606bbef2b122f3f5b
     },
     "TC-002": {
       "status": "PASSED",
@@ -32,13 +40,13 @@
       "status": "UNTESTED",
       "tester": "",
       "note": "",
-      "updatedAt": ""
+      "updatedAt": "2026-08-07T08:52:03.538Z"
     },
     "TC-006": {
       "status": "UNTESTED",
       "tester": "",
       "note": "",
-      "updatedAt": ""
+      "updatedAt": "2026-08-07T08:52:05.490Z"
     },
     "TC-007": {
       "status": "UNTESTED",
@@ -68,7 +76,7 @@
       "status": "UNTESTED",
       "tester": "",
       "note": "",
-      "updatedAt": ""
+      "updatedAt": "2026-08-07T08:52:26.539Z"
     },
     "TC-012": {
       "status": "UNTESTED",
