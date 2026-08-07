@@ -7,10 +7,11 @@ import fs from 'fs';
 import path from 'path';
 
 export const dynamic = 'force-dynamic';
-export const revalidate = 0; // キャッシュ完全無効化
+export const revalidate = 0;
 
 const octokit = new Octokit({ auth: process.env.GITHUB_PAT });
 
+// GET: 単一データの取得
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const runId = searchParams.get('runId');
@@ -49,6 +50,7 @@ export async function GET(req: NextRequest) {
   return NextResponse.json({ error: 'データが見つかりません' }, { status: 404 });
 }
 
+// POST: 「新規作成」と「既存更新」
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
@@ -111,4 +113,47 @@ export async function POST(req: NextRequest) {
   } catch (error: any) {
     return NextResponse.json({ error: error.message || '処理に失敗しました' }, { status: 500 });
   }
+}
+
+// DELETE: テスト項目書の削除処理
+export async function DELETE(req: NextRequest) {
+  const { searchParams } = new URL(req.url);
+  const runId = searchParams.get('runId');
+
+  if (!runId) return NextResponse.json({ error: 'runIdが指定されていません' }, { status: 400 });
+
+  // 1. ローカル削除
+  try {
+    const localPath = path.join(process.cwd(), `data/runs/${runId}.json`);
+    if (fs.existsSync(localPath)) {
+      fs.unlinkSync(localPath);
+    }
+  } catch (e) {}
+
+  // 2. GitHubから削除
+  if (process.env.GITHUB_PAT && process.env.GITHUB_OWNER && process.env.GITHUB_REPO) {
+    try {
+      const fileInfo = await octokit.repos.getContent({
+        owner: process.env.GITHUB_OWNER,
+        repo: process.env.GITHUB_REPO,
+        path: `data/runs/${runId}.json`,
+        ref: process.env.GITHUB_BRANCH || 'main',
+      });
+
+      if (!Array.isArray(fileInfo.data) && 'sha' in fileInfo.data) {
+        await octokit.repos.deleteFile({
+          owner: process.env.GITHUB_OWNER,
+          repo: process.env.GITHUB_REPO,
+          path: `data/runs/${runId}.json`,
+          message: `chore(qa): delete test run ${runId}`,
+          sha: fileInfo.data.sha,
+          branch: process.env.GITHUB_BRANCH || 'main',
+        });
+      }
+    } catch (err) {
+      console.error('GitHub delete error:', err);
+    }
+  }
+
+  return NextResponse.json({ success: true });
 }
