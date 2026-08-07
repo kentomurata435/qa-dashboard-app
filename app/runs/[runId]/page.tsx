@@ -286,6 +286,8 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     const newRunData = { ...runData, results: newResults };
     setRunData(newRunData);
     autoSave(newRunData);
+    setEditingCell(null);
+    setEditValue('');
   };
  
   const handleBatchApplyTester = () => {
