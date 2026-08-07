@@ -21,14 +21,13 @@ export default function HomePage() {
       const res = await fetch(`/api/runs?t=${Date.now()}`, { cache: 'no-store' });
       const data = await res.json();
       if (Array.isArray(data)) {
-        // 新しく追加・更新された項目が100%一番上（最上部）に来るソート
-        const getRunTime = (run: any) => {
-          const dateStr = run.updatedAt || run.createdAt;
+        // 「作成日時 (createdAt)」の順番で固定（テスト実施で順番が変動しない）
+        const getCreationTime = (run: any) => {
+          const dateStr = run.createdAt;
           if (!dateStr) return 0;
           const time = new Date(dateStr).getTime();
           if (isNaN(time)) return 0;
 
-          // サンプルの未来日付(2026年)を過去扱いにして新規作成テストを最優先にする
           const now = Date.now();
           if (time > now + 86400000 * 30) {
             return 100000;
@@ -36,7 +35,7 @@ export default function HomePage() {
           return time;
         };
 
-        data.sort((a, b) => getRunTime(b) - getRunTime(a));
+        data.sort((a, b) => getCreationTime(b) - getCreationTime(a));
         setRuns(data);
       }
     } catch (e) {
@@ -193,7 +192,7 @@ export default function HomePage() {
         </div>
       )}
 
-      {/* テストカード一覧（新しく作ったテストが必ず一番上に表示） */}
+      {/* テストカード一覧（作成日順で固定） */}
       {!loading && runs.length > 0 && (
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {runs.map((run: any) => {

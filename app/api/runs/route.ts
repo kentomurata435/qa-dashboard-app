@@ -9,15 +9,15 @@ export const revalidate = 0;
 
 const octokit = new Octokit({ auth: process.env.GITHUB_PAT });
 
-// 新しく追加・更新されたテストが必ず一番上に来る強力ソート
-const sortRunsNewestFirst = (runs: any[]) => {
-  const getRunTime = (run: any) => {
-    const dateStr = run.updatedAt || run.createdAt;
+// 「作成日時 (createdAt)」の順番で完全固定（テスト実施で順番が変動しない）
+const sortRunsByCreationDate = (runs: any[]) => {
+  const getCreationTime = (run: any) => {
+    const dateStr = run.createdAt;
     if (!dateStr) return 0;
     const time = new Date(dateStr).getTime();
     if (isNaN(time)) return 0;
 
-    // 未来日付（サンプルデータの2026年）を過去扱いにして新作成テストを一番上にする調整
+    // 未来日付（サンプルの2026年等）を補正して、新規作成テストを最上部にする
     const now = Date.now();
     if (time > now + 86400000 * 30) {
       return 100000;
@@ -25,7 +25,7 @@ const sortRunsNewestFirst = (runs: any[]) => {
     return time;
   };
 
-  return runs.sort((a, b) => getRunTime(b) - getRunTime(a));
+  return runs.sort((a, b) => getCreationTime(b) - getCreationTime(a));
 };
 
 export async function GET() {
@@ -64,7 +64,7 @@ export async function GET() {
             }
           }
         }
-        return NextResponse.json(sortRunsNewestFirst(runs), {
+        return NextResponse.json(sortRunsByCreationDate(runs), {
           headers: { 'Cache-Control': 'no-store, max-age=0' },
         });
       }
@@ -82,7 +82,7 @@ export async function GET() {
         }
       }
     }
-    return NextResponse.json(sortRunsNewestFirst(runs), {
+    return NextResponse.json(sortRunsByCreationDate(runs), {
       headers: { 'Cache-Control': 'no-store, max-age=0' },
     });
   } catch (err: any) {
