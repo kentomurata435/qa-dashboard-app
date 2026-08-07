@@ -2,7 +2,7 @@
   "id": "2026-08-23-dev",
   "title": "2026-08-23 開発環境 リリース前検証",
   "createdAt": "2026-08-23T10:00:00Z",
-  "updatedAt": "2026-08-07T06:27:37.476Z",
+  "updatedAt": "2026-08-07T06:28:22.907Z",
   "results": {
     "TC-001": {
       "status": "PASSED",
@@ -15,9 +15,9 @@
       "updatedAt": "2026-08-23T10:10:00Z"
     },
     "TC-003": {
-      "status": "UNTESTED",
+      "status": "PASSED",
       "note": "aaaaBBB",
-      "updatedAt": "2026-08-07T04:35:07.019Z"
+      "updatedAt": "2026-08-07T06:28:22.907Z"
     },
     "TC-004": {
       "status": "PASSED",
