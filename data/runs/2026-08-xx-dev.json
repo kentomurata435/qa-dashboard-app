@@ -2,19 +2,19 @@
   "id": "2026-08-xx-dev",
   "title": "2026-08-xx DEV環境 スルーテスト",
   "createdAt": "2026-08-07T06:51:05.632Z",
-  "updatedAt": "2026-08-07T06:52:48.369Z",
+  "updatedAt": "2026-08-07T06:52:50.187Z",
   "results": {
     "TC-001": {
-      "status": "PASSED",
-      "tester": "Auto",
-      "note": "",
-      "updatedAt": "2026-08-07T06:52:48.369Z"
-    },
-    "TC-002": {
       "status": "UNTESTED",
       "tester": "Auto",
       "note": "",
       "updatedAt": ""
+    },
+    "TC-002": {
+      "status": "BLOCKED",
+      "tester": "Auto",
+      "note": "",
+      "updatedAt": "2026-08-07T06:52:50.187Z"
     },
     "TC-003": {
       "status": "UNTESTED",
