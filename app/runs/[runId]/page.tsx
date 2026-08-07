@@ -8,6 +8,12 @@ interface TestResult {
   status: 'UNTESTED' | 'PASSED' | 'FAILED' | 'BLOCKED' | 'EXCLUDED' | 'AUTOMATED';
   tester: string;
   note: string;
+  priority?: string;
+  screen?: string;
+  feature?: string;
+  precondition?: string;
+  steps?: string;
+  expected?: string;
   updatedAt: string;
 }
 
@@ -19,6 +25,19 @@ const ALL_STATUSES = [
   { key: 'EXCLUDED', label: '対象外', color: 'bg-slate-200 text-slate-700' },
   { key: 'AUTOMATED', label: '自動化', color: 'bg-blue-100 text-blue-800' },
 ];
+
+// 編集可能列の順序定義（Excel 2次元コピペ用）
+const EDITABLE_FIELDS = [
+  'priority',
+  'screen',
+  'feature',
+  'precondition',
+  'steps',
+  'expected',
+  'tester',
+  'status',
+  'note',
+] as const;
 
 export default function RunPage({ params }: { params: { runId: string } }) {
   const { runId } = params;
@@ -41,15 +60,16 @@ export default function RunPage({ params }: { params: { runId: string } }) {
   // 列幅可変サイズ
   const [colWidths, setColWidths] = useState<{ [key: string]: number }>({
     check: 40,
-    id: 90,
-    priority: 80,
-    screen: 150,
-    precondition: 220,
-    steps: 320,
-    expected: 320,
-    tester: 120,
-    status: 130,
-    note: 200,
+    id: 85,
+    priority: 70,
+    screen: 130,
+    feature: 130,
+    precondition: 200,
+    steps: 300,
+    expected: 300,
+    tester: 110,
+    status: 120,
+    note: 180,
   });
 
   const startResizing = (colKey: string, e: React.MouseEvent) => {
@@ -123,14 +143,14 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     }
   }, [runId]);
 
-  const updateResult = (caseId: string, fields: Partial<TestResult>, immediate = true) => {
+  const updateResultField = (caseId: string, fieldKey: string, value: any, immediate = false) => {
     if (!runData) return;
-    const current = runData.results?.[caseId] || { status: 'UNTESTED', tester: '', note: '' };
+    const current = runData.results?.[caseId] || {};
     const newResults = {
       ...runData.results,
       [caseId]: {
         ...current,
-        ...fields,
+        [fieldKey]: value,
         updatedAt: new Date().toISOString(),
       },
     };
@@ -146,7 +166,6 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     }
   };
 
-  // テキスト文字から正規ステータスへのマッピング
   const mapStatusText = (val: string): TestResult['status'] => {
     const v = val.toUpperCase().trim();
     if (v === 'OK' || v === 'PASSED' || v === '合格' || v === 'PASS') return 'PASSED';
@@ -157,35 +176,48 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     return 'UNTESTED';
   };
 
-  // SpreadJS風: Excel / スプレッドシートからのコピペ (Ctrl + V) 対応
-  const handlePaste = (startCaseId: string, fieldType: 'tester' | 'status' | 'note', e: React.ClipboardEvent) => {
+  // SpreadJS強化: 2次元（複数行×複数列）ブロックコピペ機能
+  const handlePasteGrid = (startCaseId: string, startField: string, e: React.ClipboardEvent) => {
     const pastedData = e.clipboardData.getData('text');
     if (!pastedData) return;
 
-    // Excelのタブ区切り・改行テキストを分解
     const rows = pastedData.trim().split(/\r?\n/).map((r) => r.split('\t'));
     if (rows.length === 0) return;
 
     e.preventDefault();
 
-    const caseIndex = casesData.findIndex((c: any) => c.id === startCaseId);
-    if (caseIndex === -1) return;
+    const startRowIdx = casesData.findIndex((c: any) => c.id === startCaseId);
+    const startColIdx = EDITABLE_FIELDS.indexOf(startField as any);
+
+    if (startRowIdx === -1 || startColIdx === -1) return;
 
     const newResults = { ...runData.results };
 
-    rows.forEach((rowCells, rIdx) => {
-      const targetCase = casesData[caseIndex + rIdx];
+    rows.forEach((rowCells, rOffset) => {
+      const targetCase = casesData[startRowIdx + rOffset];
       if (!targetCase) return;
 
-      const current = newResults[targetCase.id] || { status: 'UNTESTED', tester: '', note: '' };
+      const current = newResults[targetCase.id] || {};
+      const updatedFields: any = {};
 
-      if (fieldType === 'tester') {
-        newResults[targetCase.id] = { ...current, tester: rowCells[0] || '', updatedAt: new Date().toISOString() };
-      } else if (fieldType === 'status') {
-        newResults[targetCase.id] = { ...current, status: mapStatusText(rowCells[0] || ''), updatedAt: new Date().toISOString() };
-      } else if (fieldType === 'note') {
-        newResults[targetCase.id] = { ...current, note: rowCells[0] || '', updatedAt: new Date().toISOString() };
-      }
+      rowCells.forEach((cellValue, cOffset) => {
+        const fieldKey = EDITABLE_FIELDS[startColIdx + cOffset];
+        if (!fieldKey) return;
+
+        const val = cellValue.replace(/\r/g, '').strip ? cellValue.replace(/\r/g, '').strip() : cellValue.trim();
+
+        if (fieldKey === 'status') {
+          updatedFields.status = mapStatusText(val);
+        } else {
+          updatedFields[fieldKey] = val;
+        }
+      });
+
+      newResults[targetCase.id] = {
+        ...current,
+        ...updatedFields,
+        updatedAt: new Date().toISOString(),
+      };
     });
 
     const newRunData = { ...runData, results: newResults };
@@ -193,14 +225,14 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     autoSave(newRunData);
   };
 
-  // SpreadJS風: Enterキーでの下方向セル移動
-  const handleKeyDown = (caseId: string, fieldType: string, e: React.KeyboardEvent) => {
+  // SpreadJS: Enterキーでの下方向セル移動
+  const handleKeyDown = (caseId: string, fieldKey: string, e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       const caseIndex = casesData.findIndex((c: any) => c.id === caseId);
       if (caseIndex !== -1 && caseIndex + 1 < casesData.length) {
         const nextCaseId = casesData[caseIndex + 1].id;
-        const nextElem = document.getElementById(`input-${fieldType}-${nextCaseId}`);
+        const nextElem = document.getElementById(`cell-${fieldKey}-${nextCaseId}`);
         if (nextElem) nextElem.focus();
       }
     }
@@ -210,7 +242,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     if (selectedIds.size === 0 || !batchTester.trim()) return;
     const newResults = { ...runData.results };
     selectedIds.forEach((id) => {
-      const current = newResults[id] || { status: 'UNTESTED', note: '' };
+      const current = newResults[id] || {};
       newResults[id] = {
         ...current,
         tester: batchTester.trim(),
@@ -258,12 +290,21 @@ export default function RunPage({ params }: { params: { runId: string } }) {
 
   const filteredCases = casesData.filter((tc: any) => {
     const result = runData.results?.[tc.id] || {};
+
+    const currentPriority = result.priority !== undefined ? result.priority : tc.priority;
+    const currentScreen = result.screen !== undefined ? result.screen : tc.screen;
+    const currentFeature = result.feature !== undefined ? result.feature : tc.feature;
+    const currentSteps = result.steps !== undefined ? result.steps : tc.steps;
+    const currentExpected = result.expected !== undefined ? result.expected : tc.expected;
+    const currentTester = result.tester !== undefined ? result.tester : (tc.defaultTester || '');
+
     const matchesSearch =
       tc.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      tc.screen.includes(searchQuery) ||
-      tc.feature.includes(searchQuery) ||
-      tc.steps.includes(searchQuery) ||
-      (result.tester && result.tester.includes(searchQuery));
+      currentScreen.includes(searchQuery) ||
+      currentFeature.includes(searchQuery) ||
+      currentSteps.includes(searchQuery) ||
+      currentExpected.includes(searchQuery) ||
+      currentTester.includes(searchQuery);
 
     const caseStatus = result.status || 'UNTESTED';
     const matchesStatus = selectedStatuses.has(caseStatus);
@@ -272,7 +313,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
   });
 
   return (
-    <div className="space-y-4 max-w-[1800px] mx-auto pb-12">
+    <div className="space-y-4 max-w-[1900px] mx-auto pb-12">
       {/* ヘッダー情報 */}
       <div className="bg-white p-5 rounded-xl border border-slate-300 shadow-sm flex flex-col md:flex-row justify-between md:items-center gap-4">
         <div>
@@ -390,7 +431,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
         </div>
       </div>
 
-      {/* メインテーブル（SpreadJS風コピペ・Enter移動機能付き） */}
+      {/* 完全 Excellike スプレッドシートテーブル */}
       <div className="bg-white rounded-xl shadow-sm border border-slate-300 overflow-x-auto qa-table-container">
         <table className="text-left border-collapse table-fixed w-max">
           <thead>
@@ -404,17 +445,23 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                 />
                 <div onMouseDown={(e) => startResizing('check', e)} className="resizer" />
               </th>
+              {/* 読取専用 ID */}
               <th style={{ width: `${colWidths.id}px` }} className="relative p-2">
-                ID
+                ID (固定)
                 <div onMouseDown={(e) => startResizing('id', e)} className="resizer" />
               </th>
+              {/* 編集可能列グループ */}
               <th style={{ width: `${colWidths.priority}px` }} className="relative p-2">
                 重要度
                 <div onMouseDown={(e) => startResizing('priority', e)} className="resizer" />
               </th>
               <th style={{ width: `${colWidths.screen}px` }} className="relative p-2">
-                画面 / 機能
+                画面
                 <div onMouseDown={(e) => startResizing('screen', e)} className="resizer" />
+              </th>
+              <th style={{ width: `${colWidths.feature}px` }} className="relative p-2">
+                機能
+                <div onMouseDown={(e) => startResizing('feature', e)} className="resizer" />
               </th>
               <th style={{ width: `${colWidths.precondition}px` }} className="relative p-2">
                 前提条件
@@ -444,84 +491,151 @@ export default function RunPage({ params }: { params: { runId: string } }) {
           </thead>
           <tbody className="text-xs">
             {filteredCases.map((tc: any) => {
-              const result = runData.results?.[tc.id] || {
-                status: 'UNTESTED',
-                tester: tc.defaultTester || '',
-                note: '',
-              };
+              const res = runData.results?.[tc.id] || {};
+
+              const priorityVal = res.priority !== undefined ? res.priority : (tc.priority || '');
+              const screenVal = res.screen !== undefined ? res.screen : (tc.screen || '');
+              const featureVal = res.feature !== undefined ? res.feature : (tc.feature || '');
+              const preconditionVal = res.precondition !== undefined ? res.precondition : (tc.precondition || '');
+              const stepsVal = res.steps !== undefined ? res.steps : (tc.steps || '');
+              const expectedVal = res.expected !== undefined ? res.expected : (tc.expected || '');
+              const testerVal = res.tester !== undefined ? res.tester : (tc.defaultTester || '');
+              const statusVal = res.status || 'UNTESTED';
+              const noteVal = res.note || '';
+
               const isSelected = selectedIds.has(tc.id);
 
               return (
                 <tr
                   key={tc.id}
-                  className={`hover:bg-blue-50/50 transition ${isSelected ? 'bg-blue-50/80' : ''}`}
+                  className={`hover:bg-blue-50/40 transition ${isSelected ? 'bg-blue-50/80' : ''}`}
                 >
-                  <td className="p-2 text-center align-top">
+                  {/* チェック */}
+                  <td className="p-1 text-center align-top">
                     <input
                       type="checkbox"
                       checked={isSelected}
                       onChange={() => toggleSelect(tc.id)}
-                      className="rounded cursor-pointer mt-0.5"
+                      className="rounded cursor-pointer mt-1.5"
                     />
                   </td>
-                  <td className="p-2 align-top font-mono font-bold text-slate-800">
+
+                  {/* ID (固定・読取専用) */}
+                  <td className="p-2 align-top font-mono font-bold text-slate-800 bg-slate-50/50">
                     {tc.id}
                   </td>
-                  <td className="p-2 align-top text-center">
-                    {tc.priority ? (
-                      <span className={`inline-block px-1.5 py-0.5 rounded text-[10px] font-bold ${
-                        tc.priority === 'A' ? 'bg-red-100 text-red-700 border border-red-300' : 'bg-slate-100 text-slate-700 border border-slate-300'
-                      }`}>
-                        {tc.priority}
-                      </span>
-                    ) : '-'}
-                  </td>
-                  <td className="p-2 align-top">
-                    <div className="font-bold text-slate-800">{tc.screen || '-'}</div>
-                    <div className="text-slate-500 mt-0.5">{tc.feature || '-'}</div>
-                  </td>
-                  <td className="p-2 align-top text-slate-600 whitespace-pre-wrap break-words leading-relaxed font-sans">
-                    {tc.precondition || '-'}
-                  </td>
-                  <td className="p-2 align-top text-slate-800 whitespace-pre-wrap break-words leading-relaxed font-sans">
-                    {tc.steps || '-'}
-                  </td>
-                  <td className="p-2 align-top text-slate-900 font-medium whitespace-pre-wrap break-words leading-relaxed font-sans">
-                    {tc.expected || '-'}
+
+                  {/* 1. 重要度 (編集可能) */}
+                  <td className="p-1 align-top">
+                    <input
+                      id={`cell-priority-${tc.id}`}
+                      type="text"
+                      value={priorityVal}
+                      onChange={(e) => updateResultField(tc.id, 'priority', e.target.value)}
+                      onPaste={(e) => handlePasteGrid(tc.id, 'priority', e)}
+                      onKeyDown={(e) => handleKeyDown(tc.id, 'priority', e)}
+                      placeholder="重要度"
+                      className="w-full p-1 text-xs border border-transparent hover:border-slate-300 rounded text-center font-bold focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent"
+                    />
                   </td>
 
-                  {/* 実施者（SpreadJS風コピペ ＆ Enter移動対応） */}
-                  <td className="p-2 align-top bg-blue-50/30">
+                  {/* 2. 画面 (編集可能) */}
+                  <td className="p-1 align-top">
+                    <textarea
+                      id={`cell-screen-${tc.id}`}
+                      rows={2}
+                      value={screenVal}
+                      onChange={(e) => updateResultField(tc.id, 'screen', e.target.value)}
+                      onPaste={(e) => handlePasteGrid(tc.id, 'screen', e)}
+                      placeholder="画面名"
+                      className="w-full p-1 text-xs border border-transparent hover:border-slate-300 rounded font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-y"
+                    />
+                  </td>
+
+                  {/* 3. 機能 (編集可能) */}
+                  <td className="p-1 align-top">
+                    <textarea
+                      id={`cell-feature-${tc.id}`}
+                      rows={2}
+                      value={featureVal}
+                      onChange={(e) => updateResultField(tc.id, 'feature', e.target.value)}
+                      onPaste={(e) => handlePasteGrid(tc.id, 'feature', e)}
+                      placeholder="機能名"
+                      className="w-full p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-y"
+                    />
+                  </td>
+
+                  {/* 4. 前提条件 (編集可能) */}
+                  <td className="p-1 align-top">
+                    <textarea
+                      id={`cell-precondition-${tc.id}`}
+                      rows={2}
+                      value={preconditionVal}
+                      onChange={(e) => updateResultField(tc.id, 'precondition', e.target.value)}
+                      onPaste={(e) => handlePasteGrid(tc.id, 'precondition', e)}
+                      placeholder="前提条件"
+                      className="w-full p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-y whitespace-pre-wrap font-sans leading-relaxed"
+                    />
+                  </td>
+
+                  {/* 5. 確認手順 (編集可能) */}
+                  <td className="p-1 align-top">
+                    <textarea
+                      id={`cell-steps-${tc.id}`}
+                      rows={3}
+                      value={stepsVal}
+                      onChange={(e) => updateResultField(tc.id, 'steps', e.target.value)}
+                      onPaste={(e) => handlePasteGrid(tc.id, 'steps', e)}
+                      placeholder="確認手順"
+                      className="w-full p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-y whitespace-pre-wrap font-sans leading-relaxed"
+                    />
+                  </td>
+
+                  {/* 6. 確認内容 (編集可能) */}
+                  <td className="p-1 align-top">
+                    <textarea
+                      id={`cell-expected-${tc.id}`}
+                      rows={3}
+                      value={expectedVal}
+                      onChange={(e) => updateResultField(tc.id, 'expected', e.target.value)}
+                      onPaste={(e) => handlePasteGrid(tc.id, 'expected', e)}
+                      placeholder="確認内容・期待値"
+                      className="w-full p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-900 font-medium focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-y whitespace-pre-wrap font-sans leading-relaxed"
+                    />
+                  </td>
+
+                  {/* 7. 実施者 (編集可能) */}
+                  <td className="p-1 align-top bg-blue-50/20">
                     <input
-                      id={`input-tester-${tc.id}`}
+                      id={`cell-tester-${tc.id}`}
                       type="text"
-                      value={result.tester || ''}
-                      onChange={(e) => updateResult(tc.id, { tester: e.target.value }, false)}
-                      onPaste={(e) => handlePaste(tc.id, 'tester', e)}
+                      value={testerVal}
+                      onChange={(e) => updateResultField(tc.id, 'tester', e.target.value)}
+                      onPaste={(e) => handlePasteGrid(tc.id, 'tester', e)}
                       onKeyDown={(e) => handleKeyDown(tc.id, 'tester', e)}
                       placeholder="担当者"
                       className="w-full p-1 text-xs border border-slate-300 rounded font-medium focus:outline-none focus:ring-2 focus:ring-blue-600 bg-white"
                     />
                   </td>
 
-                  {/* 結果ステータス（SpreadJS風コピペ ＆ Enter移動対応） */}
-                  <td className="p-2 align-top">
+                  {/* 8. 結果ステータス (編集可能) */}
+                  <td className="p-1 align-top">
                     <select
-                      id={`input-status-${tc.id}`}
-                      value={result.status || 'UNTESTED'}
-                      onChange={(e) => updateResult(tc.id, { status: e.target.value as any }, true)}
-                      onPaste={(e) => handlePaste(tc.id, 'status', e)}
+                      id={`cell-status-${tc.id}`}
+                      value={statusVal}
+                      onChange={(e) => updateResultField(tc.id, 'status', e.target.value, true)}
+                      onPaste={(e) => handlePasteGrid(tc.id, 'status', e)}
                       onKeyDown={(e) => handleKeyDown(tc.id, 'status', e)}
                       className={`w-full p-1.5 text-xs font-bold rounded border cursor-pointer focus:ring-2 focus:ring-blue-600 ${
-                        result.status === 'PASSED'
+                        statusVal === 'PASSED'
                           ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
-                          : result.status === 'FAILED'
+                          : statusVal === 'FAILED'
                           ? 'bg-rose-100 text-rose-800 border-rose-300'
-                          : result.status === 'BLOCKED'
+                          : statusVal === 'BLOCKED'
                           ? 'bg-amber-100 text-amber-800 border-amber-300'
-                          : result.status === 'AUTOMATED'
+                          : statusVal === 'AUTOMATED'
                           ? 'bg-blue-100 text-blue-800 border-blue-300'
-                          : result.status === 'EXCLUDED'
+                          : statusVal === 'EXCLUDED'
                           ? 'bg-slate-200 text-slate-700 border-slate-300'
                           : 'bg-slate-100 text-slate-600 border-slate-300'
                       }`}
@@ -535,14 +649,14 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                     </select>
                   </td>
 
-                  {/* 備考（SpreadJS風コピペ対応） */}
-                  <td className="p-2 align-top">
+                  {/* 9. 備考 (編集可能) */}
+                  <td className="p-1 align-top">
                     <textarea
-                      id={`input-note-${tc.id}`}
+                      id={`cell-note-${tc.id}`}
                       rows={2}
-                      value={result.note || ''}
-                      onChange={(e) => updateResult(tc.id, { note: e.target.value }, false)}
-                      onPaste={(e) => handlePaste(tc.id, 'note', e)}
+                      value={noteVal}
+                      onChange={(e) => updateResultField(tc.id, 'note', e.target.value)}
+                      onPaste={(e) => handlePasteGrid(tc.id, 'note', e)}
                       placeholder="備考・不具合リンク"
                       className="w-full p-1 border border-slate-300 rounded text-xs focus:outline-none focus:ring-2 focus:ring-blue-600 resize-y bg-white"
                     />
