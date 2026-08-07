@@ -39,7 +39,7 @@ export default function HomePage() {
       }
     } catch (e) {
       console.error(e);
-    } fontally {
+    } finally {
       setLoading(false);
     }
   };
