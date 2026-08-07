@@ -2,7 +2,7 @@
   "id": "2026-08-xx-stg",
   "title": "2026-08-xx STG環境 スルーテスト",
   "createdAt": "2026-08-07T06:52:35.430Z",
-  "updatedAt": "2026-08-07T08:51:07.055Z",
+  "updatedAt": "2026-08-07T08:51:10.781Z",
   "results": {
     "TC-001": {
       "status": "PASSED",
@@ -26,7 +26,7 @@
       "status": "PASSED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-07T08:51:01.412Z"
+      "updatedAt": "2026-08-07T08:51:10.781Z"
     },
     "TC-005": {
       "status": "UNTESTED",
