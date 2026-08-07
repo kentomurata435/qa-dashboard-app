@@ -11,6 +11,15 @@ interface TestResult {
   updatedAt: string;
 }
 
+const ALL_STATUSES = [
+  { key: 'UNTESTED', label: '未実施', color: 'bg-slate-100 text-slate-700' },
+  { key: 'PASSED', label: 'OK', color: 'bg-emerald-100 text-emerald-800' },
+  { key: 'FAILED', label: 'NG', color: 'bg-rose-100 text-rose-800' },
+  { key: 'BLOCKED', label: '保留', color: 'bg-amber-100 text-amber-800' },
+  { key: 'EXCLUDED', label: '対象外', color: 'bg-slate-200 text-slate-700' },
+  { key: 'AUTOMATED', label: '自動化', color: 'bg-blue-100 text-blue-800' },
+];
+
 export default function RunPage({ params }: { params: { runId: string } }) {
   const { runId } = params;
   const [runData, setRunData] = useState<any>(null);
@@ -18,11 +27,18 @@ export default function RunPage({ params }: { params: { runId: string } }) {
   const [saveStatus, setSaveStatus] = useState<'saved' | 'saving' | 'error'>('saved');
   const saveTimerRef = useRef<NodeJS.Timeout | null>(null);
 
+  // 選択・検索
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   const [batchTester, setBatchTester] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
-  const [statusFilter, setStatusFilter] = useState('ALL');
 
+  // ステータス複数選択フィルター State (初期値はすべてON)
+  const [statusFilterOpen, setStatusFilterOpen] = useState(false);
+  const [selectedStatuses, setSelectedStatuses] = useState<Set<string>>(
+    new Set(['UNTESTED', 'PASSED', 'FAILED', 'BLOCKED', 'EXCLUDED', 'AUTOMATED'])
+  );
+
+  // 列幅可変サイズ
   const [colWidths, setColWidths] = useState<{ [key: string]: number }>({
     check: 40,
     id: 90,
@@ -162,9 +178,27 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     setSelectedIds(next);
   };
 
+  // ステータスフィルターの個別切替
+  const toggleStatusFilter = (key: string) => {
+    const next = new Set(selectedStatuses);
+    if (next.has(key)) next.delete(key);
+    else next.add(key);
+    setSelectedStatuses(next);
+  };
+
+  // ステータスフィルターの全選択 / 全解除
+  const toggleAllStatusFilters = () => {
+    if (selectedStatuses.size === ALL_STATUSES.length) {
+      setSelectedStatuses(new Set());
+    } else {
+      setSelectedStatuses(new Set(ALL_STATUSES.map((s) => s.key)));
+    }
+  };
+
   if (loading) return <div className="p-8 text-center text-slate-500 font-medium">データを読み込み中...</div>;
   if (!runData || runData.error) return <div className="p-8 text-center text-red-500 font-medium">対象のテスト項目書が見つかりませんでした</div>;
 
+  // フィルタリング処理（検索窓 ＋ ステータスチェックボックス）
   const filteredCases = casesData.filter((tc: any) => {
     const result = runData.results?.[tc.id] || {};
     const matchesSearch =
@@ -174,8 +208,8 @@ export default function RunPage({ params }: { params: { runId: string } }) {
       tc.steps.includes(searchQuery) ||
       (result.tester && result.tester.includes(searchQuery));
 
-    const matchesStatus =
-      statusFilter === 'ALL' || (result.status || 'UNTESTED') === statusFilter;
+    const caseStatus = result.status || 'UNTESTED';
+    const matchesStatus = selectedStatuses.has(caseStatus);
 
     return matchesSearch && matchesStatus;
   });
@@ -210,10 +244,11 @@ export default function RunPage({ params }: { params: { runId: string } }) {
         </div>
       </div>
 
-      {/* 検索・一括操作バー */}
+      {/* 検索・ステータス複数チェックボックス・一括操作バー */}
       <div className="bg-slate-800 text-white p-3.5 rounded-xl shadow space-y-2">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-3 flex-1 min-w-[280px]">
+            {/* 検索入力 */}
             <input
               type="text"
               value={searchQuery}
@@ -221,21 +256,65 @@ export default function RunPage({ params }: { params: { runId: string } }) {
               placeholder="🔍 検索 (ID, 画面, 機能, 実施者...)"
               className="w-full max-w-xs px-3 py-1.5 text-xs text-slate-900 rounded bg-white border border-slate-300 focus:outline-none"
             />
-            <select
-              value={statusFilter}
-              onChange={(e) => setStatusFilter(e.target.value)}
-              className="px-3 py-1.5 text-xs text-slate-900 rounded bg-white border border-slate-300 font-semibold focus:outline-none"
-            >
-              <option value="ALL">すべてのステータス</option>
-              <option value="UNTESTED">未実施</option>
-              <option value="PASSED">OK</option>
-              <option value="FAILED">NG</option>
-              <option value="BLOCKED">保留</option>
-              <option value="EXCLUDED">対象外</option>
-              <option value="AUTOMATED">自動化</option>
-            </select>
+
+            {/* ステータス複数選択チェックボックスメニュー */}
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setStatusFilterOpen(!statusFilterOpen)}
+                className="px-3 py-1.5 text-xs text-slate-900 bg-white border border-slate-300 rounded font-bold flex items-center gap-2 shadow-sm hover:bg-slate-50 focus:outline-none"
+              >
+                <span>🏷️ ステータス絞り込み</span>
+                <span className="bg-blue-100 text-blue-800 px-1.5 py-0.2 rounded text-[10px] font-bold">
+                  {selectedStatuses.size} / {ALL_STATUSES.length}
+                </span>
+                <span className="text-[10px]">▼</span>
+              </button>
+
+              {/* ポップアップドロップダウン */}
+              {statusFilterOpen && (
+                <div className="absolute left-0 mt-1 w-52 bg-white text-slate-900 border border-slate-300 rounded-lg shadow-xl z-30 p-2.5 space-y-1.5">
+                  <div className="flex justify-between items-center pb-1.5 border-b border-slate-200 text-[11px] font-bold">
+                    <span className="text-slate-700">表示するステータス</span>
+                    <button
+                      type="button"
+                      onClick={toggleAllStatusFilters}
+                      className="text-blue-600 hover:underline text-[10px] font-bold"
+                    >
+                      {selectedStatuses.size === ALL_STATUSES.length ? '全解除' : '全選択'}
+                    </button>
+                  </div>
+                  {ALL_STATUSES.map((item) => (
+                    <label
+                      key={item.key}
+                      className="flex items-center gap-2 p-1 text-xs hover:bg-slate-100 rounded cursor-pointer select-none"
+                    >
+                      <input
+                        type="checkbox"
+                        checked={selectedStatuses.has(item.key)}
+                        onChange={() => toggleStatusFilter(item.key)}
+                        className="rounded cursor-pointer"
+                      />
+                      <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold ${item.color}`}>
+                        {item.label}
+                      </span>
+                    </label>
+                  ))}
+                  <div className="pt-1.5 border-t border-slate-100 text-right">
+                    <button
+                      type="button"
+                      onClick={() => setStatusFilterOpen(false)}
+                      className="px-2.5 py-1 text-[10px] bg-slate-800 text-white rounded font-bold"
+                    >
+                      閉じる
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
 
+          {/* 一括「実施者」割り当て */}
           <div className="flex items-center gap-2 border-l border-slate-600 pl-4">
             <span className="text-xs text-slate-300">
               選択中: <strong className="text-blue-400">{selectedIds.size}</strong> 件
