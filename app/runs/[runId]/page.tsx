@@ -159,6 +159,18 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     return statusMap[normalized];
   };
  
+  const getStatusLabel = (status: TestResult['status']) => {
+    const labels: Record<TestResult['status'], string> = {
+      UNTESTED: '未実施',
+      PASSED: 'OK',
+      FAILED: 'NG',
+      BLOCKED: '保留',
+      EXCLUDED: '対象外',
+      AUTOMATED: '自動化',
+    };
+    return labels[status] || status;
+  };
+ 
   const parsePasteRow = (
     cells: string[],
     startField: 'tester' | 'status'
@@ -423,7 +435,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
               </button>
             </div>
             <div className="text-[10px] text-slate-300">
-              実施者列・ステータス列に Excel から複数行貼り付けができます。
+              表のセルをクリックして直接編集できます。実施者・結果ステータス列には Excel から複数行貼り付けが可能です。
             </div>
           </div>
         </div>
@@ -529,19 +541,43 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                     {tc.expected || '-'}
                   </td>
                   <td className="p-2 align-top bg-blue-50/30" onPaste={(e) => handlePaste(e, index, 'tester')}>
-                    <input
-                      type="text"
-                      value={result.tester || ''}
-                      onChange={(e) => updateResult(tc.id, { tester: e.target.value }, false)}
-                      placeholder="担当者"
-                      className="w-full p-1 text-xs border border-slate-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 bg-white"
-                    />
+                    <div
+                      contentEditable
+                      suppressContentEditableWarning
+                      onBlur={(e) => updateResult(tc.id, { tester: e.currentTarget.textContent?.trim() || '' }, false)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          e.preventDefault();
+                          (e.currentTarget as HTMLElement).blur();
+                        }
+                      }}
+                      className="min-h-[2rem] w-full p-1 text-xs border border-slate-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 bg-white whitespace-pre-wrap break-words"
+                    >
+                      {result.tester || ''}
+                    </div>
                   </td>
                   <td className="p-2 align-top" onPaste={(e) => handlePaste(e, index, 'status')}>
-                    <select
-                      value={result.status || 'UNTESTED'}
-                      onChange={(e) => updateResult(tc.id, { status: e.target.value as any }, true)}
-                      className={`w-full p-1.5 text-xs font-bold rounded border cursor-pointer ${
+                    <div
+                      contentEditable
+                      suppressContentEditableWarning
+                      onBlur={(e) => {
+                        const text = e.currentTarget.textContent?.trim() || '';
+                        if (!text) {
+                          updateResult(tc.id, { status: 'UNTESTED' }, true);
+                          return;
+                        }
+                        const normalized = normalizeStatus(text);
+                        if (normalized) {
+                          updateResult(tc.id, { status: normalized }, true);
+                        }
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          e.preventDefault();
+                          (e.currentTarget as HTMLElement).blur();
+                        }
+                      }}
+                      className={`min-h-[2rem] w-full p-1 text-xs font-bold rounded border cursor-text ${
                         result.status === 'PASSED'
                           ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
                           : result.status === 'FAILED'
@@ -553,15 +589,9 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                           : result.status === 'EXCLUDED'
                           ? 'bg-slate-200 text-slate-700 border-slate-300'
                           : 'bg-slate-100 text-slate-600 border-slate-300'
-                      }`}
-                    >
-                      <option value="UNTESTED">未実施</option>
-                      <option value="PASSED">OK</option>
-                      <option value="FAILED">NG</option>
-                      <option value="BLOCKED">保留</option>
-                      <option value="EXCLUDED">対象外</option>
-                      <option value="AUTOMATED">自動化</option>
-                    </select>
+                      } whitespace-pre-wrap break-words`}>
+                      {getStatusLabel(result.status || 'UNTESTED')}
+                    </div>
                   </td>
                   <td className="p-2 align-top">
                     <textarea
