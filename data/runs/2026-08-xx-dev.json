@@ -2,13 +2,13 @@
   "id": "2026-08-xx-dev",
   "title": "2026-08-xx DEV環境 スルーテスト",
   "createdAt": "2026-08-07T06:38:25.442Z",
-  "updatedAt": "2026-08-07T06:38:25.442Z",
+  "updatedAt": "2026-08-07T06:46:44.232Z",
   "results": {
     "TC-001": {
-      "status": "UNTESTED",
+      "status": "PASSED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": ""
+      "updatedAt": "2026-08-07T06:46:44.232Z"
     },
     "TC-002": {
       "status": "UNTESTED",
