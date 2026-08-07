@@ -8,13 +8,11 @@ export default function HomePage() {
   const [runs, setRuns] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // モーダル用 State
   const [showModal, setShowModal] = useState(false);
   const [newRunId, setNewRunId] = useState('');
   const [newTitle, setNewTitle] = useState('');
   const [creating, setCreating] = useState(false);
 
-  // 全テスト一覧を取得
   const fetchRuns = async () => {
     try {
       const res = await fetch(`/api/runs?t=${Date.now()}`);
@@ -41,10 +39,14 @@ export default function HomePage() {
     setCreating(true);
 
     try {
-      const res = await fetch('/api/create-run', {
+      const res = await fetch('/api/test-run', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ runId: newRunId, title: newTitle }),
+        body: JSON.stringify({
+          action: 'create',
+          runId: newRunId,
+          title: newTitle,
+        }),
       });
 
       const responseText = await res.text();
@@ -52,7 +54,7 @@ export default function HomePage() {
       try {
         data = JSON.parse(responseText);
       } catch (err) {
-        throw new Error(`サーバーエラーが発生しました (${res.status})。実行IDにカッコなどの特殊文字が含まれていないか確認してください。`);
+        throw new Error(`サーバーエラー (${res.status})。時間をおいて再試行してください。`);
       }
 
       if (res.ok && data.success) {
@@ -70,7 +72,6 @@ export default function HomePage() {
 
   return (
     <div className="space-y-6 max-w-6xl mx-auto pb-12">
-      {/* ヘッダー */}
       <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 border-b border-slate-200 pb-4">
         <div>
           <h1 className="text-2xl font-bold text-slate-900">スルーテスト項目書 一覧</h1>
@@ -84,7 +85,6 @@ export default function HomePage() {
         </button>
       </div>
 
-      {/* 新規作成モーダル */}
       {showModal && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-xl p-6 max-w-md w-full shadow-2xl space-y-4">
@@ -99,10 +99,9 @@ export default function HomePage() {
                   required
                   value={newRunId}
                   onChange={(e) => setNewRunId(e.target.value)}
-                  placeholder="例: 2026-08-23-dev-Test"
+                  placeholder="例: 2026-08-23-dev"
                   className="w-full p-2 border border-slate-300 rounded text-sm font-mono focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
-                <p className="text-[10px] text-slate-400 mt-1">※カッコや特殊文字は自動でハイフンに変換されます</p>
               </div>
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1">テストタイトル</label>
@@ -136,10 +135,8 @@ export default function HomePage() {
         </div>
       )}
 
-      {/* ローディング表示 */}
       {loading && <div className="p-12 text-center text-slate-500 font-medium">テスト一覧を読み込み中...</div>}
 
-      {/* テストカード一覧 */}
       {!loading && runs.length === 0 && (
         <div className="p-12 text-center bg-white rounded-xl border border-slate-200 text-slate-500">
           テスト項目書がまだありません。右上の「＋ 新規スルーテストを作成」から作成してください。
