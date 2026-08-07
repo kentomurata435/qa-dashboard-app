@@ -31,7 +31,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   const [batchTester, setBatchTester] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
-  const [editingCell, setEditingCell] = useState<{ rowIndex: number; field: 'tester' | 'status' } | null>(null);
+  const [editingCell, setEditingCell] = useState<{ rowIndex: number } | null>(null);
   const [editValue, setEditValue] = useState('');
 
   // ステータス複数選択フィルター State (初期値はすべてON)
@@ -148,8 +148,8 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     }
   };
  
-  const focusCellEditor = (rowIndex: number, field: 'tester' | 'status', initialValue: string) => {
-    setEditingCell({ rowIndex, field });
+  const focusCellEditor = (rowIndex: number, initialValue: string) => {
+    setEditingCell({ rowIndex });
     setEditValue(initialValue);
   };
  
@@ -164,53 +164,27 @@ export default function RunPage({ params }: { params: { runId: string } }) {
       return;
     }
     const value = editValue.trim();
-    if (editingCell.field === 'tester') {
-      updateResult(caseId, { tester: value }, false);
-    } else {
-      if (value === '') {
-        updateResult(caseId, { status: 'UNTESTED' }, true);
-      } else {
-        const normalized = normalizeStatus(value);
-        if (normalized) {
-          updateResult(caseId, { status: normalized }, true);
-        }
-      }
-    }
+    updateResult(caseId, { tester: value }, false);
     setEditingCell(null);
   };
  
-  const moveEditor = (rowIndex: number, field: 'tester' | 'status', direction: 'next' | 'prev' | 'up' | 'down') => {
+  const moveEditor = (rowIndex: number, direction: 'next' | 'prev' | 'up' | 'down') => {
     let nextRow = rowIndex;
-    let nextField: 'tester' | 'status' = field;
- 
-    if (direction === 'next') {
-      if (field === 'tester') {
-        nextField = 'status';
-      } else {
-        nextRow = Math.min(rowIndex + 1, filteredCases.length - 1);
-        nextField = 'tester';
-      }
-    } else if (direction === 'prev') {
-      if (field === 'status') {
-        nextField = 'tester';
-      } else {
-        nextRow = Math.max(rowIndex - 1, 0);
-        nextField = 'status';
-      }
-    } else if (direction === 'down') {
+
+    if (direction === 'next' || direction === 'down') {
       nextRow = Math.min(rowIndex + 1, filteredCases.length - 1);
-    } else if (direction === 'up') {
+    } else if (direction === 'prev' || direction === 'up') {
       nextRow = Math.max(rowIndex - 1, 0);
     }
- 
+
     if (nextRow < 0 || nextRow >= filteredCases.length) {
       setEditingCell(null);
       return;
     }
- 
+
     const caseId = filteredCases[nextRow]?.id;
-    const nextValue = caseId ? (runData.results?.[caseId]?.[nextField] || '') : '';
-    setEditingCell({ rowIndex: nextRow, field: nextField });
+    const nextValue = caseId ? (runData.results?.[caseId]?.tester || '') : '';
+    setEditingCell({ rowIndex: nextRow });
     setEditValue(nextValue);
   };
  
@@ -225,18 +199,6 @@ export default function RunPage({ params }: { params: { runId: string } }) {
       automated: 'AUTOMATED', 自動化: 'AUTOMATED',
     };
     return statusMap[normalized];
-  };
- 
-  const getStatusLabel = (status: TestResult['status']) => {
-    const labels: Record<TestResult['status'], string> = {
-      UNTESTED: '未実施',
-      PASSED: 'OK',
-      FAILED: 'NG',
-      BLOCKED: '保留',
-      EXCLUDED: '対象外',
-      AUTOMATED: '自動化',
-    };
-    return labels[status] || status;
   };
  
   const parsePasteRow = (
@@ -505,7 +467,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
               </button>
             </div>
             <div className="text-[10px] text-slate-300">
-              表のセルをクリックして直接編集できます。実施者・結果ステータス列には Excel から複数行貼り付けが可能です。
+              表のセルをクリックして直接編集できます。実施者は入力、結果ステータスはプルダウンから選択できます。Excel から複数行貼り付けも可能です。
             </div>
           </div>
         </div>
@@ -613,10 +575,10 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                   <td className="p-2 align-top bg-blue-50/30" onPaste={(e) => handlePaste(e, index, 'tester')}>
                     <input
                       type="text"
-                      value={editingCell?.rowIndex === index && editingCell.field === 'tester' ? editValue : result.tester || ''}
-                      onFocus={() => focusCellEditor(index, 'tester', result.tester || '')}
+                      value={editingCell?.rowIndex === index ? editValue : result.tester || ''}
+                      onFocus={() => focusCellEditor(index, result.tester || '')}
                       onChange={(e) => {
-                        if (editingCell?.rowIndex === index && editingCell.field === 'tester') {
+                        if (editingCell?.rowIndex === index) {
                           setEditValue(e.target.value);
                         }
                       }}
@@ -625,79 +587,43 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                         if (e.key === 'Enter') {
                           e.preventDefault();
                           commitCellEdit();
-                          moveEditor(index, 'tester', 'down');
+                          moveEditor(index, 'down');
                         } else if (e.key === 'Tab') {
                           e.preventDefault();
                           commitCellEdit();
-                          moveEditor(index, 'tester', 'next');
+                          moveEditor(index, 'next');
                         } else if (e.key === 'ArrowDown') {
                           e.preventDefault();
                           commitCellEdit();
-                          moveEditor(index, 'tester', 'down');
+                          moveEditor(index, 'down');
                         } else if (e.key === 'ArrowUp') {
                           e.preventDefault();
                           commitCellEdit();
-                          moveEditor(index, 'tester', 'up');
+                          moveEditor(index, 'up');
                         } else if (e.key === 'ArrowRight') {
                           e.preventDefault();
                           commitCellEdit();
-                          moveEditor(index, 'tester', 'next');
+                          moveEditor(index, 'next');
                         } else if (e.key === 'ArrowLeft') {
                           e.preventDefault();
                           commitCellEdit();
-                          moveEditor(index, 'tester', 'prev');
+                          moveEditor(index, 'prev');
                         } else if (e.key === 'Escape') {
                           setEditingCell(null);
                         }
                       }}
                       className={`min-h-[2rem] w-full p-1 text-xs border rounded focus:outline-none focus:ring-1 focus:ring-blue-500 bg-white ${
-                        editingCell?.rowIndex === index && editingCell.field === 'tester'
+                        editingCell?.rowIndex === index
                           ? 'border-blue-500'
                           : 'border-slate-300'
                       }`}
                     />
                   </td>
                   <td className="p-2 align-top" onPaste={(e) => handlePaste(e, index, 'status')}>
-                    <input
-                      type="text"
-                      value={editingCell?.rowIndex === index && editingCell.field === 'status' ? editValue : getStatusLabel(result.status || 'UNTESTED')}
-                      onFocus={() => focusCellEditor(index, 'status', getStatusLabel(result.status || 'UNTESTED'))}
-                      onChange={(e) => {
-                        if (editingCell?.rowIndex === index && editingCell.field === 'status') {
-                          setEditValue(e.target.value);
-                        }
-                      }}
-                      onBlur={commitCellEdit}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter') {
-                          e.preventDefault();
-                          commitCellEdit();
-                          moveEditor(index, 'status', 'next');
-                        } else if (e.key === 'Tab') {
-                          e.preventDefault();
-                          commitCellEdit();
-                          moveEditor(index, 'status', 'next');
-                        } else if (e.key === 'ArrowDown') {
-                          e.preventDefault();
-                          commitCellEdit();
-                          moveEditor(index, 'status', 'down');
-                        } else if (e.key === 'ArrowUp') {
-                          e.preventDefault();
-                          commitCellEdit();
-                          moveEditor(index, 'status', 'up');
-                        } else if (e.key === 'ArrowRight') {
-                          e.preventDefault();
-                          commitCellEdit();
-                          moveEditor(index, 'status', 'next');
-                        } else if (e.key === 'ArrowLeft') {
-                          e.preventDefault();
-                          commitCellEdit();
-                          moveEditor(index, 'status', 'prev');
-                        } else if (e.key === 'Escape') {
-                          setEditingCell(null);
-                        }
-                      }}
-                      className={`min-h-[2rem] w-full p-1 text-xs font-bold rounded border cursor-text focus:outline-none focus:ring-1 focus:ring-blue-500 ${
+                    <select
+                      value={result.status || 'UNTESTED'}
+                      onChange={(e) => updateResult(tc.id, { status: e.target.value as TestResult['status'] }, true)}
+                      className={`min-h-[2rem] w-full p-1 text-xs font-bold rounded border focus:outline-none focus:ring-1 focus:ring-blue-500 ${
                         result.status === 'PASSED'
                           ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
                           : result.status === 'FAILED'
@@ -709,8 +635,14 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                           : result.status === 'EXCLUDED'
                           ? 'bg-slate-200 text-slate-700 border-slate-300'
                           : 'bg-slate-100 text-slate-600 border-slate-300'
-                      } ${editingCell?.rowIndex === index && editingCell.field === 'status' ? 'ring-2 ring-blue-500' : ''}`}
-                    />
+                      }`}
+                    >
+                      {ALL_STATUSES.map((item) => (
+                        <option key={item.key} value={item.key}>
+                          {item.label}
+                        </option>
+                      ))}
+                    </select>
                   </td>
                   <td className="p-2 align-top">
                     <textarea
