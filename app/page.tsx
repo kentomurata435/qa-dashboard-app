@@ -3,6 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import casesData from '@/data/cases.json';
 
 export default function HomePage() {
   const [runs, setRuns] = useState<any[]>([]);
@@ -101,7 +102,7 @@ export default function HomePage() {
       <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 border-b border-slate-200 pb-4">
         <div>
           <h1 className="text-2xl font-bold text-slate-900 tracking-tight">スルーテスト項目書 一覧</h1>
-          <p className="text-xs text-slate-500 mt-1">実施回ごとのテスト管理・結果の確認ができます</p>
+          <p className="text-xs text-slate-500 mt-1">全 {casesData.length} 件のテストケースマスターを管理</p>
         </div>
         <button
           onClick={() => setShowModal(true)}
@@ -177,21 +178,25 @@ export default function HomePage() {
         </div>
       )}
 
-      {/* テストカード一覧（最新順） */}
+      {/* テストカード一覧（正確な526件をマスターとして再集計） */}
       {!loading && runs.length > 0 && (
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {runs.map((run: any) => {
-            const resultsList = Object.values(run.results || {}) as any[];
-            const total = resultsList.length;
-            
-            // 6区分集計
-            const ok = resultsList.filter((r) => r.status === 'PASSED').length;
-            const ng = resultsList.filter((r) => r.status === 'FAILED').length;
-            const blocked = resultsList.filter((r) => r.status === 'BLOCKED').length;
-            const excluded = resultsList.filter((r) => r.status === 'EXCLUDED').length;
-            const automated = resultsList.filter((r) => r.status === 'AUTOMATED').length;
-            const untested = total - (ok + ng + blocked + excluded + automated);
+            const total = casesData.length; // マスター全件数 (526件など)
 
+            // 正確にマスター件数ベースで集計
+            let ok = 0, ng = 0, blocked = 0, excluded = 0, automated = 0;
+
+            casesData.forEach((tc: any) => {
+              const status = run.results?.[tc.id]?.status || 'UNTESTED';
+              if (status === 'PASSED') ok++;
+              else if (status === 'FAILED') ng++;
+              else if (status === 'BLOCKED') blocked++;
+              else if (status === 'EXCLUDED') excluded++;
+              else if (status === 'AUTOMATED') automated++;
+            });
+
+            const untested = total - (ok + ng + blocked + excluded + automated);
             const progress = total > 0 ? Math.round(((total - untested) / total) * 100) : 0;
 
             return (
@@ -210,7 +215,7 @@ export default function HomePage() {
                 }}
               >
                 <div>
-                  {/* 1. タイトル ＆ 削除ボタン（タイトルの右） */}
+                  {/* 1. タイトル ＆ 削除ボタン */}
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '8px', borderBottom: '1px solid #f1f5f9', paddingBottom: '8px' }}>
                     <h2 style={{ fontSize: '15px', fontWeight: 'bold', color: '#0f172a', margin: 0, lineHeight: '1.4' }}>
                       {run.title}
@@ -234,7 +239,7 @@ export default function HomePage() {
                     </button>
                   </div>
 
-                  {/* 2. タイトルの下に ID と 進捗 */}
+                  {/* 2. タイトルの下に ID と 正確な進捗率 */}
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '8px', fontSize: '11px' }}>
                     <span style={{ fontFamily: 'monospace', fontWeight: 'bold', backgroundColor: '#f1f5f9', color: '#475569', padding: '2px 8px', borderRadius: '4px', border: '1px solid #e2e8f0' }}>
                       ID: {run.id}
@@ -244,7 +249,7 @@ export default function HomePage() {
                     </span>
                   </div>
 
-                  {/* 3. 進捗バー */}
+                  {/* 3. 正確な進捗バー */}
                   <div style={{ width: '100%', backgroundColor: '#f1f5f9', height: '8px', borderRadius: '9999px', overflow: 'hidden', display: 'flex', marginTop: '10px', border: '1px solid #e2e8f0' }}>
                     <div style={{ width: `${total ? (ok / total) * 100 : 0}%`, backgroundColor: '#10b981' }} />
                     <div style={{ width: `${total ? (ng / total) * 100 : 0}%`, backgroundColor: '#ef4444' }} />
@@ -253,7 +258,7 @@ export default function HomePage() {
                     <div style={{ width: `${total ? (excluded / total) * 100 : 0}%`, backgroundColor: '#94a3b8' }} />
                   </div>
 
-                  {/* 4. 6区分内訳 (未実施、OK、NG、保留、対象外、自動化) */}
+                  {/* 4. 正確な6区分内訳 (全526件の内訳) */}
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '6px', marginTop: '10px', backgroundColor: '#f8fafc', padding: '8px', borderRadius: '8px', border: '1px solid #e2e8f0', textAlign: 'center', fontSize: '10px' }}>
                     <div><span style={{ display: 'block', fontWeight: 'bold', color: '#64748b', fontSize: '12px' }}>{untested}</span>未実施</div>
                     <div><span style={{ display: 'block', fontWeight: 'bold', color: '#059669', fontSize: '12px' }}>{ok}</span>OK</div>
