@@ -18,10 +18,45 @@ export default function RunPage({ params }: { params: { runId: string } }) {
   const [saveStatus, setSaveStatus] = useState<'saved' | 'saving' | 'error'>('saved');
   const saveTimerRef = useRef<NodeJS.Timeout | null>(null);
 
+  // 選択・検索
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   const [batchTester, setBatchTester] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('ALL');
+
+  // 列幅の可変サイズ (ピクセル指定)
+  const [colWidths, setColWidths] = useState<{ [key: string]: number }>({
+    check: 40,
+    id: 90,
+    priority: 80,
+    screen: 150,
+    precondition: 220,
+    steps: 320,
+    expected: 320,
+    tester: 120,
+    status: 130,
+    note: 200,
+  });
+
+  // 列幅変更ドラッグ処理
+  const startResizing = (colKey: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    const startX = e.clientX;
+    const startWidth = colWidths[colKey];
+
+    const onMouseMove = (moveEvent: MouseEvent) => {
+      const newWidth = Math.max(40, startWidth + (moveEvent.clientX - startX));
+      setColWidths((prev) => ({ ...prev, [colKey]: newWidth }));
+    };
+
+    const onMouseUp = () => {
+      document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseup', onMouseUp);
+    };
+
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+  };
 
   const fetchLatestData = useCallback(() => {
     fetch(`/api/test-run?runId=${runId}&t=${Date.now()}`)
@@ -139,9 +174,9 @@ export default function RunPage({ params }: { params: { runId: string } }) {
   });
 
   return (
-    <div className="space-y-4 max-w-[1600px] mx-auto pb-12">
+    <div className="space-y-4 max-w-[1800px] mx-auto pb-12">
       {/* ヘッダー情報 */}
-      <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between md:items-center gap-4">
+      <div className="bg-white p-5 rounded-xl border border-slate-300 shadow-sm flex flex-col md:flex-row justify-between md:items-center gap-4">
         <div>
           <h1 className="text-2xl font-bold text-slate-900 tracking-tight">{runData.title}</h1>
           <p className="text-xs text-slate-500 mt-1">
@@ -168,8 +203,8 @@ export default function RunPage({ params }: { params: { runId: string } }) {
         </div>
       </div>
 
-      {/* 検索・一括操作ツールバー */}
-      <div className="bg-slate-900 text-white p-4 rounded-xl shadow-md space-y-3">
+      {/* 検索・一括操作バー */}
+      <div className="bg-slate-800 text-white p-3.5 rounded-xl shadow space-y-2">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-3 flex-1 min-w-[280px]">
             <input
@@ -177,12 +212,12 @@ export default function RunPage({ params }: { params: { runId: string } }) {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="🔍 検索 (ID, 画面, 機能, 実施者...)"
-              className="w-full max-w-xs px-3 py-1.5 text-xs text-slate-900 rounded-lg bg-white border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full max-w-xs px-3 py-1.5 text-xs text-slate-900 rounded bg-white border border-slate-300 focus:outline-none"
             />
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="px-3 py-1.5 text-xs text-slate-900 rounded-lg bg-white border border-slate-300 font-semibold focus:outline-none"
+              className="px-3 py-1.5 text-xs text-slate-900 rounded bg-white border border-slate-300 font-semibold focus:outline-none"
             >
               <option value="ALL">すべてのステータス</option>
               <option value="UNTESTED">UNTESTED (未実施)</option>
@@ -192,7 +227,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
             </select>
           </div>
 
-          <div className="flex items-center gap-2 border-l border-slate-700 pl-4">
+          <div className="flex items-center gap-2 border-l border-slate-600 pl-4">
             <span className="text-xs text-slate-300">
               選択中: <strong className="text-blue-400">{selectedIds.size}</strong> 件
             </span>
@@ -206,7 +241,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
             <button
               onClick={handleBatchApplyTester}
               disabled={selectedIds.size === 0 || !batchTester.trim()}
-              className="px-3 py-1.5 text-xs bg-blue-600 hover:bg-blue-500 disabled:bg-slate-700 text-white rounded font-bold transition shadow-sm"
+              className="px-3 py-1.5 text-xs bg-blue-600 hover:bg-blue-500 disabled:bg-slate-600 text-white rounded font-bold transition shadow-sm"
             >
               一括適用
             </button>
@@ -214,138 +249,186 @@ export default function RunPage({ params }: { params: { runId: string } }) {
         </div>
       </div>
 
-      {/* メインテーブル（格子枠線付き） */}
-      <div className="bg-white rounded-xl border border-slate-300 shadow-sm overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse min-w-[1300px]">
-            <thead>
-              <tr className="bg-slate-100 text-[11px] text-slate-700 font-bold uppercase border-b border-slate-300">
-                <th className="p-2.5 border-r border-slate-300 w-10 text-center">
-                  <input
-                    type="checkbox"
-                    checked={selectedIds.size > 0 && selectedIds.size === filteredCases.length}
-                    onChange={() => toggleSelectAll(filteredCases)}
-                    className="rounded cursor-pointer"
-                  />
-                </th>
-                <th className="p-2.5 border-r border-slate-300 w-24">ID</th>
-                <th className="p-2.5 border-r border-slate-300 w-40">画面 / 機能</th>
-                <th className="p-2.5 border-r border-slate-300 w-52">前提条件</th>
-                <th className="p-2.5 border-r border-slate-300 min-w-[280px]">確認手順</th>
-                <th className="p-2.5 border-r border-slate-300 min-w-[280px]">確認内容（期待値）</th>
-                <th className="p-2.5 border-r border-slate-300 w-28 bg-blue-50/80 text-blue-900">実施者</th>
-                <th className="p-2.5 border-r border-slate-300 w-36">結果ステータス</th>
-                <th className="p-2.5 w-44">備考・バグ情報</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-200 text-xs">
-              {filteredCases.map((tc: any) => {
-                const result = runData.results?.[tc.id] || {
-                  status: 'UNTESTED',
-                  tester: tc.defaultTester || '',
-                  note: '',
-                };
-                const isSelected = selectedIds.has(tc.id);
+      {/* メインテーブル（横スクロール ＆ 列幅ドラッグ変更可能 ＆ 枠線表示） */}
+      <div className="bg-white rounded-xl shadow-sm border border-slate-300 overflow-x-auto qa-table-container">
+        <table className="text-left border-collapse table-fixed w-max">
+          <thead>
+            <tr className="bg-slate-200 text-[11px] text-slate-800 font-bold uppercase select-none">
+              {/* チェックボックス列 */}
+              <th style={{ width: `${colWidths.check}px` }} className="relative p-2 text-center">
+                <input
+                  type="checkbox"
+                  checked={selectedIds.size > 0 && selectedIds.size === filteredCases.length}
+                  onChange={() => toggleSelectAll(filteredCases)}
+                  className="rounded cursor-pointer"
+                />
+                <div onMouseDown={(e) => startResizing('check', e)} className="resizer" />
+              </th>
 
-                return (
-                  <tr
-                    key={tc.id}
-                    className={`hover:bg-blue-50/40 transition border-b border-slate-200 ${
-                      isSelected ? 'bg-blue-50/70' : ''
-                    }`}
-                  >
-                    {/* チェックボックス */}
-                    <td className="p-2.5 text-center align-top border-r border-slate-200">
-                      <input
-                        type="checkbox"
-                        checked={isSelected}
-                        onChange={() => toggleSelect(tc.id)}
-                        className="rounded cursor-pointer mt-0.5"
-                      />
-                    </td>
+              {/* ID列 */}
+              <th style={{ width: `${colWidths.id}px` }} className="relative p-2">
+                ID
+                <div onMouseDown={(e) => startResizing('id', e)} className="resizer" />
+              </th>
 
-                    {/* ID */}
-                    <td className="p-2.5 align-top font-mono border-r border-slate-200">
-                      <span className="font-bold text-slate-800">{tc.id}</span>
-                      {tc.priority && (
-                        <span className={`block mt-1 text-[10px] w-max px-1.5 py-0.2 rounded font-bold ${
-                          tc.priority === 'A' ? 'bg-red-100 text-red-700' : 'bg-slate-100 text-slate-600'
-                        }`}>
-                          重要度 {tc.priority}
-                        </span>
-                      )}
-                    </td>
+              {/* 重要度列 (独立) */}
+              <th style={{ width: `${colWidths.priority}px` }} className="relative p-2">
+                重要度
+                <div onMouseDown={(e) => startResizing('priority', e)} className="resizer" />
+              </th>
 
-                    {/* 画面 / 機能 */}
-                    <td className="p-2.5 align-top border-r border-slate-200">
-                      <div className="font-bold text-slate-800">{tc.screen || '-'}</div>
-                      <div className="text-slate-500 mt-0.5">{tc.feature || '-'}</div>
-                    </td>
+              {/* 画面 / 機能 */}
+              <th style={{ width: `${colWidths.screen}px` }} className="relative p-2">
+                画面 / 機能
+                <div onMouseDown={(e) => startResizing('screen', e)} className="resizer" />
+              </th>
 
-                    {/* 前提条件（改行対応） */}
-                    <td className="p-2.5 align-top border-r border-slate-200 text-slate-600 whitespace-pre-wrap break-words leading-relaxed font-sans">
-                      {tc.precondition || '-'}
-                    </td>
+              {/* 前提条件 */}
+              <th style={{ width: `${colWidths.precondition}px` }} className="relative p-2">
+                前提条件
+                <div onMouseDown={(e) => startResizing('precondition', e)} className="resizer" />
+              </th>
 
-                    {/* 確認手順（改行対応） */}
-                    <td className="p-2.5 align-top border-r border-slate-200 text-slate-800 whitespace-pre-wrap break-words leading-relaxed font-sans">
-                      {tc.steps || '-'}
-                    </td>
+              {/* 確認手順 */}
+              <th style={{ width: `${colWidths.steps}px` }} className="relative p-2">
+                確認手順
+                <div onMouseDown={(e) => startResizing('steps', e)} className="resizer" />
+              </th>
 
-                    {/* 確認内容（改行対応） */}
-                    <td className="p-2.5 align-top border-r border-slate-200 text-slate-900 font-medium whitespace-pre-wrap break-words leading-relaxed font-sans">
-                      {tc.expected || '-'}
-                    </td>
+              {/* 確認内容 */}
+              <th style={{ width: `${colWidths.expected}px` }} className="relative p-2">
+                確認内容（期待値）
+                <div onMouseDown={(e) => startResizing('expected', e)} className="resizer" />
+              </th>
 
-                    {/* 実施者 */}
-                    <td className="p-2.5 align-top border-r border-slate-200 bg-blue-50/20">
-                      <input
-                        type="text"
-                        value={result.tester || ''}
-                        onChange={(e) => updateResult(tc.id, { tester: e.target.value }, false)}
-                        placeholder="担当者名"
-                        className="w-full p-1.5 text-xs border border-slate-300 rounded font-medium focus:outline-none focus:ring-1 focus:ring-blue-500 bg-white"
-                      />
-                    </td>
+              {/* 実施者 */}
+              <th style={{ width: `${colWidths.tester}px` }} className="relative p-2 bg-blue-100 text-blue-900">
+                実施者
+                <div onMouseDown={(e) => startResizing('tester', e)} className="resizer" />
+              </th>
 
-                    {/* 結果ステータス */}
-                    <td className="p-2.5 align-top border-r border-slate-200">
-                      <select
-                        value={result.status || 'UNTESTED'}
-                        onChange={(e) => updateResult(tc.id, { status: e.target.value as any }, true)}
-                        className={`w-full p-2 text-xs font-bold rounded-md border cursor-pointer ${
-                          result.status === 'PASSED'
-                            ? 'bg-green-100 border-green-300 text-green-800'
-                            : result.status === 'FAILED'
-                            ? 'bg-red-100 border-red-300 text-red-800'
-                            : result.status === 'BLOCKED'
-                            ? 'bg-amber-100 border-amber-300 text-amber-800'
-                            : 'bg-slate-100 border-slate-300 text-slate-600'
-                        }`}
-                      >
-                        <option value="UNTESTED">UNTESTED</option>
-                        <option value="PASSED">PASSED</option>
-                        <option value="FAILED">FAILED</option>
-                        <option value="BLOCKED">BLOCKED</option>
-                      </select>
-                    </td>
+              {/* 結果ステータス */}
+              <th style={{ width: `${colWidths.status}px` }} className="relative p-2">
+                結果ステータス
+                <div onMouseDown={(e) => startResizing('status', e)} className="resizer" />
+              </th>
 
-                    {/* 備考 */}
-                    <td className="p-2.5 align-top">
-                      <textarea
-                        rows={2}
-                        value={result.note || ''}
-                        onChange={(e) => updateResult(tc.id, { note: e.target.value }, false)}
-                        placeholder="備考・不具合リンク"
-                        className="w-full p-1.5 border border-slate-300 rounded text-xs focus:outline-none focus:ring-1 focus:ring-blue-500 resize-y bg-white"
-                      />
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
+              {/* 備考 */}
+              <th style={{ width: `${colWidths.note}px` }} className="relative p-2">
+                備考・バグ情報
+                <div onMouseDown={(e) => startResizing('note', e)} className="resizer" />
+              </th>
+            </tr>
+          </thead>
+          <tbody className="text-xs">
+            {filteredCases.map((tc: any) => {
+              const result = runData.results?.[tc.id] || {
+                status: 'UNTESTED',
+                tester: tc.defaultTester || '',
+                note: '',
+              };
+              const isSelected = selectedIds.has(tc.id);
+
+              return (
+                <tr
+                  key={tc.id}
+                  className={`hover:bg-blue-50/50 transition ${isSelected ? 'bg-blue-50/80' : ''}`}
+                >
+                  {/* チェック */}
+                  <td className="p-2 text-center align-top">
+                    <input
+                      type="checkbox"
+                      checked={isSelected}
+                      onChange={() => toggleSelect(tc.id)}
+                      className="rounded cursor-pointer mt-0.5"
+                    />
+                  </td>
+
+                  {/* ID */}
+                  <td className="p-2 align-top font-mono font-bold text-slate-800">
+                    {tc.id}
+                  </td>
+
+                  {/* 重要度 (独立) */}
+                  <td className="p-2 align-top text-center">
+                    {tc.priority ? (
+                      <span className={`inline-block px-1.5 py-0.5 rounded text-[10px] font-bold ${
+                        tc.priority === 'A' ? 'bg-red-100 text-red-700 border border-red-300' : 'bg-slate-100 text-slate-700 border border-slate-300'
+                      }`}>
+                        {tc.priority}
+                      </span>
+                    ) : '-'}
+                  </td>
+
+                  {/* 画面 / 機能 */}
+                  <td className="p-2 align-top">
+                    <div className="font-bold text-slate-800">{tc.screen || '-'}</div>
+                    <div className="text-slate-500 mt-0.5">{tc.feature || '-'}</div>
+                  </td>
+
+                  {/* 前提条件 */}
+                  <td className="p-2 align-top text-slate-600 whitespace-pre-wrap break-words leading-relaxed font-sans">
+                    {tc.precondition || '-'}
+                  </td>
+
+                  {/* 確認手順 */}
+                  <td className="p-2 align-top text-slate-800 whitespace-pre-wrap break-words leading-relaxed font-sans">
+                    {tc.steps || '-'}
+                  </td>
+
+                  {/* 確認内容 */}
+                  <td className="p-2 align-top text-slate-900 font-medium whitespace-pre-wrap break-words leading-relaxed font-sans">
+                    {tc.expected || '-'}
+                  </td>
+
+                  {/* 実施者 */}
+                  <td className="p-2 align-top bg-blue-50/30">
+                    <input
+                      type="text"
+                      value={result.tester || ''}
+                      onChange={(e) => updateResult(tc.id, { tester: e.target.value }, false)}
+                      placeholder="担当者"
+                      className="w-full p-1 text-xs border border-slate-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500 bg-white"
+                    />
+                  </td>
+
+                  {/* 結果ステータス */}
+                  <td className="p-2 align-top">
+                    <select
+                      value={result.status || 'UNTESTED'}
+                      onChange={(e) => updateResult(tc.id, { status: e.target.value as any }, true)}
+                      className={`w-full p-1.5 text-xs font-bold rounded border cursor-pointer ${
+                        result.status === 'PASSED'
+                          ? 'bg-green-100 text-green-800 border-green-300'
+                          : result.status === 'FAILED'
+                          ? 'bg-red-100 text-red-800 border-red-300'
+                          : result.status === 'BLOCKED'
+                          ? 'bg-amber-100 text-amber-800 border-amber-300'
+                          : 'bg-slate-100 text-slate-600 border-slate-300'
+                      }`}
+                    >
+                      <option value="UNTESTED">UNTESTED</option>
+                      <option value="PASSED">PASSED</option>
+                      <option value="FAILED">FAILED</option>
+                      <option value="BLOCKED">BLOCKED</option>
+                    </select>
+                  </td>
+
+                  {/* 備考 */}
+                  <td className="p-2 align-top">
+                    <textarea
+                      rows={2}
+                      value={result.note || ''}
+                      onChange={(e) => updateResult(tc.id, { note: e.target.value }, false)}
+                      placeholder="備考・不具合リンク"
+                      className="w-full p-1 border border-slate-300 rounded text-xs focus:outline-none focus:ring-1 focus:ring-blue-500 resize-y bg-white"
+                    />
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
     </div>
   );

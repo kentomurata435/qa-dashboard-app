@@ -1,3 +1,4 @@
+/* app/globals.css */
 @tailwindcss base;
 @tailwindcss components;
 @tailwindcss utilities;
@@ -5,4 +6,35 @@
 body {
   background-color: #f8fafc;
   color: #0f172a;
+}
+
+/* 罫線（枠線）を100%強制表示 */
+.qa-table-container table {
+  border-collapse: collapse !important;
+  border: 1px solid #cbd5e1 !important;
+}
+
+.qa-table-container th,
+.qa-table-container td {
+  border: 1px solid #cbd5e1 !important;
+}
+
+/* 列幅リサイズハンドルのスタイル */
+.resizer {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 6px;
+  background: #cbd5e1;
+  cursor: col-resize;
+  user-select: none;
+  touch-action: none;
+  z-index: 10;
+}
+
+.resizer:hover,
+.resizer:active {
+  background: #2563eb;
+  width: 8px;
 }
