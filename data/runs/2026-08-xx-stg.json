@@ -2,51 +2,43 @@
   "id": "2026-08-xx-stg",
   "title": "2026-08-xx STG環境 スルーテスト",
   "createdAt": "2026-08-07T06:52:35.430Z",
-<<<<<<< HEAD
-  "updatedAt": "2026-08-07T08:51:10.781Z",
-=======
-  "updatedAt": "2026-08-07T08:52:26.540Z",
->>>>>>> bfb5eb86197ad08e0853e4c606bbef2b122f3f5b
+  "updatedAt": "2026-08-07T09:21:32.537Z",
   "results": {
     "TC-001": {
       "status": "PASSED",
       "tester": "Auto",
       "note": "",
-<<<<<<< HEAD
-      "updatedAt": "2026-08-07T08:51:06.254Z"
-=======
-      "updatedAt": "2026-08-07T08:52:19.798Z"
->>>>>>> bfb5eb86197ad08e0853e4c606bbef2b122f3f5b
+      "updatedAt": "2026-08-07T09:21:32.537Z"
     },
     "TC-002": {
-      "status": "PASSED",
+      "status": "UNTESTED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-07T08:50:52.223Z"
+      "updatedAt": "2026-08-07T08:20:28.453Z"
     },
     "TC-003": {
-      "status": "PASSED",
+      "status": "UNTESTED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-07T08:50:58.264Z"
+      "updatedAt": ""
     },
     "TC-004": {
-      "status": "PASSED",
+      "status": "UNTESTED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-07T08:51:10.781Z"
+      "updatedAt": ""
     },
     "TC-005": {
       "status": "UNTESTED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-07T08:52:03.538Z"
+      "updatedAt": ""
     },
     "TC-006": {
       "status": "UNTESTED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-07T08:52:05.490Z"
+      "updatedAt": ""
     },
     "TC-007": {
       "status": "UNTESTED",
@@ -76,7 +68,7 @@
       "status": "UNTESTED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-07T08:52:26.539Z"
+      "updatedAt": ""
     },
     "TC-012": {
       "status": "UNTESTED",
