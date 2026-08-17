@@ -726,7 +726,8 @@ export default function RunPage({ params }: { params: { runId: string } }) {
 
         <div className="mt-3 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-2">
           {ALL_STATUSES.map((status) => {
-            const value = statusSummary[status.key] || 0;
+            const statusKey = status.key as keyof typeof statusSummary;
+            const value = statusSummary[statusKey] ?? 0;
             return (
               <div key={status.key} className={`rounded-lg border px-2.5 py-2 ${status.color} border-opacity-60 bg-white`}>
                 <div className="text-[10px] font-bold uppercase tracking-[0.08em] opacity-80">{status.label}</div>
