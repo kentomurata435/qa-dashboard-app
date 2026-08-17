@@ -8,6 +8,16 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 const octokit = new Octokit({ auth: process.env.GITHUB_PAT });
+const GITHUB_TIMEOUT_MS = 3000;
+
+const withGithubTimeout = async <T>(operation: () => Promise<T>): Promise<T> => {
+  return await Promise.race([
+    operation(),
+    new Promise<T>((_, reject) => {
+      setTimeout(() => reject(new Error('GitHub API timeout')), GITHUB_TIMEOUT_MS);
+    }),
+  ]);
+};
 
 // 「作成日時 (createdAt)」の順番で完全固定（テスト実施で順番が変動しない）
 const sortRunsByCreationDate = (runs: any[]) => {
@@ -30,33 +40,34 @@ const sortRunsByCreationDate = (runs: any[]) => {
 
 export async function GET() {
   let runs: any[] = [];
+  const githubEnabled = !!(process.env.GITHUB_PAT && process.env.GITHUB_OWNER && process.env.GITHUB_REPO);
 
-  if (process.env.GITHUB_PAT && process.env.GITHUB_OWNER && process.env.GITHUB_REPO) {
+  if (githubEnabled) {
     try {
-      const res = await octokit.repos.getContent({
-        owner: process.env.GITHUB_OWNER,
-        repo: process.env.GITHUB_REPO,
+      const res = await withGithubTimeout(() => octokit.repos.getContent({
+        owner: process.env.GITHUB_OWNER!,
+        repo: process.env.GITHUB_REPO!,
         path: 'data/runs',
         ref: process.env.GITHUB_BRANCH || 'main',
         headers: {
           'cache-control': 'no-cache, no-store, must-revalidate',
           'pragma': 'no-cache',
         },
-      });
+      }));
 
       if (Array.isArray(res.data)) {
         for (const file of res.data) {
           if (file.name.endsWith('.json')) {
-            const fileRes = await octokit.repos.getContent({
-              owner: process.env.GITHUB_OWNER,
-              repo: process.env.GITHUB_REPO,
+            const fileRes = await withGithubTimeout(() => octokit.repos.getContent({
+              owner: process.env.GITHUB_OWNER!,
+              repo: process.env.GITHUB_REPO!,
               path: file.path,
               ref: process.env.GITHUB_BRANCH || 'main',
               headers: {
                 'cache-control': 'no-cache, no-store, must-revalidate',
                 'pragma': 'no-cache',
               },
-            });
+            }));
 
             if (!Array.isArray(fileRes.data) && 'content' in fileRes.data) {
               const content = Buffer.from(fileRes.data.content, 'base64').toString('utf-8');
@@ -64,11 +75,16 @@ export async function GET() {
             }
           }
         }
-        return NextResponse.json(sortRunsByCreationDate(runs), {
-          headers: { 'Cache-Control': 'no-store, max-age=0' },
-        });
+
+        if (runs.length > 0) {
+          return NextResponse.json(sortRunsByCreationDate(runs), {
+            headers: { 'Cache-Control': 'no-store, max-age=0' },
+          });
+        }
       }
-    } catch (err) {}
+    } catch (err) {
+      console.warn('GitHub sync unavailable, falling back to local data:', err);
+    }
   }
 
   try {
