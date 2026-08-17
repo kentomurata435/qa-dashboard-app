@@ -317,39 +317,41 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     element.style.height = `${nextHeight}px`;
   };
 
-  if (loading) return <div className="p-8 text-center text-slate-500 font-medium">データを読み込み中...</div>;
-  if (!runData || runData.error) return <div className="p-8 text-center text-red-500 font-medium">対象のテスト項目書が見つかりませんでした</div>;
+  const filteredCases = !runData
+    ? []
+    : casesData.filter((tc: any) => {
+        const result = runData.results?.[tc.id] || {};
 
-  const filteredCases = casesData.filter((tc: any) => {
-    const result = runData.results?.[tc.id] || {};
+        const currentPriority = result.priority !== undefined ? result.priority : tc.priority;
+        const currentScreen = result.screen !== undefined ? result.screen : tc.screen;
+        const currentFeature = result.feature !== undefined ? result.feature : tc.feature;
+        const currentSteps = result.steps !== undefined ? result.steps : tc.steps;
+        const currentExpected = result.expected !== undefined ? result.expected : tc.expected;
+        const currentTester = result.tester !== undefined ? result.tester : (tc.defaultTester || '');
 
-    const currentPriority = result.priority !== undefined ? result.priority : tc.priority;
-    const currentScreen = result.screen !== undefined ? result.screen : tc.screen;
-    const currentFeature = result.feature !== undefined ? result.feature : tc.feature;
-    const currentSteps = result.steps !== undefined ? result.steps : tc.steps;
-    const currentExpected = result.expected !== undefined ? result.expected : tc.expected;
-    const currentTester = result.tester !== undefined ? result.tester : (tc.defaultTester || '');
+        const matchesSearch =
+          tc.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          String(currentScreen || '').includes(searchQuery) ||
+          String(currentFeature || '').includes(searchQuery) ||
+          String(currentSteps || '').includes(searchQuery) ||
+          String(currentExpected || '').includes(searchQuery) ||
+          String(currentTester || '').includes(searchQuery);
 
-    const matchesSearch =
-      tc.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      currentScreen.includes(searchQuery) ||
-      currentFeature.includes(searchQuery) ||
-      currentSteps.includes(searchQuery) ||
-      currentExpected.includes(searchQuery) ||
-      currentTester.includes(searchQuery);
+        const caseStatus = result.status || 'UNTESTED';
+        const casePriority = (result.priority !== undefined ? result.priority : (tc.priority || ''));
+        const matchesStatus = selectedStatuses.has(caseStatus);
+        const matchesPriority = selectedPriorities.has(casePriority);
 
-    const caseStatus = result.status || 'UNTESTED';
-    const casePriority = (result.priority !== undefined ? result.priority : (tc.priority || ''));
-    const matchesStatus = selectedStatuses.has(caseStatus);
-    const matchesPriority = selectedPriorities.has(casePriority);
-
-    return matchesSearch && matchesStatus && matchesPriority;
-  });
+        return matchesSearch && matchesStatus && matchesPriority;
+      });
 
   useEffect(() => {
     const textareas = document.querySelectorAll('textarea[id^="cell-"]');
     textareas.forEach((elem) => autoResizeTextarea(elem as HTMLTextAreaElement));
   }, [filteredCases, runData]);
+
+  if (loading) return <div className="p-8 text-center text-slate-500 font-medium">データを読み込み中...</div>;
+  if (!runData || runData.error) return <div className="p-8 text-center text-red-500 font-medium">対象のテスト項目書が見つかりませんでした</div>;
 
   return (
     <div className="space-y-4 max-w-[1900px] mx-auto pb-12">
