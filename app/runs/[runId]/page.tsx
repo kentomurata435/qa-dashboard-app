@@ -329,26 +329,25 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     document.addEventListener('mouseup', onMouseUp);
   };
 
-  const fetchLatestData = useCallback((retryCount = 0) => {
+  const fetchLatestData = useCallback(() => {
     fetch(`/api/test-run?runId=${runId}&t=${Date.now()}`, { cache: 'no-store' })
       .then((res) => res.json())
       .then((data) => {
         if (data && !data.error) {
           setRunData(data);
           setLoading(false);
-        } else if (retryCount < 5) {
-          setTimeout(() => fetchLatestData(retryCount + 1), 1500);
-        } else {
-          setRunData(data);
-          setLoading(false);
+          return;
         }
+        setRunData(data || { id: runId, title: `${runId} スルーテスト`, results: {} });
+        setLoading(false);
       })
       .catch(() => {
-        if (retryCount < 5) {
-          setTimeout(() => fetchLatestData(retryCount + 1), 1500);
-        } else {
-          setLoading(false);
-        }
+        setRunData({
+          id: runId,
+          title: `${runId} スルーテスト`,
+          results: {},
+        });
+        setLoading(false);
       });
   }, [runId]);
 
