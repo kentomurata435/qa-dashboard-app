@@ -71,14 +71,14 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     check: 40,
     id: 85,
     priority: 70,
-    screen: 130,
-    feature: 130,
-    precondition: 200,
-    steps: 300,
-    expected: 300,
-    tester: 110,
+    screen: 140,
+    feature: 140,
+    precondition: 220,
+    steps: 420,
+    expected: 420,
+    tester: 120,
     status: 120,
-    note: 180,
+    note: 220,
   });
 
   const startResizing = (colKey: string, e: React.MouseEvent) => {

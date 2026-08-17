@@ -13,6 +13,11 @@ body {
   position: relative;
   max-height: calc(100vh - 220px);
   overflow: auto;
+  width: 100%;
+}
+
+.qa-table-container table {
+  min-width: 1700px;
 }
 
 .qa-table-container table {
