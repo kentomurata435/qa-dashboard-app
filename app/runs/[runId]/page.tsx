@@ -33,6 +33,22 @@ const ALL_PRIORITIES = [
   { key: 'D', label: 'D', color: 'bg-slate-100 text-slate-600' },
 ];
 
+const COLUMN_DEFS = [
+  { key: 'screen', label: '画面' },
+  { key: 'feature', label: '機能' },
+  { key: 'priority', label: '重要度' },
+  { key: 'precondition', label: '前提条件' },
+  { key: 'steps', label: '確認手順' },
+  { key: 'expected', label: '確認内容（期待値）' },
+  { key: 'tester', label: '実施者' },
+  { key: 'status', label: '結果' },
+  { key: 'note', label: '備考' },
+] as const;
+
+const DEFAULT_COLUMN_VISIBILITY = Object.fromEntries(
+  COLUMN_DEFS.map((column) => [column.key, true])
+) as Record<string, boolean>;
+
 // 編集可能列の順序定義（Excel 2次元コピペ用）
 const EDITABLE_FIELDS = [
   'screen',
@@ -65,6 +81,8 @@ export default function RunPage({ params }: { params: { runId: string } }) {
   );
   const [priorityFilterOpen, setPriorityFilterOpen] = useState(false);
   const [selectedPriorities, setSelectedPriorities] = useState<Set<string>>(new Set(['A', 'B', 'C', 'D']));
+  const [columnMenuOpen, setColumnMenuOpen] = useState(false);
+  const [visibleColumns, setVisibleColumns] = useState<Record<string, boolean>>(DEFAULT_COLUMN_VISIBILITY);
 
   // 列幅可変サイズ
   const [colWidths, setColWidths] = useState<{ [key: string]: number }>({
@@ -173,6 +191,20 @@ export default function RunPage({ params }: { params: { runId: string } }) {
       if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
       saveTimerRef.current = setTimeout(() => autoSave(newRunData), 800);
     }
+  };
+
+  const syncTextareaHeight = (element: HTMLTextAreaElement | null) => {
+    if (!element) return;
+    element.style.height = 'auto';
+    const nextHeight = Math.max(40, element.scrollHeight + 4);
+    element.style.height = `${nextHeight}px`;
+  };
+
+  const toggleColumnVisibility = (key: string) => {
+    setVisibleColumns((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
   };
 
   const mapStatusText = (val: string): TestResult['status'] => {
@@ -386,6 +418,58 @@ export default function RunPage({ params }: { params: { runId: string } }) {
             <div className="relative">
               <button
                 type="button"
+                onClick={() => setColumnMenuOpen(!columnMenuOpen)}
+                className="px-3 py-1.5 text-xs text-slate-900 bg-white border border-slate-300 rounded font-bold flex items-center gap-2 shadow-sm hover:bg-slate-50 focus:outline-none"
+              >
+                <span>📋 列表示</span>
+                <span className="bg-sky-100 text-sky-800 px-1.5 py-0.2 rounded text-[10px] font-bold">
+                  {Object.values(visibleColumns).filter(Boolean).length} / {COLUMN_DEFS.length}
+                </span>
+                <span className="text-[10px]">▼</span>
+              </button>
+
+              {columnMenuOpen && (
+                <div className="absolute left-0 mt-1 w-56 bg-white text-slate-900 border border-slate-300 rounded-lg shadow-xl z-30 p-2.5 space-y-1.5">
+                  <div className="flex justify-between items-center pb-1.5 border-b border-slate-200 text-[11px] font-bold">
+                    <span className="text-slate-700">表示する列</span>
+                    <button
+                      type="button"
+                      onClick={() => setVisibleColumns({ ...DEFAULT_COLUMN_VISIBILITY })}
+                      className="text-sky-600 hover:underline text-[10px] font-bold"
+                    >
+                      全表示
+                    </button>
+                  </div>
+                  {COLUMN_DEFS.map((column) => (
+                    <label
+                      key={column.key}
+                      className="flex items-center gap-2 p-1 text-xs hover:bg-slate-100 rounded cursor-pointer select-none"
+                    >
+                      <input
+                        type="checkbox"
+                        checked={visibleColumns[column.key]}
+                        onChange={() => toggleColumnVisibility(column.key)}
+                        className="rounded cursor-pointer"
+                      />
+                      <span>{column.label}</span>
+                    </label>
+                  ))}
+                  <div className="pt-1.5 border-t border-slate-100 text-right">
+                    <button
+                      type="button"
+                      onClick={() => setColumnMenuOpen(false)}
+                      className="px-2.5 py-1 text-[10px] bg-slate-800 text-white rounded font-bold"
+                    >
+                      閉じる
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="relative">
+              <button
+                type="button"
                 onClick={() => setPriorityFilterOpen(!priorityFilterOpen)}
                 className="px-3 py-1.5 text-xs text-slate-900 bg-white border border-slate-300 rounded font-bold flex items-center gap-2 shadow-sm hover:bg-slate-50 focus:outline-none"
               >
@@ -541,48 +625,64 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                 />
                 <div onMouseDown={(e) => startResizing('check', e)} className="resizer" />
               </th>
-              {/* 読取専用 ID */}
               <th style={{ width: `${colWidths.id}px` }} className="relative p-2">
                 ID (固定)
                 <div onMouseDown={(e) => startResizing('id', e)} className="resizer" />
               </th>
-              {/* 編集可能列グループ */}
-              <th style={{ width: `${colWidths.screen}px` }} className="relative p-2">
-                画面
-                <div onMouseDown={(e) => startResizing('screen', e)} className="resizer" />
-              </th>
-              <th style={{ width: `${colWidths.feature}px` }} className="relative p-2">
-                機能
-                <div onMouseDown={(e) => startResizing('feature', e)} className="resizer" />
-              </th>
-              <th style={{ width: `${colWidths.priority}px` }} className="relative p-2">
-                重要度
-                <div onMouseDown={(e) => startResizing('priority', e)} className="resizer" />
-              </th>
-              <th style={{ width: `${colWidths.precondition}px` }} className="relative p-2">
-                前提条件
-                <div onMouseDown={(e) => startResizing('precondition', e)} className="resizer" />
-              </th>
-              <th style={{ width: `${colWidths.steps}px` }} className="relative p-2">
-                確認手順
-                <div onMouseDown={(e) => startResizing('steps', e)} className="resizer" />
-              </th>
-              <th style={{ width: `${colWidths.expected}px` }} className="relative p-2">
-                確認内容（期待値）
-                <div onMouseDown={(e) => startResizing('expected', e)} className="resizer" />
-              </th>
-              <th style={{ width: `${colWidths.tester}px` }} className="relative p-2 bg-blue-100 text-blue-900">
-                実施者
-                <div onMouseDown={(e) => startResizing('tester', e)} className="resizer" />
-              </th>
-              <th style={{ width: `${colWidths.status}px` }} className="relative p-2">
-                結果
-                <div onMouseDown={(e) => startResizing('status', e)} className="resizer" />
-              </th>
-              <th style={{ width: `${colWidths.note}px` }} className="relative p-2">
-                備考
-                <div onMouseDown={(e) => startResizing('note', e)} className="resizer" />
-              </th>
+              {visibleColumns.screen && (
+                <th style={{ width: `${colWidths.screen}px` }} className="relative p-2">
+                  画面
+                  <div onMouseDown={(e) => startResizing('screen', e)} className="resizer" />
+                </th>
+              )}
+              {visibleColumns.feature && (
+                <th style={{ width: `${colWidths.feature}px` }} className="relative p-2">
+                  機能
+                  <div onMouseDown={(e) => startResizing('feature', e)} className="resizer" />
+                </th>
+              )}
+              {visibleColumns.priority && (
+                <th style={{ width: `${colWidths.priority}px` }} className="relative p-2">
+                  重要度
+                  <div onMouseDown={(e) => startResizing('priority', e)} className="resizer" />
+                </th>
+              )}
+              {visibleColumns.precondition && (
+                <th style={{ width: `${colWidths.precondition}px` }} className="relative p-2">
+                  前提条件
+                  <div onMouseDown={(e) => startResizing('precondition', e)} className="resizer" />
+                </th>
+              )}
+              {visibleColumns.steps && (
+                <th style={{ width: `${colWidths.steps}px` }} className="relative p-2">
+                  確認手順
+                  <div onMouseDown={(e) => startResizing('steps', e)} className="resizer" />
+                </th>
+              )}
+              {visibleColumns.expected && (
+                <th style={{ width: `${colWidths.expected}px` }} className="relative p-2">
+                  確認内容（期待値）
+                  <div onMouseDown={(e) => startResizing('expected', e)} className="resizer" />
+                </th>
+              )}
+              {visibleColumns.tester && (
+                <th style={{ width: `${colWidths.tester}px` }} className="relative p-2 bg-blue-100 text-blue-900">
+                  実施者
+                  <div onMouseDown={(e) => startResizing('tester', e)} className="resizer" />
+                </th>
+              )}
+              {visibleColumns.status && (
+                <th style={{ width: `${colWidths.status}px` }} className="relative p-2">
+                  結果
+                  <div onMouseDown={(e) => startResizing('status', e)} className="resizer" />
+                </th>
+              )}
+              {visibleColumns.note && (
+                <th style={{ width: `${colWidths.note}px` }} className="relative p-2">
+                  備考
+                  <div onMouseDown={(e) => startResizing('note', e)} className="resizer" />
+                </th>
+              )}
             </tr>
           </thead>
           <tbody className="text-xs">
@@ -606,7 +706,6 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                   key={tc.id}
                   className={`hover:bg-blue-50/40 transition ${isSelected ? 'bg-blue-50/80' : ''}`}
                 >
-                  {/* チェック */}
                   <td className="p-1 text-center align-top">
                     <input
                       type="checkbox"
@@ -616,151 +715,171 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                     />
                   </td>
 
-                  {/* ID (固定・読取専用) */}
                   <td className="p-2 align-top font-mono font-bold text-slate-800 bg-slate-50/50">
                     {tc.id}
                   </td>
 
-                  {/* 1. 画面 (編集可能) */}
-                  <td className="p-1 align-top">
-                    <textarea
-                      id={`cell-screen-${tc.id}`}
-                      rows={2}
-                      value={screenVal}
-                      onChange={(e) => updateResultField(tc.id, 'screen', e.target.value)}
-                      onPaste={(e) => handlePasteGrid(tc.id, 'screen', e)}
-                      placeholder="画面名"
-                      className="w-full min-h-[48px] p-1 text-xs border border-transparent hover:border-slate-300 rounded font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-y overflow-auto"
-                    />
-                  </td>
+                  {visibleColumns.screen && (
+                    <td className="p-1 align-top">
+                      <textarea
+                        id={`cell-screen-${tc.id}`}
+                        rows={1}
+                        ref={syncTextareaHeight}
+                        value={screenVal}
+                        onInput={(e) => syncTextareaHeight(e.currentTarget)}
+                        onChange={(e) => updateResultField(tc.id, 'screen', e.target.value)}
+                        onPaste={(e) => handlePasteGrid(tc.id, 'screen', e)}
+                        placeholder="画面名"
+                        className="auto-height-textarea w-full min-h-[40px] p-1 text-xs border border-transparent hover:border-slate-300 rounded font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-none overflow-hidden"
+                      />
+                    </td>
+                  )}
 
-                  {/* 2. 機能 (編集可能) */}
-                  <td className="p-1 align-top">
-                    <textarea
-                      id={`cell-feature-${tc.id}`}
-                      rows={2}
-                      value={featureVal}
-                      onChange={(e) => updateResultField(tc.id, 'feature', e.target.value)}
-                      onPaste={(e) => handlePasteGrid(tc.id, 'feature', e)}
-                      placeholder="機能名"
-                      className="w-full min-h-[48px] p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-y overflow-auto"
-                    />
-                  </td>
+                  {visibleColumns.feature && (
+                    <td className="p-1 align-top">
+                      <textarea
+                        id={`cell-feature-${tc.id}`}
+                        rows={1}
+                        ref={syncTextareaHeight}
+                        value={featureVal}
+                        onInput={(e) => syncTextareaHeight(e.currentTarget)}
+                        onChange={(e) => updateResultField(tc.id, 'feature', e.target.value)}
+                        onPaste={(e) => handlePasteGrid(tc.id, 'feature', e)}
+                        placeholder="機能名"
+                        className="auto-height-textarea w-full min-h-[40px] p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-none overflow-hidden"
+                      />
+                    </td>
+                  )}
 
-                  {/* 3. 重要度 (編集可能) */}
-                  <td className="p-1 align-top">
-                    <select
-                      id={`cell-priority-${tc.id}`}
-                      value={priorityVal}
-                      onChange={(e) => updateResultField(tc.id, 'priority', e.target.value)}
-                      onPaste={(e) => handlePasteGrid(tc.id, 'priority', e)}
-                      onKeyDown={(e) => handleKeyDown(tc.id, 'priority', e)}
-                      className="w-full p-1.5 text-xs font-bold rounded border border-slate-300 bg-white text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600"
-                    >
-                      <option value="">未設定</option>
-                      <option value="A">A</option>
-                      <option value="B">B</option>
-                      <option value="C">C</option>
-                      <option value="D">D</option>
-                    </select>
-                  </td>
+                  {visibleColumns.priority && (
+                    <td className="p-1 align-top">
+                      <select
+                        id={`cell-priority-${tc.id}`}
+                        value={priorityVal}
+                        onChange={(e) => updateResultField(tc.id, 'priority', e.target.value)}
+                        onPaste={(e) => handlePasteGrid(tc.id, 'priority', e)}
+                        onKeyDown={(e) => handleKeyDown(tc.id, 'priority', e)}
+                        className="w-full p-1.5 text-xs font-bold rounded border border-slate-300 bg-white text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                      >
+                        <option value="">未設定</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                      </select>
+                    </td>
+                  )}
 
-                  {/* 4. 前提条件 (編集可能) */}
-                  <td className="p-1 align-top">
-                    <textarea
-                      id={`cell-precondition-${tc.id}`}
-                      rows={2}
-                      value={preconditionVal}
-                      onChange={(e) => updateResultField(tc.id, 'precondition', e.target.value)}
-                      onPaste={(e) => handlePasteGrid(tc.id, 'precondition', e)}
-                      placeholder="前提条件"
-                      className="w-full min-h-[48px] p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-y overflow-auto whitespace-pre-wrap font-sans leading-relaxed"
-                    />
-                  </td>
+                  {visibleColumns.precondition && (
+                    <td className="p-1 align-top">
+                      <textarea
+                        id={`cell-precondition-${tc.id}`}
+                        rows={1}
+                        ref={syncTextareaHeight}
+                        value={preconditionVal}
+                        onInput={(e) => syncTextareaHeight(e.currentTarget)}
+                        onChange={(e) => updateResultField(tc.id, 'precondition', e.target.value)}
+                        onPaste={(e) => handlePasteGrid(tc.id, 'precondition', e)}
+                        placeholder="前提条件"
+                        className="auto-height-textarea w-full min-h-[40px] p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-none overflow-hidden whitespace-pre-wrap font-sans leading-relaxed"
+                      />
+                    </td>
+                  )}
 
-                  {/* 5. 確認手順 (編集可能) */}
-                  <td className="p-1 align-top">
-                    <textarea
-                      id={`cell-steps-${tc.id}`}
-                      rows={3}
-                      value={stepsVal}
-                      onChange={(e) => updateResultField(tc.id, 'steps', e.target.value)}
-                      onPaste={(e) => handlePasteGrid(tc.id, 'steps', e)}
-                      placeholder="確認手順"
-                      className="w-full min-h-[72px] p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-y overflow-auto whitespace-pre-wrap font-sans leading-relaxed"
-                    />
-                  </td>
+                  {visibleColumns.steps && (
+                    <td className="p-1 align-top">
+                      <textarea
+                        id={`cell-steps-${tc.id}`}
+                        rows={1}
+                        ref={syncTextareaHeight}
+                        value={stepsVal}
+                        onInput={(e) => syncTextareaHeight(e.currentTarget)}
+                        onChange={(e) => updateResultField(tc.id, 'steps', e.target.value)}
+                        onPaste={(e) => handlePasteGrid(tc.id, 'steps', e)}
+                        placeholder="確認手順"
+                        className="auto-height-textarea w-full min-h-[40px] p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-none overflow-hidden whitespace-pre-wrap font-sans leading-relaxed"
+                      />
+                    </td>
+                  )}
 
-                  {/* 6. 確認内容 (編集可能) */}
-                  <td className="p-1 align-top">
-                    <textarea
-                      id={`cell-expected-${tc.id}`}
-                      rows={3}
-                      value={expectedVal}
-                      onChange={(e) => updateResultField(tc.id, 'expected', e.target.value)}
-                      onPaste={(e) => handlePasteGrid(tc.id, 'expected', e)}
-                      placeholder="確認内容・期待値"
-                      className="w-full min-h-[72px] p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-900 font-medium focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-y overflow-auto whitespace-pre-wrap font-sans leading-relaxed"
-                    />
-                  </td>
+                  {visibleColumns.expected && (
+                    <td className="p-1 align-top">
+                      <textarea
+                        id={`cell-expected-${tc.id}`}
+                        rows={1}
+                        ref={syncTextareaHeight}
+                        value={expectedVal}
+                        onInput={(e) => syncTextareaHeight(e.currentTarget)}
+                        onChange={(e) => updateResultField(tc.id, 'expected', e.target.value)}
+                        onPaste={(e) => handlePasteGrid(tc.id, 'expected', e)}
+                        placeholder="確認内容・期待値"
+                        className="auto-height-textarea w-full min-h-[40px] p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-900 font-medium focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-none overflow-hidden whitespace-pre-wrap font-sans leading-relaxed"
+                      />
+                    </td>
+                  )}
 
-                  {/* 7. 実施者 (編集可能) */}
-                  <td className="p-1 align-top bg-blue-50/20">
-                    <input
-                      id={`cell-tester-${tc.id}`}
-                      type="text"
-                      value={testerVal}
-                      onChange={(e) => updateResultField(tc.id, 'tester', e.target.value)}
-                      onPaste={(e) => handlePasteGrid(tc.id, 'tester', e)}
-                      onKeyDown={(e) => handleKeyDown(tc.id, 'tester', e)}
-                      placeholder="担当者"
-                      className="w-full p-1 text-xs border border-slate-300 rounded font-medium focus:outline-none focus:ring-2 focus:ring-blue-600 bg-white"
-                    />
-                  </td>
+                  {visibleColumns.tester && (
+                    <td className="p-1 align-top bg-blue-50/20">
+                      <input
+                        id={`cell-tester-${tc.id}`}
+                        type="text"
+                        value={testerVal}
+                        onChange={(e) => updateResultField(tc.id, 'tester', e.target.value)}
+                        onPaste={(e) => handlePasteGrid(tc.id, 'tester', e)}
+                        onKeyDown={(e) => handleKeyDown(tc.id, 'tester', e)}
+                        placeholder="担当者"
+                        className="w-full p-1 text-xs border border-slate-300 rounded font-medium focus:outline-none focus:ring-2 focus:ring-blue-600 bg-white"
+                      />
+                    </td>
+                  )}
 
-                  {/* 8. 結果 (編集可能) */}
-                  <td className="p-1 align-top">
-                    <select
-                      id={`cell-status-${tc.id}`}
-                      value={statusVal}
-                      onChange={(e) => updateResultField(tc.id, 'status', e.target.value, true)}
-                      onPaste={(e) => handlePasteGrid(tc.id, 'status', e)}
-                      onKeyDown={(e) => handleKeyDown(tc.id, 'status', e)}
-                      className={`w-full p-1.5 text-xs font-bold rounded border cursor-pointer focus:ring-2 focus:ring-blue-600 ${
-                        statusVal === 'PASSED'
-                          ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
-                          : statusVal === 'FAILED'
-                          ? 'bg-rose-100 text-rose-800 border-rose-300'
-                          : statusVal === 'BLOCKED'
-                          ? 'bg-amber-100 text-amber-800 border-amber-300'
-                          : statusVal === 'AUTOMATED'
-                          ? 'bg-blue-100 text-blue-800 border-blue-300'
-                          : statusVal === 'EXCLUDED'
-                          ? 'bg-slate-200 text-slate-700 border-slate-300'
-                          : 'bg-slate-100 text-slate-600 border-slate-300'
-                      }`}
-                    >
-                      <option value="UNTESTED">未実施</option>
-                      <option value="PASSED">OK</option>
-                      <option value="FAILED">NG</option>
-                      <option value="BLOCKED">保留</option>
-                      <option value="EXCLUDED">対象外</option>
-                      <option value="AUTOMATED">自動化</option>
-                    </select>
-                  </td>
+                  {visibleColumns.status && (
+                    <td className="p-1 align-top">
+                      <select
+                        id={`cell-status-${tc.id}`}
+                        value={statusVal}
+                        onChange={(e) => updateResultField(tc.id, 'status', e.target.value, true)}
+                        onPaste={(e) => handlePasteGrid(tc.id, 'status', e)}
+                        onKeyDown={(e) => handleKeyDown(tc.id, 'status', e)}
+                        className={`w-full p-1.5 text-xs font-bold rounded border cursor-pointer focus:ring-2 focus:ring-blue-600 ${
+                          statusVal === 'PASSED'
+                            ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
+                            : statusVal === 'FAILED'
+                            ? 'bg-rose-100 text-rose-800 border-rose-300'
+                            : statusVal === 'BLOCKED'
+                            ? 'bg-amber-100 text-amber-800 border-amber-300'
+                            : statusVal === 'AUTOMATED'
+                            ? 'bg-blue-100 text-blue-800 border-blue-300'
+                            : statusVal === 'EXCLUDED'
+                            ? 'bg-slate-200 text-slate-700 border-slate-300'
+                            : 'bg-slate-100 text-slate-600 border-slate-300'
+                        }`}
+                      >
+                        <option value="UNTESTED">未実施</option>
+                        <option value="PASSED">OK</option>
+                        <option value="FAILED">NG</option>
+                        <option value="BLOCKED">保留</option>
+                        <option value="EXCLUDED">対象外</option>
+                        <option value="AUTOMATED">自動化</option>
+                      </select>
+                    </td>
+                  )}
 
-                  {/* 9. 備考 (編集可能) */}
-                  <td className="p-1 align-top">
-                    <textarea
-                      id={`cell-note-${tc.id}`}
-                      rows={2}
-                      value={noteVal}
-                      onChange={(e) => updateResultField(tc.id, 'note', e.target.value)}
-                      onPaste={(e) => handlePasteGrid(tc.id, 'note', e)}
-                      placeholder="備考・不具合リンク"
-                      className="w-full min-h-[48px] p-1 border border-slate-300 rounded text-xs focus:outline-none focus:ring-2 focus:ring-blue-600 resize-y overflow-auto bg-white"
-                    />
-                  </td>
+                  {visibleColumns.note && (
+                    <td className="p-1 align-top">
+                      <textarea
+                        id={`cell-note-${tc.id}`}
+                        rows={1}
+                        ref={syncTextareaHeight}
+                        value={noteVal}
+                        onInput={(e) => syncTextareaHeight(e.currentTarget)}
+                        onChange={(e) => updateResultField(tc.id, 'note', e.target.value)}
+                        onPaste={(e) => handlePasteGrid(tc.id, 'note', e)}
+                        placeholder="備考・不具合リンク"
+                        className="auto-height-textarea w-full min-h-[40px] p-1 border border-slate-300 rounded text-xs focus:outline-none focus:ring-2 focus:ring-blue-600 resize-none overflow-hidden bg-white"
+                      />
+                    </td>
+                  )}
                 </tr>
               );
             })}
