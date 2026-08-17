@@ -294,6 +294,9 @@ export default function RunPage({ params }: { params: { runId: string } }) {
   const [selectedPriorities, setSelectedPriorities] = useState<Set<string>>(new Set(['A', 'B', 'C', 'D']));
   const [columnMenuOpen, setColumnMenuOpen] = useState(false);
   const [visibleColumns, setVisibleColumns] = useState<Record<string, boolean>>(DEFAULT_COLUMN_VISIBILITY);
+  const tableContainerRef = useRef<HTMLDivElement | null>(null);
+  const [scrollTop, setScrollTop] = useState(0);
+  const [viewportHeight, setViewportHeight] = useState(720);
 
   // 列幅可変サイズ
   const [colWidths, setColWidths] = useState<{ [key: string]: number }>({
@@ -581,6 +584,28 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     });
   }, [runData, searchQuery, selectedStatuses, selectedPriorities]);
 
+  const rowHeight = 42;
+  const overscan = 12;
+  const visibleStartIndex = Math.max(0, Math.floor(scrollTop / rowHeight) - overscan);
+  const visibleEndIndex = Math.min(
+    filteredCases.length,
+    visibleStartIndex + Math.ceil((viewportHeight || 720) / rowHeight) + overscan * 2
+  );
+  const visibleCases = filteredCases.slice(visibleStartIndex, visibleEndIndex);
+  const totalTableHeight = filteredCases.length * rowHeight;
+
+  useEffect(() => {
+    const updateViewport = () => {
+      if (tableContainerRef.current) {
+        setViewportHeight(tableContainerRef.current.clientHeight || 720);
+      }
+    };
+
+    updateViewport();
+    window.addEventListener('resize', updateViewport);
+    return () => window.removeEventListener('resize', updateViewport);
+  }, []);
+
   if (loading) return <div className="p-8 text-center text-slate-500 font-medium">データを読み込み中...</div>;
   if (!runData || runData.error) return <div className="p-8 text-center text-red-500 font-medium">対象のテスト項目書が見つかりませんでした</div>;
 
@@ -810,114 +835,123 @@ export default function RunPage({ params }: { params: { runId: string } }) {
       </div>
 
       {/* 完全 Excellike スプレッドシートテーブル */}
-      <div className="bg-white rounded-xl shadow-sm border border-slate-300 qa-table-container">
-        <table className="text-left border-collapse table-fixed w-max" style={{ minWidth: '2100px' }}>
-          <colgroup>
-            <col style={{ width: `${colWidths.check}px` }} />
-            <col style={{ width: `${colWidths.id}px` }} />
-            <col style={{ width: `${colWidths.screen}px` }} />
-            <col style={{ width: `${colWidths.feature}px` }} />
-            <col style={{ width: `${colWidths.priority}px` }} />
-            <col style={{ width: `${colWidths.precondition}px` }} />
-            <col style={{ width: `${colWidths.steps}px` }} />
-            <col style={{ width: `${colWidths.expected}px` }} />
-            <col style={{ width: `${colWidths.tester}px` }} />
-            <col style={{ width: `${colWidths.status}px` }} />
-            <col style={{ width: `${colWidths.note}px` }} />
-          </colgroup>
-          <thead>
-            <tr className="bg-slate-200 text-[11px] text-slate-800 font-bold uppercase select-none">
-              <th style={{ width: `${colWidths.check}px` }} className="relative p-2 text-center">
-                <input
-                  type="checkbox"
-                  checked={selectedIds.size > 0 && selectedIds.size === filteredCases.length}
-                  onChange={() => toggleSelectAll(filteredCases)}
-                  className="rounded cursor-pointer"
-                />
-                <div onMouseDown={(e) => startResizing('check', e)} className="resizer" />
-              </th>
-              <th style={{ width: `${colWidths.id}px` }} className="relative p-2">
-                ID (固定)
-                <div onMouseDown={(e) => startResizing('id', e)} className="resizer" />
-              </th>
-              {visibleColumns.screen && (
-                <th style={{ width: `${colWidths.screen}px` }} className="relative p-2">
-                  画面
-                  <div onMouseDown={(e) => startResizing('screen', e)} className="resizer" />
+      <div
+        ref={tableContainerRef}
+        className="bg-white rounded-xl shadow-sm border border-slate-300 qa-table-container"
+        onScroll={(e) => setScrollTop(e.currentTarget.scrollTop)}
+      >
+        <div style={{ height: `${totalTableHeight}px`, position: 'relative' }}>
+          <table
+            className="text-left border-collapse table-fixed w-max"
+            style={{ minWidth: '2100px', position: 'absolute', inset: 0, top: `${visibleStartIndex * rowHeight}px` }}
+          >
+            <colgroup>
+              <col style={{ width: `${colWidths.check}px` }} />
+              <col style={{ width: `${colWidths.id}px` }} />
+              <col style={{ width: `${colWidths.screen}px` }} />
+              <col style={{ width: `${colWidths.feature}px` }} />
+              <col style={{ width: `${colWidths.priority}px` }} />
+              <col style={{ width: `${colWidths.precondition}px` }} />
+              <col style={{ width: `${colWidths.steps}px` }} />
+              <col style={{ width: `${colWidths.expected}px` }} />
+              <col style={{ width: `${colWidths.tester}px` }} />
+              <col style={{ width: `${colWidths.status}px` }} />
+              <col style={{ width: `${colWidths.note}px` }} />
+            </colgroup>
+            <thead>
+              <tr className="bg-slate-200 text-[11px] text-slate-800 font-bold uppercase select-none">
+                <th style={{ width: `${colWidths.check}px` }} className="relative p-2 text-center">
+                  <input
+                    type="checkbox"
+                    checked={selectedIds.size > 0 && selectedIds.size === filteredCases.length}
+                    onChange={() => toggleSelectAll(filteredCases)}
+                    className="rounded cursor-pointer"
+                  />
+                  <div onMouseDown={(e) => startResizing('check', e)} className="resizer" />
                 </th>
-              )}
-              {visibleColumns.feature && (
-                <th style={{ width: `${colWidths.feature}px` }} className="relative p-2">
-                  機能
-                  <div onMouseDown={(e) => startResizing('feature', e)} className="resizer" />
+                <th style={{ width: `${colWidths.id}px` }} className="relative p-2">
+                  ID (固定)
+                  <div onMouseDown={(e) => startResizing('id', e)} className="resizer" />
                 </th>
-              )}
-              {visibleColumns.priority && (
-                <th style={{ width: `${colWidths.priority}px` }} className="relative p-2">
-                  重要度
-                  <div onMouseDown={(e) => startResizing('priority', e)} className="resizer" />
-                </th>
-              )}
-              {visibleColumns.precondition && (
-                <th style={{ width: `${colWidths.precondition}px` }} className="relative p-2">
-                  前提条件
-                  <div onMouseDown={(e) => startResizing('precondition', e)} className="resizer" />
-                </th>
-              )}
-              {visibleColumns.steps && (
-                <th style={{ width: `${colWidths.steps}px` }} className="relative p-2">
-                  確認手順
-                  <div onMouseDown={(e) => startResizing('steps', e)} className="resizer" />
-                </th>
-              )}
-              {visibleColumns.expected && (
-                <th style={{ width: `${colWidths.expected}px` }} className="relative p-2">
-                  確認内容（期待値）
-                  <div onMouseDown={(e) => startResizing('expected', e)} className="resizer" />
-                </th>
-              )}
-              {visibleColumns.tester && (
-                <th style={{ width: `${colWidths.tester}px` }} className="relative p-2 bg-blue-100 text-blue-900">
-                  実施者
-                  <div onMouseDown={(e) => startResizing('tester', e)} className="resizer" />
-                </th>
-              )}
-              {visibleColumns.status && (
-                <th style={{ width: `${colWidths.status}px` }} className="relative p-2">
-                  結果
-                  <div onMouseDown={(e) => startResizing('status', e)} className="resizer" />
-                </th>
-              )}
-              {visibleColumns.note && (
-                <th style={{ width: `${colWidths.note}px` }} className="relative p-2">
-                  備考
-                  <div onMouseDown={(e) => startResizing('note', e)} className="resizer" />
-                </th>
-              )}
-            </tr>
-          </thead>
-          <tbody className="text-xs">
-            {filteredCases.map((tc: any) => {
-              const rowResult = runData.results?.[tc.id] || {};
-              const isSelected = selectedIds.has(tc.id);
+                {visibleColumns.screen && (
+                  <th style={{ width: `${colWidths.screen}px` }} className="relative p-2">
+                    画面
+                    <div onMouseDown={(e) => startResizing('screen', e)} className="resizer" />
+                  </th>
+                )}
+                {visibleColumns.feature && (
+                  <th style={{ width: `${colWidths.feature}px` }} className="relative p-2">
+                    機能
+                    <div onMouseDown={(e) => startResizing('feature', e)} className="resizer" />
+                  </th>
+                )}
+                {visibleColumns.priority && (
+                  <th style={{ width: `${colWidths.priority}px` }} className="relative p-2">
+                    重要度
+                    <div onMouseDown={(e) => startResizing('priority', e)} className="resizer" />
+                  </th>
+                )}
+                {visibleColumns.precondition && (
+                  <th style={{ width: `${colWidths.precondition}px` }} className="relative p-2">
+                    前提条件
+                    <div onMouseDown={(e) => startResizing('precondition', e)} className="resizer" />
+                  </th>
+                )}
+                {visibleColumns.steps && (
+                  <th style={{ width: `${colWidths.steps}px` }} className="relative p-2">
+                    確認手順
+                    <div onMouseDown={(e) => startResizing('steps', e)} className="resizer" />
+                  </th>
+                )}
+                {visibleColumns.expected && (
+                  <th style={{ width: `${colWidths.expected}px` }} className="relative p-2">
+                    確認内容（期待値）
+                    <div onMouseDown={(e) => startResizing('expected', e)} className="resizer" />
+                  </th>
+                )}
+                {visibleColumns.tester && (
+                  <th style={{ width: `${colWidths.tester}px` }} className="relative p-2 bg-blue-100 text-blue-900">
+                    実施者
+                    <div onMouseDown={(e) => startResizing('tester', e)} className="resizer" />
+                  </th>
+                )}
+                {visibleColumns.status && (
+                  <th style={{ width: `${colWidths.status}px` }} className="relative p-2">
+                    結果
+                    <div onMouseDown={(e) => startResizing('status', e)} className="resizer" />
+                  </th>
+                )}
+                {visibleColumns.note && (
+                  <th style={{ width: `${colWidths.note}px` }} className="relative p-2">
+                    備考
+                    <div onMouseDown={(e) => startResizing('note', e)} className="resizer" />
+                  </th>
+                )}
+              </tr>
+            </thead>
+            <tbody className="text-xs">
+              {visibleCases.map((tc: any) => {
+                const rowResult = runData.results?.[tc.id] || {};
+                const isSelected = selectedIds.has(tc.id);
 
-              return (
-                <TableRow
-                  key={tc.id}
-                  tc={tc}
-                  result={rowResult}
-                  visibleColumns={visibleColumns}
-                  isSelected={isSelected}
-                  onSelect={toggleSelect}
-                  onUpdateField={updateResultField}
-                  onPasteGrid={handlePasteGrid}
-                  onKeyDown={handleKeyDown}
-                  onResizeTextarea={resizeTextarea}
-                />
-              );
-            })}
-          </tbody>
-        </table>
+                return (
+                  <TableRow
+                    key={tc.id}
+                    tc={tc}
+                    result={rowResult}
+                    visibleColumns={visibleColumns}
+                    isSelected={isSelected}
+                    onSelect={toggleSelect}
+                    onUpdateField={updateResultField}
+                    onPasteGrid={handlePasteGrid}
+                    onKeyDown={handleKeyDown}
+                    onResizeTextarea={resizeTextarea}
+                  />
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
