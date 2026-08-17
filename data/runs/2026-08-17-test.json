@@ -2,7 +2,7 @@
   "id": "2026-08-17-test",
   "title": "Test",
   "createdAt": "2026-08-17T01:36:46.762Z",
-  "updatedAt": "2026-08-17T01:36:46.762Z",
+  "updatedAt": "2026-08-17T03:24:02.805Z",
   "results": {
     "TC-001": {
       "status": "UNTESTED",
@@ -24,9 +24,9 @@
     },
     "TC-004": {
       "status": "UNTESTED",
-      "tester": "",
+      "tester": "村田",
       "note": "",
-      "updatedAt": ""
+      "updatedAt": "2026-08-17T03:24:02.002Z"
     },
     "TC-005": {
       "status": "UNTESTED",
