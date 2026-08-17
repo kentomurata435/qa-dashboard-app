@@ -26,11 +26,17 @@ const ALL_STATUSES = [
   { key: 'AUTOMATED', label: '自動化', color: 'bg-blue-100 text-blue-800' },
 ];
 
+const ALL_PRIORITIES = [
+  { key: 'A', label: 'A', color: 'bg-red-100 text-red-800' },
+  { key: 'B', label: 'B', color: 'bg-amber-100 text-amber-800' },
+  { key: 'C', label: 'C', color: 'bg-slate-200 text-slate-700' },
+];
+
 // 編集可能列の順序定義（Excel 2次元コピペ用）
 const EDITABLE_FIELDS = [
-  'priority',
   'screen',
   'feature',
+  'priority',
   'precondition',
   'steps',
   'expected',
@@ -51,11 +57,13 @@ export default function RunPage({ params }: { params: { runId: string } }) {
   const [batchTester, setBatchTester] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
 
-  // ステータスフィルター
+  // フィルター
   const [statusFilterOpen, setStatusFilterOpen] = useState(false);
   const [selectedStatuses, setSelectedStatuses] = useState<Set<string>>(
     new Set(['UNTESTED', 'PASSED', 'FAILED', 'BLOCKED', 'EXCLUDED', 'AUTOMATED'])
   );
+  const [priorityFilterOpen, setPriorityFilterOpen] = useState(false);
+  const [selectedPriorities, setSelectedPriorities] = useState<Set<string>>(new Set(['A', 'B', 'C']));
 
   // 列幅可変サイズ
   const [colWidths, setColWidths] = useState<{ [key: string]: number }>({
@@ -286,6 +294,21 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     }
   };
 
+  const togglePriorityFilter = (key: string) => {
+    const next = new Set(selectedPriorities);
+    if (next.has(key)) next.delete(key);
+    else next.add(key);
+    setSelectedPriorities(next);
+  };
+
+  const toggleAllPriorityFilters = () => {
+    if (selectedPriorities.size === ALL_PRIORITIES.length) {
+      setSelectedPriorities(new Set());
+    } else {
+      setSelectedPriorities(new Set(ALL_PRIORITIES.map((p) => p.key)));
+    }
+  };
+
   if (loading) return <div className="p-8 text-center text-slate-500 font-medium">データを読み込み中...</div>;
   if (!runData || runData.error) return <div className="p-8 text-center text-red-500 font-medium">対象のテスト項目書が見つかりませんでした</div>;
 
@@ -308,9 +331,11 @@ export default function RunPage({ params }: { params: { runId: string } }) {
       currentTester.includes(searchQuery);
 
     const caseStatus = result.status || 'UNTESTED';
+    const casePriority = (result.priority !== undefined ? result.priority : (tc.priority || ''));
     const matchesStatus = selectedStatuses.has(caseStatus);
+    const matchesPriority = selectedPriorities.has(casePriority);
 
-    return matchesSearch && matchesStatus;
+    return matchesSearch && matchesStatus && matchesPriority;
   });
 
   return (
@@ -354,6 +379,60 @@ export default function RunPage({ params }: { params: { runId: string } }) {
               placeholder="🔍 検索 (ID, 画面, 機能, 実施者...)"
               className="w-full max-w-xs px-3 py-1.5 text-xs text-slate-900 rounded bg-white border border-slate-300 focus:outline-none"
             />
+
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setPriorityFilterOpen(!priorityFilterOpen)}
+                className="px-3 py-1.5 text-xs text-slate-900 bg-white border border-slate-300 rounded font-bold flex items-center gap-2 shadow-sm hover:bg-slate-50 focus:outline-none"
+              >
+                <span>⚑ 重要度絞り込み</span>
+                <span className="bg-violet-100 text-violet-800 px-1.5 py-0.2 rounded text-[10px] font-bold">
+                  {selectedPriorities.size} / {ALL_PRIORITIES.length}
+                </span>
+                <span className="text-[10px]">▼</span>
+              </button>
+
+              {priorityFilterOpen && (
+                <div className="absolute left-0 mt-1 w-44 bg-white text-slate-900 border border-slate-300 rounded-lg shadow-xl z-30 p-2.5 space-y-1.5">
+                  <div className="flex justify-between items-center pb-1.5 border-b border-slate-200 text-[11px] font-bold">
+                    <span className="text-slate-700">表示する重要度</span>
+                    <button
+                      type="button"
+                      onClick={toggleAllPriorityFilters}
+                      className="text-violet-600 hover:underline text-[10px] font-bold"
+                    >
+                      {selectedPriorities.size === ALL_PRIORITIES.length ? '全解除' : '全選択'}
+                    </button>
+                  </div>
+                  {ALL_PRIORITIES.map((item) => (
+                    <label
+                      key={item.key}
+                      className="flex items-center gap-2 p-1 text-xs hover:bg-slate-100 rounded cursor-pointer select-none"
+                    >
+                      <input
+                        type="checkbox"
+                        checked={selectedPriorities.has(item.key)}
+                        onChange={() => togglePriorityFilter(item.key)}
+                        className="rounded cursor-pointer"
+                      />
+                      <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold ${item.color}`}>
+                        {item.label}
+                      </span>
+                    </label>
+                  ))}
+                  <div className="pt-1.5 border-t border-slate-100 text-right">
+                    <button
+                      type="button"
+                      onClick={() => setPriorityFilterOpen(false)}
+                      className="px-2.5 py-1 text-[10px] bg-slate-800 text-white rounded font-bold"
+                    >
+                      閉じる
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
 
             <div className="relative">
               <button
@@ -452,10 +531,6 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                 <div onMouseDown={(e) => startResizing('id', e)} className="resizer" />
               </th>
               {/* 編集可能列グループ */}
-              <th style={{ width: `${colWidths.priority}px` }} className="relative p-2">
-                重要度
-                <div onMouseDown={(e) => startResizing('priority', e)} className="resizer" />
-              </th>
               <th style={{ width: `${colWidths.screen}px` }} className="relative p-2">
                 画面
                 <div onMouseDown={(e) => startResizing('screen', e)} className="resizer" />
@@ -463,6 +538,10 @@ export default function RunPage({ params }: { params: { runId: string } }) {
               <th style={{ width: `${colWidths.feature}px` }} className="relative p-2">
                 機能
                 <div onMouseDown={(e) => startResizing('feature', e)} className="resizer" />
+              </th>
+              <th style={{ width: `${colWidths.priority}px` }} className="relative p-2">
+                重要度
+                <div onMouseDown={(e) => startResizing('priority', e)} className="resizer" />
               </th>
               <th style={{ width: `${colWidths.precondition}px` }} className="relative p-2">
                 前提条件
@@ -481,11 +560,11 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                 <div onMouseDown={(e) => startResizing('tester', e)} className="resizer" />
               </th>
               <th style={{ width: `${colWidths.status}px` }} className="relative p-2">
-                結果ステータス
+                結果
                 <div onMouseDown={(e) => startResizing('status', e)} className="resizer" />
               </th>
               <th style={{ width: `${colWidths.note}px` }} className="relative p-2">
-                備考・バグ情報
+                備考
                 <div onMouseDown={(e) => startResizing('note', e)} className="resizer" />
               </th>
             </tr>
@@ -526,21 +605,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                     {tc.id}
                   </td>
 
-                  {/* 1. 重要度 (編集可能) */}
-                  <td className="p-1 align-top">
-                    <input
-                      id={`cell-priority-${tc.id}`}
-                      type="text"
-                      value={priorityVal}
-                      onChange={(e) => updateResultField(tc.id, 'priority', e.target.value)}
-                      onPaste={(e) => handlePasteGrid(tc.id, 'priority', e)}
-                      onKeyDown={(e) => handleKeyDown(tc.id, 'priority', e)}
-                      placeholder="重要度"
-                      className="w-full p-1 text-xs border border-transparent hover:border-slate-300 rounded text-center font-bold focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent"
-                    />
-                  </td>
-
-                  {/* 2. 画面 (編集可能) */}
+                  {/* 1. 画面 (編集可能) */}
                   <td className="p-1 align-top">
                     <textarea
                       id={`cell-screen-${tc.id}`}
@@ -553,7 +618,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                     />
                   </td>
 
-                  {/* 3. 機能 (編集可能) */}
+                  {/* 2. 機能 (編集可能) */}
                   <td className="p-1 align-top">
                     <textarea
                       id={`cell-feature-${tc.id}`}
@@ -564,6 +629,23 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                       placeholder="機能名"
                       className="w-full p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-y"
                     />
+                  </td>
+
+                  {/* 3. 重要度 (編集可能) */}
+                  <td className="p-1 align-top">
+                    <select
+                      id={`cell-priority-${tc.id}`}
+                      value={priorityVal}
+                      onChange={(e) => updateResultField(tc.id, 'priority', e.target.value)}
+                      onPaste={(e) => handlePasteGrid(tc.id, 'priority', e)}
+                      onKeyDown={(e) => handleKeyDown(tc.id, 'priority', e)}
+                      className="w-full p-1.5 text-xs font-bold rounded border border-slate-300 bg-white text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    >
+                      <option value="">未設定</option>
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                    </select>
                   </td>
 
                   {/* 4. 前提条件 (編集可能) */}
@@ -619,7 +701,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                     />
                   </td>
 
-                  {/* 8. 結果ステータス (編集可能) */}
+                  {/* 8. 結果 (編集可能) */}
                   <td className="p-1 align-top">
                     <select
                       id={`cell-status-${tc.id}`}
