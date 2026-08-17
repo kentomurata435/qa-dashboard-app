@@ -14,18 +14,12 @@ body {
   max-height: calc(100vh - 220px);
   overflow: auto;
   width: 100%;
-  contain: strict;
+  contain: layout paint;
 }
 
 .qa-table-container table {
   min-width: 2100px;
   table-layout: fixed;
-}
-
-.qa-table-container tbody tr {
-  content-visibility: auto;
-  contain-intrinsic-size: 2200px 52px;
-  contain: layout paint style;
 }
 
 .qa-table-container table {

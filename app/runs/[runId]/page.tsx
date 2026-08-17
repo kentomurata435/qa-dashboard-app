@@ -700,7 +700,6 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                 <tr
                   key={tc.id}
                   className={`hover:bg-blue-50/40 transition ${isSelected ? 'bg-blue-50/80' : ''}`}
-                  style={{ contentVisibility: 'auto', containIntrinsicSize: '2200px 52px' }}
                 >
                   <td className="p-1 text-center align-top">
                     <input
