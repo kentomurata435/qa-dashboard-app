@@ -204,7 +204,8 @@ export default function RunPage({ params }: { params: { runId: string } }) {
         const fieldKey = EDITABLE_FIELDS[startColIdx + cOffset];
         if (!fieldKey) return;
 
-        const val = cellValue.replace(/\r/g, '').strip ? cellValue.replace(/\r/g, '').strip() : cellValue.trim();
+        const normalized = cellValue.replace(/\r/g, '');
+        const val = normalized.trim();
 
         if (fieldKey === 'status') {
           updatedFields.status = mapStatusText(val);
