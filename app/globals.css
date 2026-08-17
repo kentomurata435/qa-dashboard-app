@@ -17,12 +17,17 @@ body {
 }
 
 .qa-table-container table {
-  min-width: 1700px;
+  min-width: 2100px;
+  table-layout: fixed;
 }
 
 .qa-table-container table {
   border-collapse: collapse !important;
   border: 1px solid #cbd5e1 !important;
+}
+
+.qa-table-container td {
+  min-width: 0;
 }
 
 .qa-table-container thead th {
@@ -43,12 +48,18 @@ body {
 .qa-table-container input,
 .qa-table-container select {
   box-sizing: border-box;
+  width: 100% !important;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .qa-table-container textarea {
   overflow: auto;
   line-height: 1.5;
   max-height: 220px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 /* 列幅リサイズハンドルのスタイル */

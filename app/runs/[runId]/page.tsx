@@ -71,14 +71,14 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     check: 40,
     id: 85,
     priority: 70,
-    screen: 140,
-    feature: 140,
-    precondition: 220,
-    steps: 420,
-    expected: 420,
+    screen: 160,
+    feature: 180,
+    precondition: 260,
+    steps: 520,
+    expected: 520,
     tester: 120,
     status: 120,
-    note: 220,
+    note: 260,
   });
 
   const startResizing = (colKey: string, e: React.MouseEvent) => {
@@ -516,7 +516,20 @@ export default function RunPage({ params }: { params: { runId: string } }) {
 
       {/* 完全 Excellike スプレッドシートテーブル */}
       <div className="bg-white rounded-xl shadow-sm border border-slate-300 qa-table-container">
-        <table className="text-left border-collapse table-fixed w-max">
+        <table className="text-left border-collapse table-fixed w-max" style={{ minWidth: '2100px' }}>
+          <colgroup>
+            <col style={{ width: `${colWidths.check}px` }} />
+            <col style={{ width: `${colWidths.id}px` }} />
+            <col style={{ width: `${colWidths.screen}px` }} />
+            <col style={{ width: `${colWidths.feature}px` }} />
+            <col style={{ width: `${colWidths.priority}px` }} />
+            <col style={{ width: `${colWidths.precondition}px` }} />
+            <col style={{ width: `${colWidths.steps}px` }} />
+            <col style={{ width: `${colWidths.expected}px` }} />
+            <col style={{ width: `${colWidths.tester}px` }} />
+            <col style={{ width: `${colWidths.status}px` }} />
+            <col style={{ width: `${colWidths.note}px` }} />
+          </colgroup>
           <thead>
             <tr className="bg-slate-200 text-[11px] text-slate-800 font-bold uppercase select-none">
               <th style={{ width: `${colWidths.check}px` }} className="relative p-2 text-center">
