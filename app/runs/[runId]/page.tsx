@@ -513,7 +513,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
       </div>
 
       {/* 完全 Excellike スプレッドシートテーブル */}
-      <div className="bg-white rounded-xl shadow-sm border border-slate-300 overflow-x-auto qa-table-container">
+      <div className="bg-white rounded-xl shadow-sm border border-slate-300 qa-table-container">
         <table className="text-left border-collapse table-fixed w-max">
           <thead>
             <tr className="bg-slate-200 text-[11px] text-slate-800 font-bold uppercase select-none">
