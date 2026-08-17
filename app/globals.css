@@ -41,8 +41,9 @@ body {
 }
 
 .qa-table-container textarea {
-  overflow: hidden;
+  overflow: auto;
   line-height: 1.5;
+  max-height: 220px;
 }
 
 /* 列幅リサイズハンドルのスタイル */
