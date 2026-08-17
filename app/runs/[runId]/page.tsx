@@ -1,7 +1,7 @@
 // app/runs/[runId]/page.tsx
 'use client';
 
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import casesData from '@/data/cases.json';
 
 interface TestResult {
@@ -342,33 +342,52 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     }
   };
 
-  const filteredCases = !runData
-    ? []
-    : casesData.filter((tc: any) => {
-        const result = runData.results?.[tc.id] || {};
+  const filteredCases = useMemo(() => {
+    if (!runData) return [];
 
-        const currentPriority = result.priority !== undefined ? result.priority : tc.priority;
-        const currentScreen = result.screen !== undefined ? result.screen : tc.screen;
-        const currentFeature = result.feature !== undefined ? result.feature : tc.feature;
-        const currentSteps = result.steps !== undefined ? result.steps : tc.steps;
-        const currentExpected = result.expected !== undefined ? result.expected : tc.expected;
-        const currentTester = result.tester !== undefined ? result.tester : (tc.defaultTester || '');
+    return casesData.filter((tc: any) => {
+      const result = runData.results?.[tc.id] || {};
 
-        const matchesSearch =
-          tc.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          String(currentScreen || '').includes(searchQuery) ||
-          String(currentFeature || '').includes(searchQuery) ||
-          String(currentSteps || '').includes(searchQuery) ||
-          String(currentExpected || '').includes(searchQuery) ||
-          String(currentTester || '').includes(searchQuery);
+      const currentPriority = result.priority !== undefined ? result.priority : tc.priority;
+      const currentScreen = result.screen !== undefined ? result.screen : tc.screen;
+      const currentFeature = result.feature !== undefined ? result.feature : tc.feature;
+      const currentSteps = result.steps !== undefined ? result.steps : tc.steps;
+      const currentExpected = result.expected !== undefined ? result.expected : tc.expected;
+      const currentTester = result.tester !== undefined ? result.tester : (tc.defaultTester || '');
 
-        const caseStatus = result.status || 'UNTESTED';
-        const casePriority = (result.priority !== undefined ? result.priority : (tc.priority || ''));
-        const matchesStatus = selectedStatuses.has(caseStatus);
-        const matchesPriority = selectedPriorities.has(casePriority);
+      const matchesSearch =
+        tc.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        String(currentScreen || '').includes(searchQuery) ||
+        String(currentFeature || '').includes(searchQuery) ||
+        String(currentSteps || '').includes(searchQuery) ||
+        String(currentExpected || '').includes(searchQuery) ||
+        String(currentTester || '').includes(searchQuery);
 
-        return matchesSearch && matchesStatus && matchesPriority;
+      const caseStatus = result.status || 'UNTESTED';
+      const casePriority = (result.priority !== undefined ? result.priority : (tc.priority || ''));
+      const matchesStatus = selectedStatuses.has(caseStatus);
+      const matchesPriority = selectedPriorities.has(casePriority);
+
+      return matchesSearch && matchesStatus && matchesPriority;
+    });
+  }, [runData, searchQuery, selectedStatuses, selectedPriorities]);
+
+  const visibleColumnKeys = useMemo(
+    () => COLUMN_DEFS.filter((column) => visibleColumns[column.key]).map((column) => column.key),
+    [visibleColumns]
+  );
+
+  useEffect(() => {
+    if (!filteredCases.length) return;
+
+    const frame = requestAnimationFrame(() => {
+      document.querySelectorAll<HTMLTextAreaElement>('.auto-height-textarea').forEach((element) => {
+        syncTextareaHeight(element);
       });
+    });
+
+    return () => cancelAnimationFrame(frame);
+  }, [filteredCases, visibleColumns, runData]);
 
   if (loading) return <div className="p-8 text-center text-slate-500 font-medium">データを読み込み中...</div>;
   if (!runData || runData.error) return <div className="p-8 text-center text-red-500 font-medium">対象のテスト項目書が見つかりませんでした</div>;
@@ -724,7 +743,6 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                       <textarea
                         id={`cell-screen-${tc.id}`}
                         rows={1}
-                        ref={syncTextareaHeight}
                         value={screenVal}
                         onInput={(e) => syncTextareaHeight(e.currentTarget)}
                         onChange={(e) => updateResultField(tc.id, 'screen', e.target.value)}
@@ -740,7 +758,6 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                       <textarea
                         id={`cell-feature-${tc.id}`}
                         rows={1}
-                        ref={syncTextareaHeight}
                         value={featureVal}
                         onInput={(e) => syncTextareaHeight(e.currentTarget)}
                         onChange={(e) => updateResultField(tc.id, 'feature', e.target.value)}
@@ -775,7 +792,6 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                       <textarea
                         id={`cell-precondition-${tc.id}`}
                         rows={1}
-                        ref={syncTextareaHeight}
                         value={preconditionVal}
                         onInput={(e) => syncTextareaHeight(e.currentTarget)}
                         onChange={(e) => updateResultField(tc.id, 'precondition', e.target.value)}
@@ -791,7 +807,6 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                       <textarea
                         id={`cell-steps-${tc.id}`}
                         rows={1}
-                        ref={syncTextareaHeight}
                         value={stepsVal}
                         onInput={(e) => syncTextareaHeight(e.currentTarget)}
                         onChange={(e) => updateResultField(tc.id, 'steps', e.target.value)}
@@ -807,7 +822,6 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                       <textarea
                         id={`cell-expected-${tc.id}`}
                         rows={1}
-                        ref={syncTextareaHeight}
                         value={expectedVal}
                         onInput={(e) => syncTextareaHeight(e.currentTarget)}
                         onChange={(e) => updateResultField(tc.id, 'expected', e.target.value)}
@@ -870,7 +884,6 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                       <textarea
                         id={`cell-note-${tc.id}`}
                         rows={1}
-                        ref={syncTextareaHeight}
                         value={noteVal}
                         onInput={(e) => syncTextareaHeight(e.currentTarget)}
                         onChange={(e) => updateResultField(tc.id, 'note', e.target.value)}
