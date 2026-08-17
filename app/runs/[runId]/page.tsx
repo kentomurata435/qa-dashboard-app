@@ -678,35 +678,42 @@ export default function RunPage({ params }: { params: { runId: string } }) {
         </div>
       </div>
 
-      <div className="bg-white border border-slate-200 rounded-xl shadow-sm p-4 space-y-4">
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div>
-            <p className="text-[11px] font-bold uppercase tracking-[0.08em] text-slate-500">結果件数 / 進捗率</p>
-            <p className="text-sm text-slate-700 mt-1">
-              実施済み <span className="font-bold text-slate-900">{statusSummary.completed}</span> 件 / 全体 <span className="font-bold text-slate-900">{statusSummary.total}</span> 件
-            </p>
+      <div className="bg-slate-50 border border-slate-200 rounded-xl shadow-sm p-3">
+        <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-3">
+          <div className="flex flex-wrap items-center gap-2 text-[11px] text-slate-600">
+            <div className="bg-white border border-slate-200 rounded-lg px-3 py-2 min-w-[140px]">
+              <div className="text-[10px] uppercase tracking-[0.08em] text-slate-500">全件数</div>
+              <div className="mt-1 text-lg font-black text-slate-900">{statusSummary.total}</div>
+            </div>
+            <div className="bg-white border border-slate-200 rounded-lg px-3 py-2 min-w-[140px]">
+              <div className="text-[10px] uppercase tracking-[0.08em] text-slate-500">実施済み</div>
+              <div className="mt-1 text-lg font-black text-emerald-700">{statusSummary.completed}</div>
+            </div>
+            <div className="bg-white border border-slate-200 rounded-lg px-3 py-2 min-w-[140px]">
+              <div className="text-[10px] uppercase tracking-[0.08em] text-slate-500">未実施</div>
+              <div className="mt-1 text-lg font-black text-slate-700">{statusSummary.remaining}</div>
+            </div>
           </div>
-          <div className="flex items-center gap-3">
-            <div className="min-w-[170px]">
-              <div className="flex items-center justify-between text-[11px] text-slate-600 mb-1">
-                <span>進捗率</span>
-                <span className="font-bold text-slate-900">{statusSummary.progressRate}%</span>
-              </div>
-              <div className="h-2.5 w-full rounded-full bg-slate-200 overflow-hidden">
-                <div
-                  className="h-full rounded-full bg-gradient-to-r from-blue-500 to-emerald-500 transition-all duration-300"
-                  style={{ width: `${statusSummary.progressRate}%` }}
-                />
-              </div>
+
+          <div className="min-w-[220px] xl:max-w-[320px] w-full xl:w-auto">
+            <div className="flex items-center justify-between text-[11px] text-slate-600 mb-1">
+              <span>進捗率</span>
+              <span className="font-bold text-slate-900">{statusSummary.progressRate}%</span>
+            </div>
+            <div className="h-2.5 w-full rounded-full bg-slate-200 overflow-hidden">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-sky-500 to-emerald-500 transition-all duration-300"
+                style={{ width: `${statusSummary.progressRate}%` }}
+              />
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-2">
+        <div className="mt-3 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-2">
           {ALL_STATUSES.map((status) => {
             const value = statusSummary[status.key] || 0;
             return (
-              <div key={status.key} className={`rounded-lg border px-2.5 py-2 ${status.color} border-opacity-60`}>
+              <div key={status.key} className={`rounded-lg border px-2.5 py-2 ${status.color} border-opacity-60 bg-white`}>
                 <div className="text-[10px] font-bold uppercase tracking-[0.08em] opacity-80">{status.label}</div>
                 <div className="mt-1 text-lg font-black leading-none">{value}</div>
               </div>
