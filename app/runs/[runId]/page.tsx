@@ -193,13 +193,6 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     }
   };
 
-  const syncTextareaHeight = (element: HTMLTextAreaElement | null) => {
-    if (!element) return;
-    element.style.height = 'auto';
-    const nextHeight = Math.max(40, element.scrollHeight + 4);
-    element.style.height = `${nextHeight}px`;
-  };
-
   const toggleColumnVisibility = (key: string) => {
     setVisibleColumns((prev) => ({
       ...prev,
@@ -371,23 +364,6 @@ export default function RunPage({ params }: { params: { runId: string } }) {
       return matchesSearch && matchesStatus && matchesPriority;
     });
   }, [runData, searchQuery, selectedStatuses, selectedPriorities]);
-
-  const visibleColumnKeys = useMemo(
-    () => COLUMN_DEFS.filter((column) => visibleColumns[column.key]).map((column) => column.key),
-    [visibleColumns]
-  );
-
-  useEffect(() => {
-    if (!filteredCases.length) return;
-
-    const frame = requestAnimationFrame(() => {
-      document.querySelectorAll<HTMLTextAreaElement>('.auto-height-textarea').forEach((element) => {
-        syncTextareaHeight(element);
-      });
-    });
-
-    return () => cancelAnimationFrame(frame);
-  }, [filteredCases, visibleColumns, runData]);
 
   if (loading) return <div className="p-8 text-center text-slate-500 font-medium">データを読み込み中...</div>;
   if (!runData || runData.error) return <div className="p-8 text-center text-red-500 font-medium">対象のテスト項目書が見つかりませんでした</div>;
@@ -724,6 +700,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                 <tr
                   key={tc.id}
                   className={`hover:bg-blue-50/40 transition ${isSelected ? 'bg-blue-50/80' : ''}`}
+                  style={{ contentVisibility: 'auto', containIntrinsicSize: '2200px 52px' }}
                 >
                   <td className="p-1 text-center align-top">
                     <input
@@ -744,11 +721,10 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                         id={`cell-screen-${tc.id}`}
                         rows={1}
                         value={screenVal}
-                        onInput={(e) => syncTextareaHeight(e.currentTarget)}
                         onChange={(e) => updateResultField(tc.id, 'screen', e.target.value)}
                         onPaste={(e) => handlePasteGrid(tc.id, 'screen', e)}
                         placeholder="画面名"
-                        className="auto-height-textarea w-full min-h-[40px] p-1 text-xs border border-transparent hover:border-slate-300 rounded font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-none overflow-hidden"
+                        className="auto-height-textarea w-full min-h-[40px] p-1 text-xs border border-transparent hover:border-slate-300 rounded font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-y overflow-auto"
                       />
                     </td>
                   )}
@@ -759,11 +735,10 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                         id={`cell-feature-${tc.id}`}
                         rows={1}
                         value={featureVal}
-                        onInput={(e) => syncTextareaHeight(e.currentTarget)}
                         onChange={(e) => updateResultField(tc.id, 'feature', e.target.value)}
                         onPaste={(e) => handlePasteGrid(tc.id, 'feature', e)}
                         placeholder="機能名"
-                        className="auto-height-textarea w-full min-h-[40px] p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-none overflow-hidden"
+                        className="auto-height-textarea w-full min-h-[40px] p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-y overflow-auto"
                       />
                     </td>
                   )}
@@ -793,11 +768,10 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                         id={`cell-precondition-${tc.id}`}
                         rows={1}
                         value={preconditionVal}
-                        onInput={(e) => syncTextareaHeight(e.currentTarget)}
                         onChange={(e) => updateResultField(tc.id, 'precondition', e.target.value)}
                         onPaste={(e) => handlePasteGrid(tc.id, 'precondition', e)}
                         placeholder="前提条件"
-                        className="auto-height-textarea w-full min-h-[40px] p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-none overflow-hidden whitespace-pre-wrap font-sans leading-relaxed"
+                        className="auto-height-textarea w-full min-h-[40px] p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-y overflow-auto whitespace-pre-wrap font-sans leading-relaxed"
                       />
                     </td>
                   )}
@@ -808,11 +782,10 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                         id={`cell-steps-${tc.id}`}
                         rows={1}
                         value={stepsVal}
-                        onInput={(e) => syncTextareaHeight(e.currentTarget)}
                         onChange={(e) => updateResultField(tc.id, 'steps', e.target.value)}
                         onPaste={(e) => handlePasteGrid(tc.id, 'steps', e)}
                         placeholder="確認手順"
-                        className="auto-height-textarea w-full min-h-[40px] p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-none overflow-hidden whitespace-pre-wrap font-sans leading-relaxed"
+                        className="auto-height-textarea w-full min-h-[40px] p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-y overflow-auto whitespace-pre-wrap font-sans leading-relaxed"
                       />
                     </td>
                   )}
@@ -823,11 +796,10 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                         id={`cell-expected-${tc.id}`}
                         rows={1}
                         value={expectedVal}
-                        onInput={(e) => syncTextareaHeight(e.currentTarget)}
                         onChange={(e) => updateResultField(tc.id, 'expected', e.target.value)}
                         onPaste={(e) => handlePasteGrid(tc.id, 'expected', e)}
                         placeholder="確認内容・期待値"
-                        className="auto-height-textarea w-full min-h-[40px] p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-900 font-medium focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-none overflow-hidden whitespace-pre-wrap font-sans leading-relaxed"
+                        className="auto-height-textarea w-full min-h-[40px] p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-900 font-medium focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-y overflow-auto whitespace-pre-wrap font-sans leading-relaxed"
                       />
                     </td>
                   )}
@@ -885,11 +857,10 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                         id={`cell-note-${tc.id}`}
                         rows={1}
                         value={noteVal}
-                        onInput={(e) => syncTextareaHeight(e.currentTarget)}
                         onChange={(e) => updateResultField(tc.id, 'note', e.target.value)}
                         onPaste={(e) => handlePasteGrid(tc.id, 'note', e)}
                         placeholder="備考・不具合リンク"
-                        className="auto-height-textarea w-full min-h-[40px] p-1 border border-slate-300 rounded text-xs focus:outline-none focus:ring-2 focus:ring-blue-600 resize-none overflow-hidden bg-white"
+                        className="auto-height-textarea w-full min-h-[40px] p-1 border border-slate-300 rounded text-xs focus:outline-none focus:ring-2 focus:ring-blue-600 resize-y overflow-auto bg-white"
                       />
                     </td>
                   )}
