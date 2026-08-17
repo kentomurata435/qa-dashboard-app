@@ -586,19 +586,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     });
   }, [runData, searchQuery, selectedStatuses, selectedPriorities]);
 
-  const statusSummary = useMemo((): {
-    total: number;
-    completed: number;
-    progressRate: number;
-    progressRateText: string;
-    remaining: number;
-    UNTESTED: number;
-    PASSED: number;
-    FAILED: number;
-    BLOCKED: number;
-    EXCLUDED: number;
-    AUTOMATED: number;
-  } => {
+  const statusSummary = useMemo(() => {
     const summary: Record<string, number> = {
       UNTESTED: 0,
       PASSED: 0,
@@ -689,8 +677,8 @@ export default function RunPage({ params }: { params: { runId: string } }) {
       </div>
 
       <div className="bg-slate-50 border border-slate-200 rounded-xl shadow-sm p-3">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div className="flex flex-wrap items-center gap-2 text-[11px] text-slate-600">
+        <div className="flex flex-row flex-wrap items-center justify-between gap-3">
+          <div className="flex flex-row flex-wrap items-center gap-2 text-[11px] text-slate-600">
             <div className="bg-white border border-slate-200 rounded-lg px-3 py-2 min-w-[140px]">
               <div className="text-[10px] uppercase tracking-[0.08em] text-slate-500">全件数</div>
               <div className="mt-1 text-lg font-black text-slate-900">{statusSummary.total}</div>
