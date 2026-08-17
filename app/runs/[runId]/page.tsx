@@ -694,7 +694,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
 
       {/* 検索・一括操作バー */}
       <div className="bg-white border border-slate-200 rounded-xl shadow-sm p-3.5">
-        <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-3">
+        <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
           <div className="flex flex-1 flex-wrap items-center gap-2 min-w-0">
             <div className="relative flex-1 min-w-[220px] max-w-[420px]">
               <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">🔎</span>
@@ -707,164 +707,166 @@ export default function RunPage({ params }: { params: { runId: string } }) {
               />
             </div>
 
-            <div className="relative">
-              <button
-                type="button"
-                onClick={() => setColumnMenuOpen(!columnMenuOpen)}
-                className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 text-xs font-bold text-slate-700 shadow-sm transition hover:bg-slate-100"
-              >
-                <span>📋 列表示</span>
-                <span className="rounded bg-sky-100 px-1.5 py-0.5 text-[10px] font-bold text-sky-800">
-                  {Object.values(visibleColumns).filter(Boolean).length} / {COLUMN_DEFS.length}
-                </span>
-                <span className="text-[10px]">▼</span>
-              </button>
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="relative">
+                <button
+                  type="button"
+                  onClick={() => setColumnMenuOpen(!columnMenuOpen)}
+                  className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 text-xs font-bold text-slate-700 shadow-sm transition hover:bg-slate-100"
+                >
+                  <span>📋 列表示</span>
+                  <span className="rounded bg-sky-100 px-1.5 py-0.5 text-[10px] font-bold text-sky-800">
+                    {Object.values(visibleColumns).filter(Boolean).length} / {COLUMN_DEFS.length}
+                  </span>
+                  <span className="text-[10px]">▼</span>
+                </button>
 
-              {columnMenuOpen && (
-                <div className="absolute left-0 mt-1 w-56 bg-white text-slate-900 border border-slate-300 rounded-lg shadow-xl z-30 p-2.5 space-y-1.5">
-                  <div className="flex justify-between items-center pb-1.5 border-b border-slate-200 text-[11px] font-bold">
-                    <span className="text-slate-700">表示する列</span>
-                    <button
-                      type="button"
-                      onClick={() => setVisibleColumns({ ...DEFAULT_COLUMN_VISIBILITY })}
-                      className="text-sky-600 hover:underline text-[10px] font-bold"
-                    >
-                      全表示
-                    </button>
+                {columnMenuOpen && (
+                  <div className="absolute left-0 mt-1 w-56 bg-white text-slate-900 border border-slate-300 rounded-lg shadow-xl z-30 p-2.5 space-y-1.5">
+                    <div className="flex justify-between items-center pb-1.5 border-b border-slate-200 text-[11px] font-bold">
+                      <span className="text-slate-700">表示する列</span>
+                      <button
+                        type="button"
+                        onClick={() => setVisibleColumns({ ...DEFAULT_COLUMN_VISIBILITY })}
+                        className="text-sky-600 hover:underline text-[10px] font-bold"
+                      >
+                        全表示
+                      </button>
+                    </div>
+                    {COLUMN_DEFS.map((column) => (
+                      <label
+                        key={column.key}
+                        className="flex items-center gap-2 p-1 text-xs hover:bg-slate-100 rounded cursor-pointer select-none"
+                      >
+                        <input
+                          type="checkbox"
+                          checked={visibleColumns[column.key]}
+                          onChange={() => toggleColumnVisibility(column.key)}
+                          className="rounded cursor-pointer"
+                        />
+                        <span>{column.label}</span>
+                      </label>
+                    ))}
+                    <div className="pt-1.5 border-t border-slate-100 text-right">
+                      <button
+                        type="button"
+                        onClick={() => setColumnMenuOpen(false)}
+                        className="px-2.5 py-1 text-[10px] bg-slate-800 text-white rounded font-bold"
+                      >
+                        閉じる
+                      </button>
+                    </div>
                   </div>
-                  {COLUMN_DEFS.map((column) => (
-                    <label
-                      key={column.key}
-                      className="flex items-center gap-2 p-1 text-xs hover:bg-slate-100 rounded cursor-pointer select-none"
-                    >
-                      <input
-                        type="checkbox"
-                        checked={visibleColumns[column.key]}
-                        onChange={() => toggleColumnVisibility(column.key)}
-                        className="rounded cursor-pointer"
-                      />
-                      <span>{column.label}</span>
-                    </label>
-                  ))}
-                  <div className="pt-1.5 border-t border-slate-100 text-right">
-                    <button
-                      type="button"
-                      onClick={() => setColumnMenuOpen(false)}
-                      className="px-2.5 py-1 text-[10px] bg-slate-800 text-white rounded font-bold"
-                    >
-                      閉じる
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
+                )}
+              </div>
 
-            <div className="relative">
-              <button
-                type="button"
-                onClick={() => setPriorityFilterOpen(!priorityFilterOpen)}
-                className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 text-xs font-bold text-slate-700 shadow-sm transition hover:bg-slate-100"
-              >
-                <span>⚑ 重要度</span>
-                <span className="rounded bg-violet-100 px-1.5 py-0.5 text-[10px] font-bold text-violet-800">
-                  {selectedPriorities.size} / {ALL_PRIORITIES.length}
-                </span>
-                <span className="text-[10px]">▼</span>
-              </button>
+              <div className="relative">
+                <button
+                  type="button"
+                  onClick={() => setPriorityFilterOpen(!priorityFilterOpen)}
+                  className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 text-xs font-bold text-slate-700 shadow-sm transition hover:bg-slate-100"
+                >
+                  <span>⚑ 重要度</span>
+                  <span className="rounded bg-violet-100 px-1.5 py-0.5 text-[10px] font-bold text-violet-800">
+                    {selectedPriorities.size} / {ALL_PRIORITIES.length}
+                  </span>
+                  <span className="text-[10px]">▼</span>
+                </button>
 
-              {priorityFilterOpen && (
-                <div className="absolute left-0 mt-1 w-44 bg-white text-slate-900 border border-slate-300 rounded-lg shadow-xl z-30 p-2.5 space-y-1.5">
-                  <div className="flex justify-between items-center pb-1.5 border-b border-slate-200 text-[11px] font-bold">
-                    <span className="text-slate-700">表示する重要度</span>
-                    <button
-                      type="button"
-                      onClick={toggleAllPriorityFilters}
-                      className="text-violet-600 hover:underline text-[10px] font-bold"
-                    >
-                      {selectedPriorities.size === ALL_PRIORITIES.length ? '全解除' : '全選択'}
-                    </button>
+                {priorityFilterOpen && (
+                  <div className="absolute left-0 mt-1 w-44 bg-white text-slate-900 border border-slate-300 rounded-lg shadow-xl z-30 p-2.5 space-y-1.5">
+                    <div className="flex justify-between items-center pb-1.5 border-b border-slate-200 text-[11px] font-bold">
+                      <span className="text-slate-700">表示する重要度</span>
+                      <button
+                        type="button"
+                        onClick={toggleAllPriorityFilters}
+                        className="text-violet-600 hover:underline text-[10px] font-bold"
+                      >
+                        {selectedPriorities.size === ALL_PRIORITIES.length ? '全解除' : '全選択'}
+                      </button>
+                    </div>
+                    {ALL_PRIORITIES.map((item) => (
+                      <label
+                        key={item.key}
+                        className="flex items-center gap-2 p-1 text-xs hover:bg-slate-100 rounded cursor-pointer select-none"
+                      >
+                        <input
+                          type="checkbox"
+                          checked={selectedPriorities.has(item.key)}
+                          onChange={() => togglePriorityFilter(item.key)}
+                          className="rounded cursor-pointer"
+                        />
+                        <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold ${item.color}`}>
+                          {item.label}
+                        </span>
+                      </label>
+                    ))}
+                    <div className="pt-1.5 border-t border-slate-100 text-right">
+                      <button
+                        type="button"
+                        onClick={() => setPriorityFilterOpen(false)}
+                        className="px-2.5 py-1 text-[10px] bg-slate-800 text-white rounded font-bold"
+                      >
+                        閉じる
+                      </button>
+                    </div>
                   </div>
-                  {ALL_PRIORITIES.map((item) => (
-                    <label
-                      key={item.key}
-                      className="flex items-center gap-2 p-1 text-xs hover:bg-slate-100 rounded cursor-pointer select-none"
-                    >
-                      <input
-                        type="checkbox"
-                        checked={selectedPriorities.has(item.key)}
-                        onChange={() => togglePriorityFilter(item.key)}
-                        className="rounded cursor-pointer"
-                      />
-                      <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold ${item.color}`}>
-                        {item.label}
-                      </span>
-                    </label>
-                  ))}
-                  <div className="pt-1.5 border-t border-slate-100 text-right">
-                    <button
-                      type="button"
-                      onClick={() => setPriorityFilterOpen(false)}
-                      className="px-2.5 py-1 text-[10px] bg-slate-800 text-white rounded font-bold"
-                    >
-                      閉じる
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
+                )}
+              </div>
 
-            <div className="relative">
-              <button
-                type="button"
-                onClick={() => setStatusFilterOpen(!statusFilterOpen)}
-                className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 text-xs font-bold text-slate-700 shadow-sm transition hover:bg-slate-100"
-              >
-                <span>🏷️ ステータス</span>
-                <span className="rounded bg-blue-100 px-1.5 py-0.5 text-[10px] font-bold text-blue-800">
-                  {selectedStatuses.size} / {ALL_STATUSES.length}
-                </span>
-                <span className="text-[10px]">▼</span>
-              </button>
+              <div className="relative">
+                <button
+                  type="button"
+                  onClick={() => setStatusFilterOpen(!statusFilterOpen)}
+                  className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 text-xs font-bold text-slate-700 shadow-sm transition hover:bg-slate-100"
+                >
+                  <span>🏷️ ステータス</span>
+                  <span className="rounded bg-blue-100 px-1.5 py-0.5 text-[10px] font-bold text-blue-800">
+                    {selectedStatuses.size} / {ALL_STATUSES.length}
+                  </span>
+                  <span className="text-[10px]">▼</span>
+                </button>
 
-              {statusFilterOpen && (
-                <div className="absolute left-0 mt-1 w-52 bg-white text-slate-900 border border-slate-300 rounded-lg shadow-xl z-30 p-2.5 space-y-1.5">
-                  <div className="flex justify-between items-center pb-1.5 border-b border-slate-200 text-[11px] font-bold">
-                    <span className="text-slate-700">表示するステータス</span>
-                    <button
-                      type="button"
-                      onClick={toggleAllStatusFilters}
-                      className="text-blue-600 hover:underline text-[10px] font-bold"
-                    >
-                      {selectedStatuses.size === ALL_STATUSES.length ? '全解除' : '全選択'}
-                    </button>
+                {statusFilterOpen && (
+                  <div className="absolute left-0 mt-1 w-52 bg-white text-slate-900 border border-slate-300 rounded-lg shadow-xl z-30 p-2.5 space-y-1.5">
+                    <div className="flex justify-between items-center pb-1.5 border-b border-slate-200 text-[11px] font-bold">
+                      <span className="text-slate-700">表示するステータス</span>
+                      <button
+                        type="button"
+                        onClick={toggleAllStatusFilters}
+                        className="text-blue-600 hover:underline text-[10px] font-bold"
+                      >
+                        {selectedStatuses.size === ALL_STATUSES.length ? '全解除' : '全選択'}
+                      </button>
+                    </div>
+                    {ALL_STATUSES.map((item) => (
+                      <label
+                        key={item.key}
+                        className="flex items-center gap-2 p-1 text-xs hover:bg-slate-100 rounded cursor-pointer select-none"
+                      >
+                        <input
+                          type="checkbox"
+                          checked={selectedStatuses.has(item.key)}
+                          onChange={() => toggleStatusFilter(item.key)}
+                          className="rounded cursor-pointer"
+                        />
+                        <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold ${item.color}`}>
+                          {item.label}
+                        </span>
+                      </label>
+                    ))}
+                    <div className="pt-1.5 border-t border-slate-100 text-right">
+                      <button
+                        type="button"
+                        onClick={() => setStatusFilterOpen(false)}
+                        className="px-2.5 py-1 text-[10px] bg-slate-800 text-white rounded font-bold"
+                      >
+                        閉じる
+                      </button>
+                    </div>
                   </div>
-                  {ALL_STATUSES.map((item) => (
-                    <label
-                      key={item.key}
-                      className="flex items-center gap-2 p-1 text-xs hover:bg-slate-100 rounded cursor-pointer select-none"
-                    >
-                      <input
-                        type="checkbox"
-                        checked={selectedStatuses.has(item.key)}
-                        onChange={() => toggleStatusFilter(item.key)}
-                        className="rounded cursor-pointer"
-                      />
-                      <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold ${item.color}`}>
-                        {item.label}
-                      </span>
-                    </label>
-                  ))}
-                  <div className="pt-1.5 border-t border-slate-100 text-right">
-                    <button
-                      type="button"
-                      onClick={() => setStatusFilterOpen(false)}
-                      className="px-2.5 py-1 text-[10px] bg-slate-800 text-white rounded font-bold"
-                    >
-                      閉じる
-                    </button>
-                  </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
 
