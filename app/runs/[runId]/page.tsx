@@ -211,33 +211,35 @@ const TableRow = memo(function TableRow({
 
       {visibleColumns.status && (
         <td className="p-1 align-top">
-          <select
-            id={`cell-status-${tc.id}`}
-            value={statusVal}
-            onChange={(e) => onUpdateField(tc.id, 'status', e.target.value, true)}
-            onPaste={(e) => onPasteGrid(tc.id, 'status', e)}
-            onKeyDown={(e) => onKeyDown(tc.id, 'status', e)}
-            className={`w-full p-1.5 text-xs font-bold rounded border cursor-pointer focus:ring-2 focus:ring-blue-600 ${
-              statusVal === 'PASSED'
-                ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
-                : statusVal === 'FAILED'
-                ? 'bg-rose-100 text-rose-800 border-rose-300'
-                : statusVal === 'BLOCKED'
-                ? 'bg-amber-100 text-amber-800 border-amber-300'
-                : statusVal === 'AUTOMATED'
-                ? 'bg-blue-100 text-blue-800 border-blue-300'
-                : statusVal === 'EXCLUDED'
-                ? 'bg-slate-200 text-slate-700 border-slate-300'
-                : 'bg-slate-100 text-slate-600 border-slate-300'
-            }`}
-          >
-            <option value="UNTESTED">未実施</option>
-            <option value="PASSED">OK</option>
-            <option value="FAILED">NG</option>
-            <option value="BLOCKED">保留</option>
-            <option value="EXCLUDED">対象外</option>
-            <option value="AUTOMATED">自動化</option>
-          </select>
+          <div className="flex items-center justify-center">
+            <select
+              id={`cell-status-${tc.id}`}
+              value={statusVal}
+              onChange={(e) => onUpdateField(tc.id, 'status', e.target.value, true)}
+              onPaste={(e) => onPasteGrid(tc.id, 'status', e)}
+              onKeyDown={(e) => onKeyDown(tc.id, 'status', e)}
+              className={`w-full min-w-[88px] py-1.5 px-2 text-[11px] font-bold rounded-md border cursor-pointer shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-200 ${
+                statusVal === 'PASSED'
+                  ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
+                  : statusVal === 'FAILED'
+                  ? 'bg-rose-50 text-rose-700 border-rose-200'
+                  : statusVal === 'BLOCKED'
+                  ? 'bg-amber-50 text-amber-700 border-amber-200'
+                  : statusVal === 'AUTOMATED'
+                  ? 'bg-sky-50 text-sky-700 border-sky-200'
+                  : statusVal === 'EXCLUDED'
+                  ? 'bg-slate-100 text-slate-700 border-slate-200'
+                  : 'bg-slate-50 text-slate-600 border-slate-200'
+              }`}
+            >
+              <option value="UNTESTED">未実施</option>
+              <option value="PASSED">OK</option>
+              <option value="FAILED">NG</option>
+              <option value="BLOCKED">保留</option>
+              <option value="EXCLUDED">対象外</option>
+              <option value="AUTOMATED">自動化</option>
+            </select>
+          </div>
         </td>
       )}
 
@@ -945,70 +947,70 @@ export default function RunPage({ params }: { params: { runId: string } }) {
               <col style={{ width: `${colWidths.note}px` }} />
             </colgroup>
             <thead>
-              <tr className="bg-slate-200 text-[11px] text-slate-800 font-bold uppercase select-none">
-                <th style={{ width: `${colWidths.check}px` }} className="relative p-2 text-center">
+              <tr className="bg-slate-100 text-[11px] text-slate-700 font-bold uppercase select-none border-b border-slate-200">
+                <th style={{ width: `${colWidths.check}px` }} className="relative p-2 text-center align-middle">
                   <input
                     type="checkbox"
                     checked={selectedIds.size > 0 && selectedIds.size === filteredCases.length}
                     onChange={() => toggleSelectAll(filteredCases)}
-                    className="rounded cursor-pointer"
+                    className="rounded border-slate-300 text-sky-600 cursor-pointer"
                   />
                   <div onMouseDown={(e) => startResizing('check', e)} className="resizer" />
                 </th>
-                <th style={{ width: `${colWidths.id}px` }} className="relative p-2">
-                  ID (固定)
+                <th style={{ width: `${colWidths.id}px` }} className="relative p-2 align-middle">
+                  ID
                   <div onMouseDown={(e) => startResizing('id', e)} className="resizer" />
                 </th>
                 {visibleColumns.screen && (
-                  <th style={{ width: `${colWidths.screen}px` }} className="relative p-2">
+                  <th style={{ width: `${colWidths.screen}px` }} className="relative p-2 align-middle">
                     画面
                     <div onMouseDown={(e) => startResizing('screen', e)} className="resizer" />
                   </th>
                 )}
                 {visibleColumns.feature && (
-                  <th style={{ width: `${colWidths.feature}px` }} className="relative p-2">
+                  <th style={{ width: `${colWidths.feature}px` }} className="relative p-2 align-middle">
                     機能
                     <div onMouseDown={(e) => startResizing('feature', e)} className="resizer" />
                   </th>
                 )}
                 {visibleColumns.priority && (
-                  <th style={{ width: `${colWidths.priority}px` }} className="relative p-2">
+                  <th style={{ width: `${colWidths.priority}px` }} className="relative p-2 align-middle">
                     重要度
                     <div onMouseDown={(e) => startResizing('priority', e)} className="resizer" />
                   </th>
                 )}
                 {visibleColumns.precondition && (
-                  <th style={{ width: `${colWidths.precondition}px` }} className="relative p-2">
+                  <th style={{ width: `${colWidths.precondition}px` }} className="relative p-2 align-middle">
                     前提条件
                     <div onMouseDown={(e) => startResizing('precondition', e)} className="resizer" />
                   </th>
                 )}
                 {visibleColumns.steps && (
-                  <th style={{ width: `${colWidths.steps}px` }} className="relative p-2">
+                  <th style={{ width: `${colWidths.steps}px` }} className="relative p-2 align-middle">
                     確認手順
                     <div onMouseDown={(e) => startResizing('steps', e)} className="resizer" />
                   </th>
                 )}
                 {visibleColumns.expected && (
-                  <th style={{ width: `${colWidths.expected}px` }} className="relative p-2">
+                  <th style={{ width: `${colWidths.expected}px` }} className="relative p-2 align-middle">
                     確認内容（期待値）
                     <div onMouseDown={(e) => startResizing('expected', e)} className="resizer" />
                   </th>
                 )}
                 {visibleColumns.tester && (
-                  <th style={{ width: `${colWidths.tester}px` }} className="relative p-2 bg-blue-100 text-blue-900">
+                  <th style={{ width: `${colWidths.tester}px` }} className="relative p-2 align-middle bg-sky-50 text-sky-700">
                     実施者
                     <div onMouseDown={(e) => startResizing('tester', e)} className="resizer" />
                   </th>
                 )}
                 {visibleColumns.status && (
-                  <th style={{ width: `${colWidths.status}px` }} className="relative p-2">
+                  <th style={{ width: `${colWidths.status}px` }} className="relative p-2 align-middle bg-slate-50 text-slate-700">
                     結果
                     <div onMouseDown={(e) => startResizing('status', e)} className="resizer" />
                   </th>
                 )}
                 {visibleColumns.note && (
-                  <th style={{ width: `${colWidths.note}px` }} className="relative p-2">
+                  <th style={{ width: `${colWidths.note}px` }} className="relative p-2 align-middle">
                     備考
                     <div onMouseDown={(e) => startResizing('note', e)} className="resizer" />
                   </th>
