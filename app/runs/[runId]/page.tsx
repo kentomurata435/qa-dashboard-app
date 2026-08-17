@@ -586,12 +586,18 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     });
   }, [runData, searchQuery, selectedStatuses, selectedPriorities]);
 
-  const statusSummary = useMemo((): Record<string, number> & {
+  const statusSummary = useMemo((): {
     total: number;
     completed: number;
     progressRate: number;
     progressRateText: string;
     remaining: number;
+    UNTESTED: number;
+    PASSED: number;
+    FAILED: number;
+    BLOCKED: number;
+    EXCLUDED: number;
+    AUTOMATED: number;
   } => {
     const summary: Record<string, number> = {
       UNTESTED: 0,
