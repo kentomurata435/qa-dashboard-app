@@ -590,6 +590,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     total: number;
     completed: number;
     progressRate: number;
+    progressRateText: string;
     remaining: number;
   } => {
     const summary: Record<string, number> = {
@@ -614,13 +615,14 @@ export default function RunPage({ params }: { params: { runId: string } }) {
 
     const total = casesData.length;
     const completed = summary.PASSED + summary.FAILED + summary.BLOCKED + summary.EXCLUDED + summary.AUTOMATED;
-    const progressRate = total > 0 ? Math.round((completed / total) * 100) : 0;
+    const progressRate = total > 0 ? (completed / total) * 100 : 0;
 
     return {
       ...summary,
       total,
       completed,
       progressRate,
+      progressRateText: total > 0 ? `${progressRate.toFixed(1)}%` : '0.0%',
       remaining: total - completed,
     };
   }, [runData]);
@@ -681,7 +683,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
       </div>
 
       <div className="bg-slate-50 border border-slate-200 rounded-xl shadow-sm p-3">
-        <div className="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-3">
+        <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap items-center gap-2 text-[11px] text-slate-600">
             <div className="bg-white border border-slate-200 rounded-lg px-3 py-2 min-w-[140px]">
               <div className="text-[10px] uppercase tracking-[0.08em] text-slate-500">全件数</div>
@@ -697,15 +699,15 @@ export default function RunPage({ params }: { params: { runId: string } }) {
             </div>
           </div>
 
-          <div className="min-w-[220px] xl:max-w-[320px] w-full xl:w-auto">
+          <div className="min-w-[220px] max-w-[320px] w-full sm:w-[260px]">
             <div className="flex items-center justify-between text-[11px] text-slate-600 mb-1">
               <span>進捗率</span>
-              <span className="font-bold text-slate-900">{statusSummary.progressRate}%</span>
+              <span className="font-bold text-slate-900">{statusSummary.progressRateText}</span>
             </div>
             <div className="h-2.5 w-full rounded-full bg-slate-200 overflow-hidden">
               <div
                 className="h-full rounded-full bg-gradient-to-r from-sky-500 to-emerald-500 transition-all duration-300"
-                style={{ width: `${statusSummary.progressRate}%` }}
+                style={{ width: `${Math.min(statusSummary.progressRate, 100)}%` }}
               />
             </div>
           </div>
