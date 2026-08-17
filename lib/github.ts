@@ -7,11 +7,16 @@ const octokit = new Octokit({
 const OWNER = process.env.GITHUB_OWNER || '';
 const REPO = process.env.GITHUB_REPO || '';
 const BRANCH = process.env.GITHUB_BRANCH || 'main';
+const GITHUB_SYNC_ENABLED = process.env.GITHUB_SYNC_ENABLED !== 'false';
 
 /**
  * 指定したファイルパスの内容をGitHubから取得、または更新・新規作成（Commit&Push）する
  */
 export async function commitJsonFile(filePath: string, contentObj: any, commitMessage: string) {
+  if (!GITHUB_SYNC_ENABLED) {
+    return { skipped: true };
+  }
+
   if (!process.env.GITHUB_PAT || !OWNER || !REPO) {
     throw new Error('GitHub環境変数が設定されていません。');
   }

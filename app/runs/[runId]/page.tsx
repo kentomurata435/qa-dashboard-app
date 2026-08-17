@@ -30,6 +30,7 @@ const ALL_PRIORITIES = [
   { key: 'A', label: 'A', color: 'bg-red-100 text-red-800' },
   { key: 'B', label: 'B', color: 'bg-amber-100 text-amber-800' },
   { key: 'C', label: 'C', color: 'bg-slate-200 text-slate-700' },
+  { key: 'D', label: 'D', color: 'bg-slate-100 text-slate-600' },
 ];
 
 // 編集可能列の順序定義（Excel 2次元コピペ用）
@@ -63,7 +64,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     new Set(['UNTESTED', 'PASSED', 'FAILED', 'BLOCKED', 'EXCLUDED', 'AUTOMATED'])
   );
   const [priorityFilterOpen, setPriorityFilterOpen] = useState(false);
-  const [selectedPriorities, setSelectedPriorities] = useState<Set<string>>(new Set(['A', 'B', 'C']));
+  const [selectedPriorities, setSelectedPriorities] = useState<Set<string>>(new Set(['A', 'B', 'C', 'D']));
 
   // 列幅可変サイズ
   const [colWidths, setColWidths] = useState<{ [key: string]: number }>({
@@ -645,6 +646,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                       <option value="A">A</option>
                       <option value="B">B</option>
                       <option value="C">C</option>
+                      <option value="D">D</option>
                     </select>
                   </td>
 

@@ -10,6 +10,7 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 const octokit = new Octokit({ auth: process.env.GITHUB_PAT });
+const GITHUB_SYNC_ENABLED = process.env.GITHUB_SYNC_ENABLED !== 'false';
 
 // GET: 単一テストデータの取得（100%画面エラーを出さないフォールバック付き）
 export async function GET(req: NextRequest) {
@@ -25,7 +26,7 @@ export async function GET(req: NextRequest) {
     .replace(/^-|-$/g, '');
 
   // 1. GitHub APIから取得 (Vercel環境用)
-  if (process.env.GITHUB_PAT && process.env.GITHUB_OWNER && process.env.GITHUB_REPO) {
+  if (GITHUB_SYNC_ENABLED && process.env.GITHUB_PAT && process.env.GITHUB_OWNER && process.env.GITHUB_REPO) {
     try {
       const res = await octokit.repos.getContent({
         owner: process.env.GITHUB_OWNER,
@@ -117,10 +118,12 @@ export async function POST(req: NextRequest) {
         fs.writeFileSync(path.join(process.cwd(), `data/runs/${sanitizedRunId}.json`), JSON.stringify(newRunData, null, 2));
       } catch (e) {}
 
-      if (process.env.GITHUB_PAT) {
-        await commitJsonFile(`data/runs/${sanitizedRunId}.json`, newRunData, `chore(qa): create test run ${sanitizedRunId}`);
-      } else {
-        return NextResponse.json({ error: 'GITHUB_PAT環境変数がVercelに設定されていません' }, { status: 500 });
+      if (GITHUB_SYNC_ENABLED) {
+        if (process.env.GITHUB_PAT) {
+          await commitJsonFile(`data/runs/${sanitizedRunId}.json`, newRunData, `chore(qa): create test run ${sanitizedRunId}`);
+        } else {
+          return NextResponse.json({ error: 'GITHUB_PAT環境変数がVercelに設定されていません' }, { status: 500 });
+        }
       }
 
       return NextResponse.json({ success: true, runId: sanitizedRunId });
@@ -134,7 +137,7 @@ export async function POST(req: NextRequest) {
       fs.writeFileSync(path.join(process.cwd(), `data/runs/${runId}.json`), JSON.stringify(data, null, 2));
     } catch (e) {}
 
-    if (process.env.GITHUB_PAT) {
+    if (GITHUB_SYNC_ENABLED && process.env.GITHUB_PAT) {
       await commitJsonFile(`data/runs/${runId}.json`, data, `chore(qa): update test run ${runId}`);
     }
 
@@ -156,7 +159,7 @@ export async function DELETE(req: NextRequest) {
     if (fs.existsSync(localPath)) fs.unlinkSync(localPath);
   } catch (e) {}
 
-  if (process.env.GITHUB_PAT && process.env.GITHUB_OWNER && process.env.GITHUB_REPO) {
+  if (GITHUB_SYNC_ENABLED && process.env.GITHUB_PAT && process.env.GITHUB_OWNER && process.env.GITHUB_REPO) {
     try {
       const fileInfo = await octokit.repos.getContent({
         owner: process.env.GITHUB_OWNER,
