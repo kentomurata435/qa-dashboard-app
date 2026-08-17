@@ -586,7 +586,19 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     });
   }, [runData, searchQuery, selectedStatuses, selectedPriorities]);
 
-  const statusSummary = useMemo(() => {
+  const statusSummary = useMemo((): {
+    total: number;
+    completed: number;
+    progressRate: number;
+    progressRateText: string;
+    remaining: number;
+    UNTESTED: number;
+    PASSED: number;
+    FAILED: number;
+    BLOCKED: number;
+    EXCLUDED: number;
+    AUTOMATED: number;
+  } => {
     const summary: Record<string, number> = {
       UNTESTED: 0,
       PASSED: 0,
@@ -612,7 +624,12 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     const progressRate = total > 0 ? (completed / total) * 100 : 0;
 
     return {
-      ...summary,
+      UNTESTED: summary.UNTESTED,
+      PASSED: summary.PASSED,
+      FAILED: summary.FAILED,
+      BLOCKED: summary.BLOCKED,
+      EXCLUDED: summary.EXCLUDED,
+      AUTOMATED: summary.AUTOMATED,
       total,
       completed,
       progressRate,
