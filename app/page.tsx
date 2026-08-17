@@ -110,16 +110,16 @@ export default function HomePage() {
   };
 
   return (
-    <div className="space-y-6 max-w-6xl mx-auto pb-12 px-4">
+    <div className="space-y-7 max-w-6xl mx-auto pb-16 px-4">
       {/* ヘッダー */}
-      <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 border-b border-slate-200 pb-4">
+      <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-5 border-b border-slate-200 pb-5">
         <div>
           <h1 className="text-2xl font-bold text-slate-900 tracking-tight">スルーテスト項目書 一覧</h1>
           <p className="text-xs text-slate-500 mt-1">テストケースマスタを管理</p>
         </div>
         <button
           onClick={() => setShowModal(true)}
-          className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded-lg shadow transition text-xs flex items-center gap-1.5 w-max"
+          className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 py-2.5 rounded-lg shadow transition text-xs flex items-center gap-1.5 w-max"
         >
           <span className="text-sm">＋</span> 新規スルーテストを作成
         </button>
