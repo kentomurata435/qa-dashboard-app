@@ -664,77 +664,80 @@ export default function RunPage({ params }: { params: { runId: string } }) {
   if (!runData || runData.error) return <div className="p-8 text-center text-red-500 font-medium">対象のテスト項目書が見つかりませんでした</div>;
 
   return (
-    <div className="space-y-4 max-w-[1900px] mx-auto pb-12">
-      {/* ヘッダー情報 */}
-      <div className="bg-white p-5 rounded-xl border border-slate-300 shadow-sm flex flex-col md:flex-row justify-between md:items-center gap-4">
-        <div>
-          <h1 className="text-2xl font-bold text-slate-900 tracking-tight">{runData.title}</h1>
-          <p className="text-xs text-slate-500 mt-1">
-            Run ID: <span className="font-mono text-slate-700">{runData.id}</span> | 全 {casesData.length} 件 (表示中: {filteredCases.length} 件)
-          </p>
-        </div>
-
-        <div className="flex items-center gap-3 text-xs font-semibold">
-          {saveStatus === 'saving' && (
-            <span className="flex items-center text-amber-700 bg-amber-50 px-3 py-1.5 rounded-full border border-amber-200 animate-pulse">
-              🔄 自動保存中...
-            </span>
-          )}
-          {saveStatus === 'saved' && (
-            <span className="flex items-center text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-full border border-emerald-200">
-              ✓ クラウド（GitHub）保存済み
-            </span>
-          )}
-          {saveStatus === 'error' && (
-            <span className="flex items-center text-red-700 bg-red-50 px-3 py-1.5 rounded-full border border-red-200">
-              ⚠️ 保存エラー
-            </span>
-          )}
-        </div>
-      </div>
-
-      <div className="bg-slate-50 border border-slate-200 rounded-xl shadow-sm p-3">
-        <div className="flex flex-row flex-wrap items-center justify-between gap-3">
-          <div className="flex flex-row flex-wrap items-center gap-2 text-[11px] text-slate-600">
-            <div className="bg-white border border-slate-200 rounded-lg px-3 py-2 min-w-[140px]">
-              <div className="text-[10px] uppercase tracking-[0.08em] text-slate-500">全件数</div>
-              <div className="mt-1 text-lg font-black text-slate-900">{statusSummary.total}</div>
-            </div>
-            <div className="bg-white border border-slate-200 rounded-lg px-3 py-2 min-w-[140px]">
-              <div className="text-[10px] uppercase tracking-[0.08em] text-slate-500">実施済み</div>
-              <div className="mt-1 text-lg font-black text-emerald-700">{statusSummary.completed}</div>
-            </div>
-            <div className="bg-white border border-slate-200 rounded-lg px-3 py-2 min-w-[140px]">
-              <div className="text-[10px] uppercase tracking-[0.08em] text-slate-500">未実施</div>
-              <div className="mt-1 text-lg font-black text-slate-700">{statusSummary.remaining}</div>
-            </div>
+    <div className="space-y-3 max-w-[1900px] mx-auto pb-12">
+      <div className="bg-white border border-slate-200 rounded-xl shadow-sm p-3">
+        <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+          <div>
+            <h1 className="text-[18px] md:text-[20px] font-bold text-slate-900 tracking-tight leading-none">{runData.title}</h1>
+            <p className="text-[11px] text-slate-500 mt-1.5">
+              Run ID: <span className="font-mono text-slate-700">{runData.id}</span> | 全 {casesData.length} 件 (表示中: {filteredCases.length} 件)
+            </p>
           </div>
 
-          <div className="min-w-[220px] max-w-[320px] w-full sm:w-[260px]">
-            <div className="flex items-center justify-between text-[11px] text-slate-600 mb-1">
-              <span>進捗率</span>
-              <span className="font-bold text-slate-900">{statusSummary.progressRateText}</span>
-            </div>
-            <div className="h-2.5 w-full rounded-full bg-slate-200 overflow-hidden">
-              <div
-                className="h-full rounded-full bg-gradient-to-r from-sky-500 to-emerald-500 transition-all duration-300"
-                style={{ width: `${Math.min(statusSummary.progressRate, 100)}%` }}
-              />
-            </div>
+          <div className="flex items-center gap-2 text-[11px] font-semibold">
+            {saveStatus === 'saving' && (
+              <span className="flex items-center text-amber-700 bg-amber-50 px-2 py-1 rounded-full border border-amber-200 animate-pulse">
+                🔄 自動保存中...
+              </span>
+            )}
+            {saveStatus === 'saved' && (
+              <span className="flex items-center text-emerald-700 bg-emerald-50 px-2 py-1 rounded-full border border-emerald-200">
+                ✓ クラウド保存済み
+              </span>
+            )}
+            {saveStatus === 'error' && (
+              <span className="flex items-center text-red-700 bg-red-50 px-2 py-1 rounded-full border border-red-200">
+                ⚠️ 保存エラー
+              </span>
+            )}
           </div>
         </div>
 
-        <div className="mt-3 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-2">
-          {ALL_STATUSES.map((status) => {
-            const statusKey = status.key as keyof typeof statusSummary;
-            const value = statusSummary[statusKey] ?? 0;
-            return (
-              <div key={status.key} className={`rounded-lg border px-2.5 py-2 ${status.color} border-opacity-60 bg-white`}>
-                <div className="text-[10px] font-bold uppercase tracking-[0.08em] opacity-80">{status.label}</div>
-                <div className="mt-1 text-lg font-black leading-none">{value}</div>
+        <div className="mt-3 border-t border-slate-200 pt-3">
+          <div className="flex flex-row flex-wrap items-stretch justify-between gap-2.5">
+            <div className="flex flex-row flex-wrap items-stretch gap-2 text-[11px] text-slate-600">
+              <div className="bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-2 min-w-[110px]">
+                <div className="text-[10px] uppercase tracking-[0.08em] text-slate-500">全件数</div>
+                <div className="mt-1 text-lg font-black text-slate-900">{statusSummary.total}</div>
               </div>
-            );
-          })}
+              <div className="bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-2 min-w-[110px]">
+                <div className="text-[10px] uppercase tracking-[0.08em] text-slate-500">実施済み</div>
+                <div className="mt-1 text-lg font-black text-emerald-700">{statusSummary.completed}</div>
+              </div>
+              <div className="bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-2 min-w-[110px]">
+                <div className="text-[10px] uppercase tracking-[0.08em] text-slate-500">未実施</div>
+                <div className="mt-1 text-lg font-black text-slate-700">{statusSummary.remaining}</div>
+              </div>
+            </div>
+
+            <div className="min-w-[220px] max-w-[320px] w-full sm:w-[260px] flex items-center">
+              <div className="w-full">
+                <div className="flex items-center justify-between text-[11px] text-slate-600 mb-1">
+                  <span>進捗率</span>
+                  <span className="font-bold text-slate-900">{statusSummary.progressRateText}</span>
+                </div>
+                <div className="h-2.5 w-full rounded-full bg-slate-200 overflow-hidden">
+                  <div
+                    className="h-full rounded-full bg-gradient-to-r from-sky-500 to-emerald-500 transition-all duration-300"
+                    style={{ width: `${Math.min(statusSummary.progressRate, 100)}%` }}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-3 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-2">
+            {ALL_STATUSES.map((status) => {
+              const statusKey = status.key as keyof typeof statusSummary;
+              const value = statusSummary[statusKey] ?? 0;
+              return (
+                <div key={status.key} className={`rounded-lg border px-2.5 py-2 ${status.color} border-opacity-60 bg-white`}>
+                  <div className="text-[10px] font-bold uppercase tracking-[0.08em] opacity-80">{status.label}</div>
+                  <div className="mt-1 text-lg font-black leading-none">{value}</div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
 
