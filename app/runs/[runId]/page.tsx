@@ -723,7 +723,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                         onChange={(e) => updateResultField(tc.id, 'screen', e.target.value)}
                         onPaste={(e) => handlePasteGrid(tc.id, 'screen', e)}
                         placeholder="画面名"
-                        className="auto-height-textarea w-full min-h-[40px] p-1 text-xs border border-transparent hover:border-slate-300 rounded font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-y overflow-auto"
+                        className="auto-height-textarea w-full min-h-[40px] p-1 text-xs border border-transparent hover:border-slate-300 rounded font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent overflow-auto"
                       />
                     </td>
                   )}
@@ -737,7 +737,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                         onChange={(e) => updateResultField(tc.id, 'feature', e.target.value)}
                         onPaste={(e) => handlePasteGrid(tc.id, 'feature', e)}
                         placeholder="機能名"
-                        className="auto-height-textarea w-full min-h-[40px] p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-y overflow-auto"
+                        className="auto-height-textarea w-full min-h-[40px] p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent overflow-auto"
                       />
                     </td>
                   )}
@@ -770,7 +770,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                         onChange={(e) => updateResultField(tc.id, 'precondition', e.target.value)}
                         onPaste={(e) => handlePasteGrid(tc.id, 'precondition', e)}
                         placeholder="前提条件"
-                        className="auto-height-textarea w-full min-h-[40px] p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-y overflow-auto whitespace-pre-wrap font-sans leading-relaxed"
+                        className="auto-height-textarea w-full min-h-[40px] p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent overflow-auto whitespace-pre-wrap font-sans leading-relaxed"
                       />
                     </td>
                   )}
@@ -784,7 +784,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                         onChange={(e) => updateResultField(tc.id, 'steps', e.target.value)}
                         onPaste={(e) => handlePasteGrid(tc.id, 'steps', e)}
                         placeholder="確認手順"
-                        className="auto-height-textarea w-full min-h-[40px] p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-y overflow-auto whitespace-pre-wrap font-sans leading-relaxed"
+                        className="auto-height-textarea w-full min-h-[40px] p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent overflow-auto whitespace-pre-wrap font-sans leading-relaxed"
                       />
                     </td>
                   )}
@@ -798,7 +798,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                         onChange={(e) => updateResultField(tc.id, 'expected', e.target.value)}
                         onPaste={(e) => handlePasteGrid(tc.id, 'expected', e)}
                         placeholder="確認内容・期待値"
-                        className="auto-height-textarea w-full min-h-[40px] p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-900 font-medium focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-y overflow-auto whitespace-pre-wrap font-sans leading-relaxed"
+                        className="auto-height-textarea w-full min-h-[40px] p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-900 font-medium focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent overflow-auto whitespace-pre-wrap font-sans leading-relaxed"
                       />
                     </td>
                   )}
@@ -859,7 +859,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                         onChange={(e) => updateResultField(tc.id, 'note', e.target.value)}
                         onPaste={(e) => handlePasteGrid(tc.id, 'note', e)}
                         placeholder="備考・不具合リンク"
-                        className="auto-height-textarea w-full min-h-[40px] p-1 border border-slate-300 rounded text-xs focus:outline-none focus:ring-2 focus:ring-blue-600 resize-y overflow-auto bg-white"
+                        className="auto-height-textarea w-full min-h-[40px] p-1 border border-slate-300 rounded text-xs focus:outline-none focus:ring-2 focus:ring-blue-600 overflow-auto bg-white"
                       />
                     </td>
                   )}
