@@ -584,15 +584,20 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     });
   }, [runData, searchQuery, selectedStatuses, selectedPriorities]);
 
-  const statusSummary = useMemo(() => {
-    const summary = {
+  const statusSummary = useMemo((): Record<string, number> & {
+    total: number;
+    completed: number;
+    progressRate: number;
+    remaining: number;
+  } => {
+    const summary: Record<string, number> = {
       UNTESTED: 0,
       PASSED: 0,
       FAILED: 0,
       BLOCKED: 0,
       EXCLUDED: 0,
       AUTOMATED: 0,
-    } as Record<string, number>;
+    };
 
     if (runData?.results) {
       Object.values(runData.results).forEach((result: any) => {
