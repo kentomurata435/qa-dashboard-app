@@ -21,15 +21,18 @@ body {
 .qa-table-container table {
   min-width: 2100px;
   table-layout: fixed;
-}
-
-.qa-table-container table {
   border-collapse: collapse !important;
   border: 1px solid #cbd5e1 !important;
 }
 
 .qa-table-container td {
   min-width: 0;
+}
+
+.qa-table-container thead {
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
 
 .qa-table-container thead th {
@@ -56,19 +59,18 @@ body {
 }
 
 .qa-table-container textarea {
-  overflow: auto;
+  overflow: hidden;
   line-height: 1.5;
-  max-height: 220px;
   resize: none;
   white-space: pre-wrap;
   word-break: break-word;
   overflow-wrap: anywhere;
 }
 
-.qa-table-container thead {
-  position: sticky;
-  top: 0;
-  z-index: 50;
+.qa-table-container .auto-height-textarea {
+  min-height: 40px;
+  height: auto;
+  overflow: hidden;
 }
 
 /* 列幅リサイズハンドルのスタイル */
