@@ -584,6 +584,40 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     });
   }, [runData, searchQuery, selectedStatuses, selectedPriorities]);
 
+  const statusSummary = useMemo(() => {
+    const summary = {
+      UNTESTED: 0,
+      PASSED: 0,
+      FAILED: 0,
+      BLOCKED: 0,
+      EXCLUDED: 0,
+      AUTOMATED: 0,
+    } as Record<string, number>;
+
+    if (runData?.results) {
+      Object.values(runData.results).forEach((result: any) => {
+        const status = result?.status || 'UNTESTED';
+        if (summary[status] !== undefined) {
+          summary[status] += 1;
+        } else {
+          summary.UNTESTED += 1;
+        }
+      });
+    }
+
+    const total = casesData.length;
+    const completed = summary.PASSED + summary.FAILED + summary.BLOCKED + summary.EXCLUDED + summary.AUTOMATED;
+    const progressRate = total > 0 ? Math.round((completed / total) * 100) : 0;
+
+    return {
+      ...summary,
+      total,
+      completed,
+      progressRate,
+      remaining: total - completed,
+    };
+  }, [runData]);
+
   const rowHeight = 42;
   const overscan = 12;
   const visibleStartIndex = Math.max(0, Math.floor(scrollTop / rowHeight) - overscan);
@@ -636,6 +670,43 @@ export default function RunPage({ params }: { params: { runId: string } }) {
               ⚠️ 保存エラー
             </span>
           )}
+        </div>
+      </div>
+
+      <div className="bg-white border border-slate-200 rounded-xl shadow-sm p-4 space-y-4">
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <p className="text-[11px] font-bold uppercase tracking-[0.08em] text-slate-500">結果件数 / 進捗率</p>
+            <p className="text-sm text-slate-700 mt-1">
+              実施済み <span className="font-bold text-slate-900">{statusSummary.completed}</span> 件 / 全体 <span className="font-bold text-slate-900">{statusSummary.total}</span> 件
+            </p>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="min-w-[170px]">
+              <div className="flex items-center justify-between text-[11px] text-slate-600 mb-1">
+                <span>進捗率</span>
+                <span className="font-bold text-slate-900">{statusSummary.progressRate}%</span>
+              </div>
+              <div className="h-2.5 w-full rounded-full bg-slate-200 overflow-hidden">
+                <div
+                  className="h-full rounded-full bg-gradient-to-r from-blue-500 to-emerald-500 transition-all duration-300"
+                  style={{ width: `${statusSummary.progressRate}%` }}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-2">
+          {ALL_STATUSES.map((status) => {
+            const value = statusSummary[status.key] || 0;
+            return (
+              <div key={status.key} className={`rounded-lg border px-2.5 py-2 ${status.color} border-opacity-60`}>
+                <div className="text-[10px] font-bold uppercase tracking-[0.08em] opacity-80">{status.label}</div>
+                <div className="mt-1 text-lg font-black leading-none">{value}</div>
+              </div>
+            );
+          })}
         </div>
       </div>
 
