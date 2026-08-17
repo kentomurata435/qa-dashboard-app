@@ -2,14 +2,14 @@
   "id": "2026-08-17-test",
   "title": "Test",
   "createdAt": "2026-08-17T01:36:46.762Z",
-  "updatedAt": "2026-08-17T03:36:24.147Z",
+  "updatedAt": "2026-08-17T03:36:25.762Z",
   "results": {
     "TC-001": {
       "status": "PASSED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-17T03:36:23.334Z",
-      "expected": "・入力したアカウントでログインできること（）"
+      "updatedAt": "2026-08-17T03:36:24.962Z",
+      "expected": "・入力したアカウントでログインできること()"
     },
     "TC-002": {
       "status": "UNTESTED",
