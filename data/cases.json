@@ -741,7 +741,7 @@
     "screen": "図面詳細\n(「図面・資料」タブ)_共通",
     "feature": "書き込み",
     "priority": "A",
-    "precondition": "",
+    "precondition": "同上",
     "steps": "5.透明度を任意に変更する",
     "expected": "・透明度の選択ができること",
     "defaultTester": "Auto",
@@ -2921,7 +2921,7 @@
     "priority": "A",
     "precondition": "同上",
     "steps": "29.「プレビューを更新」を押下する",
-    "expected": "・見積書のプレビューが更新されること",
+    "expected": "・見積書のプレビューが更新され、顧客名が正式名称で印字されていること",
     "defaultTester": "",
     "remark": ""
   },
@@ -3020,7 +3020,7 @@
     "priority": "A",
     "precondition": "同上",
     "steps": "13.「見積書の発行に進む」を押下する",
-    "expected": "・見積書の発行に進むに遷移すること",
+    "expected": "・見積書の発行に進むに遷移し、顧客名が正式名称で印字されていること",
     "defaultTester": "",
     "remark": ""
   },
@@ -3218,7 +3218,7 @@
     "priority": "A",
     "precondition": "同上",
     "steps": "26.「プレビューを更新」を押下する",
-    "expected": "・納品書のプレビューが更新されること",
+    "expected": "・納品書のプレビューが更新され、顧客名が正式名称で印字されていること",
     "defaultTester": "",
     "remark": "プレビューを確認する"
   },
@@ -3416,7 +3416,7 @@
     "priority": "A",
     "precondition": "同上",
     "steps": "23.「プレビューを更新」を押下する",
-    "expected": "・請求書のプレビューが更新されること",
+    "expected": "・請求書のプレビューが更新され、顧客名が正式名称で印字されていること",
     "defaultTester": "",
     "remark": "プレビューを確認する"
   },
@@ -4382,7 +4382,7 @@
     "screen": "入金管理",
     "feature": "請求タブ",
     "priority": "A",
-    "precondition": "",
+    "precondition": "・入金管理(請求タブ)画面を表示していること",
     "steps": "4.「+調整を記録」を押下する\n5.任意の内容を入力し、「保存する」を押下する",
     "expected": "・請求書への調整記録ができること",
     "defaultTester": "Auto",
@@ -4820,7 +4820,7 @@
   {
     "id": "TC-439",
     "screen": "組図の設定",
-    "feature": "",
+    "feature": "設定",
     "priority": "B",
     "precondition": "・組図の設定画面を表示していること",
     "steps": "1.組図機能を利用するの設定を変更する\n2.「保存する」を押下する",
@@ -4831,7 +4831,7 @@
   {
     "id": "TC-440",
     "screen": "新規図面登録設定",
-    "feature": "",
+    "feature": "設定",
     "priority": "A",
     "precondition": "・新規図面登録設定画面を表示していること",
     "steps": "1.新規図面登録設定を変更する\n2.「保存する」を押下する",
@@ -5768,7 +5768,7 @@
     "screen": "グローバルナビゲーション(ヘッダ)",
     "feature": "ヘルプ",
     "priority": "C",
-    "precondition": "",
+    "precondition": "・グローバルナビゲーション(ヘッダ)を表示していること",
     "steps": "1.グローバルナビゲーション(ヘッダ)の「ヘルプ」を押下する",
     "expected": "・別タブでヘルプ・よくあるご質問が開くこと",
     "defaultTester": "Auto(※)",
@@ -5777,11 +5777,11 @@
   {
     "id": "TC-526",
     "screen": "翻訳漏れ確認",
-    "feature": "",
+    "feature": "翻訳漏れ確認",
     "priority": "C",
-    "precondition": "",
-    "steps": "",
-    "expected": "",
+    "precondition": "・対象画面またはページを表示していること",
+    "steps": "1.対象画面またはページのテキストを確認する\n2.翻訳漏れがないことを確認する",
+    "expected": "・翻訳漏れがないこと",
     "defaultTester": "",
     "remark": "※備忘程度の記載のため、具体的な確認内容・範囲はチケットを参照\n←リリースする案件の翻訳漏れ確認の備忘程度"
   }

@@ -4,6 +4,21 @@ import json
 import sys
 import os
 
+
+def find_default_excel(base_dir):
+    candidates = []
+    for entry in os.listdir(base_dir):
+        if entry.lower().endswith('.xlsx'):
+            candidates.append(os.path.join(base_dir, entry))
+
+    if not candidates:
+        return os.path.join(base_dir, 'test_cases.xlsx')
+
+    # できるだけスルーテスト関連のファイルを優先し、それ以外は最初の xlsx を採用
+    preferred = [p for p in candidates if 'スルーテスト' in os.path.basename(p) or 'test' in os.path.basename(p).lower()]
+    return preferred[0] if preferred else candidates[0]
+
+
 def convert_excel_to_json(excel_path, output_json_path):
     if not os.path.exists(excel_path):
         print(f"エラー: {excel_path} が見つかりません。")
@@ -73,6 +88,7 @@ def convert_excel_to_json(excel_path, output_json_path):
         print(f"変換エラーが発生しました: {e}")
 
 if __name__ == "__main__":
-    excel_file = sys.argv[1] if len(sys.argv) > 1 else "test_cases.xlsx"
-    target_json = os.path.join(os.path.dirname(__file__), "../data/cases.json")
+    project_root = os.path.dirname(os.path.dirname(__file__))
+    excel_file = sys.argv[1] if len(sys.argv) > 1 else find_default_excel(project_root)
+    target_json = os.path.join(project_root, "data", "cases.json")
     convert_excel_to_json(excel_file, target_json)

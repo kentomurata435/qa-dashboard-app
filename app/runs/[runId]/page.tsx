@@ -310,6 +310,13 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     }
   };
 
+  const autoResizeTextarea = (element: HTMLTextAreaElement | null) => {
+    if (!element) return;
+    element.style.height = 'auto';
+    const nextHeight = Math.max(element.scrollHeight + 8, 48);
+    element.style.height = `${nextHeight}px`;
+  };
+
   if (loading) return <div className="p-8 text-center text-slate-500 font-medium">データを読み込み中...</div>;
   if (!runData || runData.error) return <div className="p-8 text-center text-red-500 font-medium">対象のテスト項目書が見つかりませんでした</div>;
 
@@ -338,6 +345,11 @@ export default function RunPage({ params }: { params: { runId: string } }) {
 
     return matchesSearch && matchesStatus && matchesPriority;
   });
+
+  useEffect(() => {
+    const textareas = document.querySelectorAll('textarea[id^="cell-"]');
+    textareas.forEach((elem) => autoResizeTextarea(elem as HTMLTextAreaElement));
+  }, [filteredCases, runData]);
 
   return (
     <div className="space-y-4 max-w-[1900px] mx-auto pb-12">
@@ -612,10 +624,13 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                       id={`cell-screen-${tc.id}`}
                       rows={2}
                       value={screenVal}
-                      onChange={(e) => updateResultField(tc.id, 'screen', e.target.value)}
+                      onChange={(e) => {
+                        updateResultField(tc.id, 'screen', e.target.value);
+                        autoResizeTextarea(e.target);
+                      }}
                       onPaste={(e) => handlePasteGrid(tc.id, 'screen', e)}
                       placeholder="画面名"
-                      className="w-full p-1 text-xs border border-transparent hover:border-slate-300 rounded font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-y"
+                      className="w-full min-h-[48px] p-1 text-xs border border-transparent hover:border-slate-300 rounded font-bold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-none overflow-hidden"
                     />
                   </td>
 
@@ -625,10 +640,13 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                       id={`cell-feature-${tc.id}`}
                       rows={2}
                       value={featureVal}
-                      onChange={(e) => updateResultField(tc.id, 'feature', e.target.value)}
+                      onChange={(e) => {
+                        updateResultField(tc.id, 'feature', e.target.value);
+                        autoResizeTextarea(e.target);
+                      }}
                       onPaste={(e) => handlePasteGrid(tc.id, 'feature', e)}
                       placeholder="機能名"
-                      className="w-full p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-y"
+                      className="w-full min-h-[48px] p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-none overflow-hidden"
                     />
                   </td>
 
@@ -656,10 +674,13 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                       id={`cell-precondition-${tc.id}`}
                       rows={2}
                       value={preconditionVal}
-                      onChange={(e) => updateResultField(tc.id, 'precondition', e.target.value)}
+                      onChange={(e) => {
+                        updateResultField(tc.id, 'precondition', e.target.value);
+                        autoResizeTextarea(e.target);
+                      }}
                       onPaste={(e) => handlePasteGrid(tc.id, 'precondition', e)}
                       placeholder="前提条件"
-                      className="w-full p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-y whitespace-pre-wrap font-sans leading-relaxed"
+                      className="w-full min-h-[48px] p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-none overflow-hidden whitespace-pre-wrap font-sans leading-relaxed"
                     />
                   </td>
 
@@ -669,10 +690,13 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                       id={`cell-steps-${tc.id}`}
                       rows={3}
                       value={stepsVal}
-                      onChange={(e) => updateResultField(tc.id, 'steps', e.target.value)}
+                      onChange={(e) => {
+                        updateResultField(tc.id, 'steps', e.target.value);
+                        autoResizeTextarea(e.target);
+                      }}
                       onPaste={(e) => handlePasteGrid(tc.id, 'steps', e)}
                       placeholder="確認手順"
-                      className="w-full p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-y whitespace-pre-wrap font-sans leading-relaxed"
+                      className="w-full min-h-[72px] p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-none overflow-hidden whitespace-pre-wrap font-sans leading-relaxed"
                     />
                   </td>
 
@@ -682,10 +706,13 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                       id={`cell-expected-${tc.id}`}
                       rows={3}
                       value={expectedVal}
-                      onChange={(e) => updateResultField(tc.id, 'expected', e.target.value)}
+                      onChange={(e) => {
+                        updateResultField(tc.id, 'expected', e.target.value);
+                        autoResizeTextarea(e.target);
+                      }}
                       onPaste={(e) => handlePasteGrid(tc.id, 'expected', e)}
                       placeholder="確認内容・期待値"
-                      className="w-full p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-900 font-medium focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-y whitespace-pre-wrap font-sans leading-relaxed"
+                      className="w-full min-h-[72px] p-1 text-xs border border-transparent hover:border-slate-300 rounded text-slate-900 font-medium focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white bg-transparent resize-none overflow-hidden whitespace-pre-wrap font-sans leading-relaxed"
                     />
                   </td>
 
@@ -740,10 +767,13 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                       id={`cell-note-${tc.id}`}
                       rows={2}
                       value={noteVal}
-                      onChange={(e) => updateResultField(tc.id, 'note', e.target.value)}
+                      onChange={(e) => {
+                        updateResultField(tc.id, 'note', e.target.value);
+                        autoResizeTextarea(e.target);
+                      }}
                       onPaste={(e) => handlePasteGrid(tc.id, 'note', e)}
                       placeholder="備考・不具合リンク"
-                      className="w-full p-1 border border-slate-300 rounded text-xs focus:outline-none focus:ring-2 focus:ring-blue-600 resize-y bg-white"
+                      className="w-full min-h-[48px] p-1 border border-slate-300 rounded text-xs focus:outline-none focus:ring-2 focus:ring-blue-600 resize-none overflow-hidden bg-white"
                     />
                   </td>
                 </tr>

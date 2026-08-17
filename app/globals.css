@@ -31,6 +31,18 @@ body {
 .qa-table-container th,
 .qa-table-container td {
   border: 1px solid #cbd5e1 !important;
+  vertical-align: top;
+}
+
+.qa-table-container textarea,
+.qa-table-container input,
+.qa-table-container select {
+  box-sizing: border-box;
+}
+
+.qa-table-container textarea {
+  overflow: hidden;
+  line-height: 1.5;
 }
 
 /* 列幅リサイズハンドルのスタイル */
