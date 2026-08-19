@@ -2,3163 +2,3163 @@
   "id": "2026-08-19-test",
   "title": "2026-08-19 test環境 スルーテスト",
   "createdAt": "2026-08-19T06:55:15.227Z",
-  "updatedAt": "2026-08-19T08:45:49.615Z",
+  "updatedAt": "2026-08-19T08:45:57.833Z",
   "results": {
     "TC-001": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-002": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-003": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-004": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-005": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-006": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-007": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-008": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-009": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-010": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-011": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-012": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-013": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-014": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-015": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-016": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-017": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-018": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-019": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-020": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-021": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-022": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-023": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-024": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-025": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-026": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-027": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-028": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-029": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-030": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-031": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-032": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-033": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-034": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-035": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-036": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-037": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-038": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-039": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-040": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-041": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-042": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-043": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-044": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-045": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-046": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-047": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-048": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-049": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-050": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-051": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-052": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-053": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-054": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-055": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-056": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-057": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-058": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-059": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-060": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-061": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-062": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-063": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-064": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-065": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-066": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-067": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-068": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-069": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-070": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-071": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-072": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-073": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-074": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-075": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-076": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-077": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-078": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-079": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-080": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-081": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-082": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-083": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-084": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-085": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-086": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-087": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-088": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-089": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-090": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-091": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-092": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-093": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-094": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-095": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-096": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-097": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-098": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-099": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-100": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-101": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-102": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-103": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-104": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-105": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-106": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-107": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-108": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-109": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-110": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-111": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-112": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-113": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-114": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-115": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-116": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-117": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-118": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-119": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-120": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-121": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-122": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-123": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-124": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-125": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-126": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-127": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-128": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-129": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-130": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-131": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-132": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-133": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-134": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-135": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-136": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-137": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-138": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-139": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-140": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-141": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-142": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-143": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-144": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-145": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-146": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-147": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-148": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-149": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-150": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-151": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-152": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-153": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-154": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-155": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-156": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-157": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-158": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-159": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-160": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-161": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-162": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-163": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-164": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-165": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-166": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-167": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-168": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-169": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-170": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-171": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.832Z"
     },
     "TC-172": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-173": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-174": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-175": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-176": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-177": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-178": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-179": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-180": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-181": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-182": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Test",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-183": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Test",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-184": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-185": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-186": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-187": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-188": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-189": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-190": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-191": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-192": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-193": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-194": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-195": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-196": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-197": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-198": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-199": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-200": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-201": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-202": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-203": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-204": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-205": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-206": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-207": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-208": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.614Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-209": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-210": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-211": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-212": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-213": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-214": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-215": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-216": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-217": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-218": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-219": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-220": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-221": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-222": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-223": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-224": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-225": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-226": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-227": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-228": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-229": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-230": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-231": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-232": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-233": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-234": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-235": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-236": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-237": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-238": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-239": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-240": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-241": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-242": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-243": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-244": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-245": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-246": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-247": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-248": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-249": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-250": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-251": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-252": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-253": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-254": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-255": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-256": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-257": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-258": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-259": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-260": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-261": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-262": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-263": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-264": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-265": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-266": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-267": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-268": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-269": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-270": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-271": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-272": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-273": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-274": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-275": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-276": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-277": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-278": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-279": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-280": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-281": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-282": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-283": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-284": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-285": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-286": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-287": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-288": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-289": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-290": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-291": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-292": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-293": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-294": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-295": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-296": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-297": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-298": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-299": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-300": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-301": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-302": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-303": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-304": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-305": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-306": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-307": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-308": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-309": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-310": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-311": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-312": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-313": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-314": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-315": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-316": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-317": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-318": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-319": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-320": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-321": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-322": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-323": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-324": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-325": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-326": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-327": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-328": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-329": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-330": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-331": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-332": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-333": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-334": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-335": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-336": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-337": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-338": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-339": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-340": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-341": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-342": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-343": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-344": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-345": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-346": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-347": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-348": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-349": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-350": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-351": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-352": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-353": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-354": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-355": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-356": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-357": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-358": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-359": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-360": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-361": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-362": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-363": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-364": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-365": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-366": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-367": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-368": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-369": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-370": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-371": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-372": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-373": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-374": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-375": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-376": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-377": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-378": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-379": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-380": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-381": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-382": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-383": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-384": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-385": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-386": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-387": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-388": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-389": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-390": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-391": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-392": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-393": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-394": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-395": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-396": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-397": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-398": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-399": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-400": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-401": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-402": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-403": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-404": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-405": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-406": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-407": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-408": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-409": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-410": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-411": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-412": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-413": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-414": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-415": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-416": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-417": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-418": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-419": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-420": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-421": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-422": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-423": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-424": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-425": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-426": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-427": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-428": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-429": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-430": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-431": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-432": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-433": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-434": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-435": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-436": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-437": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-438": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-439": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-440": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-441": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-442": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-443": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-444": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-445": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-446": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-447": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-448": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-449": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-450": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-451": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-452": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-453": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-454": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-455": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-456": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-457": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-458": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-459": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-460": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-461": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-462": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-463": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-464": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-465": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-466": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-467": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-468": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-469": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-470": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-471": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-472": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-473": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-474": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-475": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-476": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-477": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-478": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-479": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-480": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-481": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-482": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-483": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-484": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-485": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-486": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-487": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto(※)",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-488": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto(※)",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-489": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-490": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-491": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-492": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-493": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-494": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-495": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-496": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-497": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-498": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-499": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-500": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-501": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-502": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-503": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-504": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-505": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-506": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-507": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-508": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-509": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-510": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-511": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-512": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-513": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-514": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-515": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-516": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-517": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-518": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-519": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-520": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-521": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-522": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-523": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-524": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-525": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "Auto(※)",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     },
     "TC-526": {
-      "status": "AUTOMATED",
+      "status": "EXCLUDED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:45:49.615Z"
+      "updatedAt": "2026-08-19T08:45:57.833Z"
     }
   }
 }
