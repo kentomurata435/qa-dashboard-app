@@ -2,7 +2,7 @@
   "id": "2026-08-19-test",
   "title": "2026-08-19 test環境 スルーテスト",
   "createdAt": "2026-08-19T06:55:15.227Z",
-  "updatedAt": "2026-08-19T06:55:51.635Z",
+  "updatedAt": "2026-08-19T07:05:09.002Z",
   "results": {
     "TC-001": {
       "status": "PASSED",
@@ -23,10 +23,10 @@
       "updatedAt": "2026-08-19T06:55:51.635Z"
     },
     "TC-004": {
-      "status": "UNTESTED",
+      "status": "PASSED",
       "tester": "",
       "note": "",
-      "updatedAt": ""
+      "updatedAt": "2026-08-19T07:05:09.002Z"
     },
     "TC-005": {
       "status": "UNTESTED",
