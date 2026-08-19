@@ -2,67 +2,67 @@
   "id": "2026-08-19-test",
   "title": "2026-08-19 test環境 スルーテスト",
   "createdAt": "2026-08-19T06:55:15.227Z",
-  "updatedAt": "2026-08-19T08:49:31.117Z",
+  "updatedAt": "2026-08-19T08:49:44.786Z",
   "results": {
     "TC-001": {
-      "status": "FAILED",
+      "status": "UNTESTED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:49:31.115Z"
+      "updatedAt": "2026-08-19T08:49:44.786Z"
     },
     "TC-002": {
-      "status": "FAILED",
+      "status": "UNTESTED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:49:31.115Z"
+      "updatedAt": "2026-08-19T08:49:44.786Z"
     },
     "TC-003": {
-      "status": "FAILED",
+      "status": "UNTESTED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:49:31.115Z"
+      "updatedAt": "2026-08-19T08:49:44.786Z"
     },
     "TC-004": {
-      "status": "FAILED",
+      "status": "UNTESTED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:49:31.115Z"
+      "updatedAt": "2026-08-19T08:49:44.786Z"
     },
     "TC-005": {
-      "status": "FAILED",
+      "status": "UNTESTED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:49:31.115Z"
+      "updatedAt": "2026-08-19T08:49:44.786Z"
     },
     "TC-006": {
-      "status": "FAILED",
+      "status": "UNTESTED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:49:31.115Z"
+      "updatedAt": "2026-08-19T08:49:44.786Z"
     },
     "TC-007": {
-      "status": "FAILED",
+      "status": "UNTESTED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:49:31.115Z"
+      "updatedAt": "2026-08-19T08:49:44.786Z"
     },
     "TC-008": {
-      "status": "FAILED",
+      "status": "UNTESTED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:49:31.115Z"
+      "updatedAt": "2026-08-19T08:49:44.786Z"
     },
     "TC-009": {
-      "status": "FAILED",
+      "status": "UNTESTED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:49:31.115Z"
+      "updatedAt": "2026-08-19T08:49:44.786Z"
     },
     "TC-010": {
-      "status": "FAILED",
+      "status": "UNTESTED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:49:31.115Z"
+      "updatedAt": "2026-08-19T08:49:44.786Z"
     },
     "TC-011": {
       "status": "FAILED",
