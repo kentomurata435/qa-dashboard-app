@@ -720,7 +720,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
             </button>
 
             {columnMenuOpen && (
-              <div className="absolute left-0 mt-1 w-56 bg-white text-slate-900 border border-slate-300 rounded-lg shadow-xl z-30 p-2.5 space-y-1.5">
+              <div className="absolute left-0 mt-1 w-56 bg-white text-slate-900 border border-slate-300 rounded-lg shadow-xl z-[60] p-2.5 space-y-1.5">
                 <div className="flex justify-between items-center pb-1.5 border-b border-slate-200 text-[11px] font-bold">
                   <span className="text-slate-700">表示する列</span>
                   <button
@@ -772,7 +772,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
             </button>
 
             {priorityFilterOpen && (
-              <div className="absolute left-0 mt-1 w-44 bg-white text-slate-900 border border-slate-300 rounded-lg shadow-xl z-30 p-2.5 space-y-1.5">
+              <div className="absolute left-0 mt-1 w-44 bg-white text-slate-900 border border-slate-300 rounded-lg shadow-xl z-[60] p-2.5 space-y-1.5">
                 <div className="flex justify-between items-center pb-1.5 border-b border-slate-200 text-[11px] font-bold">
                   <span className="text-slate-700">表示する重要度</span>
                   <button
@@ -826,7 +826,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
             </button>
 
             {statusFilterOpen && (
-              <div className="absolute left-0 mt-1 w-52 bg-white text-slate-900 border border-slate-300 rounded-lg shadow-xl z-30 p-2.5 space-y-1.5">
+              <div className="absolute left-0 mt-1 w-52 bg-white text-slate-900 border border-slate-300 rounded-lg shadow-xl z-[60] p-2.5 space-y-1.5">
                 <div className="flex justify-between items-center pb-1.5 border-b border-slate-200 text-[11px] font-bold">
                   <span className="text-slate-700">表示するステータス</span>
                   <button
