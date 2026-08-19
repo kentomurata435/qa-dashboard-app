@@ -2,3163 +2,3163 @@
   "id": "2026-08-19-test",
   "title": "2026-08-19 test環境 スルーテスト",
   "createdAt": "2026-08-19T06:55:15.227Z",
-  "updatedAt": "2026-08-19T08:43:03.161Z",
+  "updatedAt": "2026-08-19T08:45:49.615Z",
   "results": {
     "TC-001": {
-      "status": "UNTESTED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:43:03.161Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-002": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-003": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-004": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-005": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-006": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-007": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-008": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-009": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-010": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-011": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-012": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-013": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-014": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-015": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-016": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-017": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-018": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-019": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-020": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-021": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-022": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-023": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-024": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-025": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-026": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-027": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-028": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-029": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-030": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-031": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-032": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-033": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-034": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-035": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-036": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-037": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-038": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-039": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-040": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-041": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-042": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-043": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-044": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-045": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-046": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-047": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-048": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-049": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-050": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-051": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-052": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-053": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-054": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-055": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-056": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-057": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-058": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-059": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-060": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-061": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-062": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-063": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-064": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-065": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-066": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-067": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-068": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-069": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-070": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-071": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-072": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-073": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-074": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-075": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-076": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-077": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-078": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-079": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-080": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-081": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-082": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-083": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-084": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-085": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-086": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-087": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-088": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-089": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-090": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-091": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-092": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-093": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-094": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-095": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-096": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-097": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-098": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-099": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-100": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-101": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-102": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-103": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-104": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-105": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-106": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-107": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-108": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-109": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-110": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-111": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-112": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-113": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-114": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-115": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-116": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-117": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-118": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.120Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-119": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-120": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-121": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-122": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-123": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-124": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-125": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-126": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-127": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-128": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-129": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-130": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-131": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-132": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-133": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-134": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-135": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-136": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-137": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-138": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-139": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-140": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-141": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-142": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-143": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-144": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-145": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-146": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-147": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-148": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-149": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-150": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-151": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-152": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-153": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-154": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-155": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-156": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-157": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-158": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-159": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-160": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-161": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-162": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-163": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-164": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-165": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-166": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-167": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-168": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-169": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-170": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-171": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-172": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-173": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-174": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-175": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-176": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-177": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-178": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-179": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-180": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-181": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-182": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Test",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-183": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Test",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-184": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-185": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-186": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-187": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-188": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-189": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-190": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-191": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-192": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-193": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-194": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-195": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-196": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-197": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-198": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-199": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-200": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-201": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-202": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-203": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-204": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-205": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-206": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-207": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-208": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.614Z"
     },
     "TC-209": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-210": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-211": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-212": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-213": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-214": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-215": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-216": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-217": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-218": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-219": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-220": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-221": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-222": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-223": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-224": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-225": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-226": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-227": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-228": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-229": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-230": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-231": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-232": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-233": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-234": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-235": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-236": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-237": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-238": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-239": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-240": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-241": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-242": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-243": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-244": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-245": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-246": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-247": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-248": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-249": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-250": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-251": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-252": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-253": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-254": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-255": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-256": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-257": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-258": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-259": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-260": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-261": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-262": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-263": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-264": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-265": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-266": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-267": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-268": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-269": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-270": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-271": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-272": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-273": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-274": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-275": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-276": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-277": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-278": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-279": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-280": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-281": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-282": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-283": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-284": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-285": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-286": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-287": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-288": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-289": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-290": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-291": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-292": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-293": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-294": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-295": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-296": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-297": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-298": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-299": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-300": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-301": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-302": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-303": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-304": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-305": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-306": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-307": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-308": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-309": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-310": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-311": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-312": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-313": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-314": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-315": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-316": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-317": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-318": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-319": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-320": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-321": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-322": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-323": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-324": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-325": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-326": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-327": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-328": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-329": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-330": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-331": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-332": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-333": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-334": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.121Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-335": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-336": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-337": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-338": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-339": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-340": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-341": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-342": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-343": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-344": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-345": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-346": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-347": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-348": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-349": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-350": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-351": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-352": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-353": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-354": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-355": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-356": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-357": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-358": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-359": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-360": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-361": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-362": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-363": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-364": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-365": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-366": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-367": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-368": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-369": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-370": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-371": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-372": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-373": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-374": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-375": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-376": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-377": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-378": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-379": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-380": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-381": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-382": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-383": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-384": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-385": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-386": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-387": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-388": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-389": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-390": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-391": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-392": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-393": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-394": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-395": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-396": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-397": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-398": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-399": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-400": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-401": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-402": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-403": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-404": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-405": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-406": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-407": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-408": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-409": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-410": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-411": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-412": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-413": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-414": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-415": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-416": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-417": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-418": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-419": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-420": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-421": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-422": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-423": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-424": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-425": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-426": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-427": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-428": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-429": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-430": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-431": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-432": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-433": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-434": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-435": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-436": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-437": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-438": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-439": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-440": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-441": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-442": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-443": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-444": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-445": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-446": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-447": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-448": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-449": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-450": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-451": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-452": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-453": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-454": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-455": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-456": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-457": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-458": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-459": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-460": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-461": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-462": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-463": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-464": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-465": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-466": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-467": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-468": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-469": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-470": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-471": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-472": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-473": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-474": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-475": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-476": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-477": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-478": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-479": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-480": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-481": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-482": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-483": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-484": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-485": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-486": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-487": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto(※)",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-488": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto(※)",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-489": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-490": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-491": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-492": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-493": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-494": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-495": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-496": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-497": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-498": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-499": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-500": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-501": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-502": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-503": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-504": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-505": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-506": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-507": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-508": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-509": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-510": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-511": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-512": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-513": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-514": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-515": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-516": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-517": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-518": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-519": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-520": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-521": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-522": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-523": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-524": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-525": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "Auto(※)",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     },
     "TC-526": {
-      "status": "PASSED",
+      "status": "AUTOMATED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T08:42:56.122Z"
+      "updatedAt": "2026-08-19T08:45:49.615Z"
     }
   }
 }
