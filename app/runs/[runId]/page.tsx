@@ -695,7 +695,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
       {/* 検索・一括操作バー */}
       <div className="bg-white border border-slate-200 rounded-xl shadow-sm p-3.5">
         <div className="flex items-center gap-2 flex-nowrap">
-          <div className="relative min-w-[220px] max-w-[420px] flex-1">
+          <div className="relative min-w-[200px] max-w-[420px] flex-1">
             <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">🔎</span>
             <input
               type="text"
@@ -866,30 +866,24 @@ export default function RunPage({ params }: { params: { runId: string } }) {
             )}
           </div>
 
-        </div>
-
-        {/* 一括適用バー */}
-        <div className="mt-3 pt-3 border-t border-slate-100">
-          <div className="flex flex-wrap items-center justify-end gap-2">
-            <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-2 py-1.5">
-              <span className="text-xs text-slate-600">
-                選択中: <strong className="text-sky-700">{selectedIds.size}</strong> 件
-              </span>
-              <input
-                type="text"
-                value={batchTester}
-                onChange={(e) => setBatchTester(e.target.value)}
-                placeholder="実施者名"
-                className="w-32 rounded border border-slate-300 bg-white px-2.5 py-1.5 text-xs text-slate-800 placeholder:text-slate-400 focus:border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-100"
-              />
-              <button
-                onClick={handleBatchApplyTester}
-                disabled={selectedIds.size === 0 || !batchTester.trim()}
-                className="rounded bg-sky-600 px-3 py-1.5 text-xs font-bold text-white shadow-sm transition hover:bg-sky-500 disabled:cursor-not-allowed disabled:bg-slate-300"
-              >
-                一括適用
-              </button>
-            </div>
+          <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-2 py-1.5 ml-auto shrink-0">
+            <span className="text-xs text-slate-600">
+              選択中: <strong className="text-sky-700">{selectedIds.size}</strong> 件
+            </span>
+            <input
+              type="text"
+              value={batchTester}
+              onChange={(e) => setBatchTester(e.target.value)}
+              placeholder="実施者名"
+              className="w-32 rounded border border-slate-300 bg-white px-2.5 py-1.5 text-xs text-slate-800 placeholder:text-slate-400 focus:border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-100"
+            />
+            <button
+              onClick={handleBatchApplyTester}
+              disabled={selectedIds.size === 0 || !batchTester.trim()}
+              className="rounded bg-sky-600 px-3 py-1.5 text-xs font-bold text-white shadow-sm transition hover:bg-sky-500 disabled:cursor-not-allowed disabled:bg-slate-300"
+            >
+              一括適用
+            </button>
           </div>
         </div>
       </div>
