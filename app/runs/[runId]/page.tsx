@@ -54,7 +54,9 @@ const TableRow = memo(function TableRow({
   result,
   visibleColumns,
   isSelected,
+  index,
   onSelect,
+  onShiftMouseDown,
   onUpdateField,
   onPasteGrid,
   onKeyDown,
@@ -64,12 +66,15 @@ const TableRow = memo(function TableRow({
   result: any;
   visibleColumns: Record<string, boolean>;
   isSelected: boolean;
-  onSelect: (id: string) => void;
+  index: number;
+  onSelect: (id: string, index: number, e: React.ChangeEvent<HTMLInputElement>) => void;
+  onShiftMouseDown: (e: React.MouseEvent<HTMLInputElement>) => void;
   onUpdateField: (caseId: string, fieldKey: string, value: any, immediate?: boolean) => void;
   onPasteGrid: (startCaseId: string, startField: string, e: React.ClipboardEvent) => void;
   onKeyDown: (caseId: string, fieldKey: string, e: React.KeyboardEvent) => void;
   onResizeTextarea: (element: HTMLTextAreaElement | null) => void;
 }) {
+  const shiftPressedRef = useRef(false);
   const priorityVal = result.priority !== undefined ? result.priority : (tc.priority || '');
   const screenVal = result.screen !== undefined ? result.screen : (tc.screen || '');
   const featureVal = result.feature !== undefined ? result.feature : (tc.feature || '');
@@ -86,7 +91,8 @@ const TableRow = memo(function TableRow({
         <input
           type="checkbox"
           checked={isSelected}
-          onChange={() => onSelect(tc.id)}
+          onChange={(e) => onSelect(tc.id, index, e)}
+          onMouseDown={onShiftMouseDown}
           className="rounded cursor-pointer mt-1.5"
         />
       </td>
@@ -602,6 +608,36 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     });
   }, [runData, searchQuery, selectedStatuses, selectedPriorities]);
 
+  // Shift+click range selection refs/handlers
+  const lastCheckboxIndexRef = useRef<number | null>(null);
+  const shiftPressedRef = useRef(false);
+
+  const handleShiftMouseDown = useCallback((e: React.MouseEvent<HTMLInputElement>) => {
+    shiftPressedRef.current = e.shiftKey;
+  }, []);
+
+  const handleCheckboxChange = useCallback((caseId: string, index: number, e: React.ChangeEvent<HTMLInputElement>) => {
+    if (shiftPressedRef.current && lastCheckboxIndexRef.current !== null) {
+      const from = Math.min(lastCheckboxIndexRef.current, index);
+      const to = Math.max(lastCheckboxIndexRef.current, index);
+      const targetChecked = e.target.checked;
+      const next = new Set(selectedIds);
+      for (let i = from; i <= to; i++) {
+        const id = filteredCases[i]?.id;
+        if (!id) continue;
+        if (targetChecked) next.add(id);
+        else next.delete(id);
+      }
+      setSelectedIds(next);
+      lastCheckboxIndexRef.current = index;
+    } else {
+      lastCheckboxIndexRef.current = index;
+      toggleSelect(caseId);
+    }
+  }, [selectedIds, filteredCases, toggleSelect]);
+
+  useEffect(() => { setScrollTop(0); lastCheckboxIndexRef.current = null; }, [searchQuery, selectedStatuses, selectedPriorities]);
+
   const statusSummary = useMemo((): {
     total: number;
     completed: number;
@@ -705,6 +741,30 @@ export default function RunPage({ params }: { params: { runId: string } }) {
               ⚠️ 保存エラー
             </span>
           )}
+        </div>
+      </div>
+
+      {/* 進捗・ステータス件数表示エリア */}
+      <div className="bg-white border border-slate-200 rounded-xl shadow-sm px-4 py-2.5">
+        <div className="flex items-center gap-3 flex-wrap">
+          <div className="flex items-center gap-1.5 text-[11px] text-slate-600">
+            <span>進捗</span>
+            <span className="font-bold text-slate-900">{statusSummary.progressRateText}</span>
+          </div>
+          <div className="flex-1 h-2.5 min-w-[160px] max-w-[320px] rounded-full bg-slate-200 overflow-hidden">
+            <div className="h-full rounded-full bg-gradient-to-r from-sky-500 to-emerald-500 transition-all" style={{ width: `${Math.min(statusSummary.progressRate, 100)}%` }} />
+          </div>
+          <div className="flex flex-wrap items-center gap-1">
+            {ALL_STATUSES.map((s) => {
+              const count = statusSummary[s.key as keyof typeof statusSummary] as number;
+              return (
+                <span key={s.key} className={`inline-flex items-baseline gap-1 px-1.5 py-0.5 rounded text-[10px] font-medium ${s.color}`}>
+                  <span>{s.label}</span>
+                  <span className="font-mono">{count}</span>
+                </span>
+              );
+            })}
+          </div>
         </div>
       </div>
 
@@ -917,6 +977,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
       </div>
 
       {/* 完全 Excellike スプレッドシートテーブル */}
+      <div className="h-12" />
       <div
         ref={tableContainerRef}
         className="bg-white rounded-xl shadow-sm border border-slate-300 qa-table-container"
@@ -1012,7 +1073,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
               </tr>
             </thead>
             <tbody className="text-xs">
-              {visibleCases.map((tc: any) => {
+              {visibleCases.map((tc: any, idx: number) => {
                 const rowResult = runData.results?.[tc.id] || {};
                 const isSelected = selectedIds.has(tc.id);
 
@@ -1023,7 +1084,9 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                     result={rowResult}
                     visibleColumns={visibleColumns}
                     isSelected={isSelected}
-                    onSelect={toggleSelect}
+                    index={visibleStartIndex + idx}
+                    onSelect={handleCheckboxChange}
+                    onShiftMouseDown={handleShiftMouseDown}
                     onUpdateField={updateResultField}
                     onPasteGrid={handlePasteGrid}
                     onKeyDown={handleKeyDown}
