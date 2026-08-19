@@ -285,6 +285,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
   // 選択・検索
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   const [batchTester, setBatchTester] = useState('');
+  const [batchStatus, setBatchStatus] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
 
   // フィルター
@@ -419,11 +420,14 @@ export default function RunPage({ params }: { params: { runId: string } }) {
 
   const mapStatusText = (val: string): TestResult['status'] => {
     const v = val.toUpperCase().trim();
-    if (v === 'OK' || v === 'PASSED' || v === '合格' || v === 'PASS') return 'PASSED';
-    if (v === 'NG' || v === 'FAILED' || v === '不合格' || v === 'FAIL') return 'FAILED';
+    // 日本語・英字・Excelの○×記号など、貼り付け可能な文字列を総合的に判定
+    if (v === 'OK' || v === 'PASSED' || v === '合格' || v === 'PASS' || v === '○' || v === '◯' || v === 'YES' || v === 'Y') return 'PASSED';
+    if (v === 'NG' || v === 'FAILED' || v === '不合格' || v === 'FAIL' || v === '×' || v === '✕' || v === '✗' || v === '✘' || v === 'NO' || v === 'N') return 'FAILED';
     if (v === '保留' || v === 'BLOCKED' || v === 'HOLD') return 'BLOCKED';
     if (v === '対象外' || v === 'EXCLUDED') return 'EXCLUDED';
     if (v === '自動化' || v === 'AUTOMATED') return 'AUTOMATED';
+    if (v === '未実施' || v === 'UNTESTED') return 'UNTESTED';
+    if (v === '') return 'UNTESTED';
     return 'UNTESTED';
   };
 
@@ -492,14 +496,15 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     }
   }, []);
 
-  const handleBatchApplyTester = () => {
-    if (selectedIds.size === 0 || !batchTester.trim()) return;
+  // 選択中に対して一括更新する共通処理（実施者・結果の両方に使用）
+  const applyBatch = useCallback((patch: (current: any) => Record<string, any>) => {
+    if (!runData || selectedIds.size === 0) return;
     const newResults = { ...runData.results };
     selectedIds.forEach((id) => {
       const current = newResults[id] || {};
       newResults[id] = {
         ...current,
-        tester: batchTester.trim(),
+        ...patch(current),
         updatedAt: new Date().toISOString(),
       };
     });
@@ -507,6 +512,17 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     setRunData(newRunData);
     autoSave(newRunData);
     setSelectedIds(new Set());
+  }, [runData, selectedIds, autoSave]);
+
+  // 選択中の項目に対して、実施者と結果をまとめて一括設定する
+  const handleBatchApplyAll = () => {
+    if (selectedIds.size === 0) return;
+    const tester = batchTester.trim();
+    const patches: Record<string, any> = {};
+    if (tester) patches.tester = tester;
+    if (batchStatus) patches.status = batchStatus;
+    if (Object.keys(patches).length === 0) return;
+    applyBatch(() => patches);
   };
 
   const toggleSelectAll = (filteredCases: any[]) => {
@@ -866,7 +882,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
             )}
           </div>
 
-          <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-2 py-1.5 ml-auto shrink-0">
+                    <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-2 py-1.5 ml-auto shrink-0">
             <span className="text-xs text-slate-600">
               選択中: <strong className="text-sky-700">{selectedIds.size}</strong> 件
             </span>
@@ -875,11 +891,23 @@ export default function RunPage({ params }: { params: { runId: string } }) {
               value={batchTester}
               onChange={(e) => setBatchTester(e.target.value)}
               placeholder="実施者名"
-              className="w-32 rounded border border-slate-300 bg-white px-2.5 py-1.5 text-xs text-slate-800 placeholder:text-slate-400 focus:border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-100"
+              className="w-28 rounded border border-slate-300 bg-white px-2.5 py-1.5 text-xs text-slate-800 placeholder:text-slate-400 focus:border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-100"
             />
+            <select
+              value={batchStatus}
+              onChange={(e) => setBatchStatus(e.target.value)}
+              className="max-w-[120px] rounded border border-slate-300 bg-white px-2.5 py-1.5 text-xs text-slate-800 focus:border-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-100"
+            >
+              <option value="">結果を選択</option>
+              {ALL_STATUSES.map((item) => (
+                <option key={item.key} value={item.key}>
+                  {item.label}
+                </option>
+              ))}
+            </select>
             <button
-              onClick={handleBatchApplyTester}
-              disabled={selectedIds.size === 0 || !batchTester.trim()}
+              onClick={handleBatchApplyAll}
+              disabled={selectedIds.size === 0 || (!batchTester.trim() && !batchStatus)}
               className="rounded bg-sky-600 px-3 py-1.5 text-xs font-bold text-white shadow-sm transition hover:bg-sky-500 disabled:cursor-not-allowed disabled:bg-slate-300"
             >
               一括適用
