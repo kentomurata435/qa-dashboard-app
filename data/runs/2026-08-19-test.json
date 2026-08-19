@@ -2,7 +2,7 @@
   "id": "2026-08-19-test",
   "title": "2026-08-19 test環境 スルーテスト",
   "createdAt": "2026-08-19T06:55:15.227Z",
-  "updatedAt": "2026-08-19T07:41:44.885Z",
+  "updatedAt": "2026-08-19T07:41:46.283Z",
   "results": {
     "TC-001": {
       "status": "FAILED",
@@ -17,22 +17,22 @@
       "updatedAt": "2026-08-19T07:41:44.885Z"
     },
     "TC-003": {
-      "status": "PASSED",
+      "status": "UNTESTED",
       "tester": "Auto",
       "note": "",
-      "updatedAt": "2026-08-19T07:37:41.733Z"
+      "updatedAt": "2026-08-19T07:41:46.283Z"
     },
     "TC-004": {
-      "status": "PASSED",
+      "status": "UNTESTED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T07:37:41.733Z"
+      "updatedAt": "2026-08-19T07:41:46.283Z"
     },
     "TC-005": {
-      "status": "PASSED",
+      "status": "UNTESTED",
       "tester": "",
       "note": "",
-      "updatedAt": "2026-08-19T07:37:41.733Z"
+      "updatedAt": "2026-08-19T07:41:46.283Z"
     },
     "TC-006": {
       "status": "PASSED",
