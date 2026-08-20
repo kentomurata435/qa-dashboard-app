@@ -14,6 +14,10 @@ export default function HomePage() {
   const [newRunId, setNewRunId] = useState('');
   const [newTitle, setNewTitle] = useState('');
   const [creating, setCreating] = useState(false);
+  // アップロード済みケーステンプレート / 新規xlsxアップロード
+  const [templates, setTemplates] = useState<any[]>([]);
+  const [selectedTemplate, setSelectedTemplate] = useState('');
+  const [uploadFile, setUploadFile] = useState<File | null>(null);
 
   const fetchRuns = async () => {
     setLoading(true);
@@ -51,11 +55,44 @@ export default function HomePage() {
     setNewTitle(`${today} STG環境 スルーテスト`);
   }, []);
 
+  const loadTemplates = async () => {
+    try {
+      const res = await fetch(`/api/importer?t=${Date.now()}`, { cache: 'no-store' });
+      const data = await res.json();
+      setTemplates(Array.isArray(data) ? data : []);
+    } catch (e) {
+      setTemplates([]);
+    }
+  };
+
+  const openModal = () => {
+    setShowModal(true);
+    setUploadFile(null);
+    loadTemplates();
+  };
+
   const handleCreateRun = async (e: React.FormEvent) => {
     e.preventDefault();
     setCreating(true);
 
     try {
+      // xlsxが選択されていれば、先にテンプレート登録してからそのケースで作成する
+      let templateToUse = selectedTemplate;
+      if (uploadFile) {
+        const fd = new FormData();
+        fd.append('file', uploadFile);
+        const impRes = await fetch('/api/importer', { method: 'POST', body: fd });
+        let impData: any = {};
+        try {
+          impData = await impRes.json();
+        } catch (err) {}
+        if (!impRes.ok || !impData.success) {
+          throw new Error(impData.error || 'xlsxのアップロードに失敗しました。');
+        }
+        templateToUse = impData.templateId;
+        alert(`「${uploadFile.name}」から ${impData.count} 件のテストケースを登録しました。`);
+      }
+
       const res = await fetch('/api/test-run', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -63,6 +100,7 @@ export default function HomePage() {
           action: 'create',
           runId: newRunId,
           title: newTitle,
+          templateId: templateToUse || undefined,
         }),
       });
 
@@ -118,7 +156,7 @@ export default function HomePage() {
           <p className="text-xs text-slate-500 mt-1">テストケースマスタを管理</p>
         </div>
         <button
-          onClick={() => setShowModal(true)}
+          onClick={openModal}
           className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 py-2.5 rounded-lg shadow transition text-xs flex items-center gap-1.5 w-max"
         >
           <span className="text-sm">＋</span> 新規スルーテストを作成
@@ -154,6 +192,40 @@ export default function HomePage() {
                   placeholder="例: 2026/08/23 DEV環境 スルーテスト"
                   className="w-full p-2 border border-slate-300 rounded text-xs focus:outline-none focus:ring-1 focus:ring-blue-500"
                 />
+              </div>
+              <div>
+                <label className="block text-xs font-bold text-slate-700 mb-1">テスト項目（xlsxテンプレート）</label>
+                <select
+                  value={selectedTemplate}
+                  disabled={!!uploadFile}
+                  onChange={(e) => setSelectedTemplate(e.target.value)}
+                  className="w-full p-2 border border-slate-300 rounded text-xs bg-white focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:bg-slate-50"
+                >
+                  <option value="">デフォルト（標準cases.json）</option>
+                  {templates.map((t: any) => (
+                    <option key={t.templateId} value={t.templateId}>
+                      {t.name}（{t.count}件）
+                    </option>
+                  ))}
+                </select>
+                {!uploadFile && templates.length === 0 && (
+                  <p className="text-[10px] text-slate-400 mt-1">アップロード済みのカスタム項目はありません</p>
+                )}
+              </div>
+              <div>
+                <label className="block text-xs font-bold text-slate-700 mb-1">または新しくxlsxファイルをアップロード</label>
+                <input
+                  type="file"
+                  accept=".xlsx"
+                  onChange={(e) => {
+                    setUploadFile(e.target.files?.[0] || null);
+                    if (e.target.files?.[0]) setSelectedTemplate('');
+                  }}
+                  className="block w-full text-xs text-slate-500 file:border-slate-300 focus:outline-none"
+                />
+                {uploadFile && (
+                  <p className="text-[10px] text-sky-600 mt-1">アップロード予定: {uploadFile.name}</p>
+                )}
               </div>
               <div className="flex justify-end gap-2 pt-3 border-t">
                 <button
@@ -195,11 +267,12 @@ export default function HomePage() {
       {!loading && runs.length > 0 && (
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {runs.map((run: any) => {
-            const total = casesData.length;
+            const runCases = Array.isArray(run.cases) && run.cases.length > 0 ? run.cases : casesData;
+            const total = runCases.length;
 
             let ok = 0, ng = 0, blocked = 0, excluded = 0, automated = 0;
 
-            casesData.forEach((tc: any) => {
+            runCases.forEach((tc: any) => {
               const status = run.results?.[tc.id]?.status || 'UNTESTED';
               if (status === 'PASSED') ok++;
               else if (status === 'FAILED') ng++;

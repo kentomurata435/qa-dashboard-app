@@ -84,7 +84,7 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { action, runId, title, data } = body;
+    const { action, runId, title, data, templateId } = body;
 
     if (action === 'create') {
       if (!runId || !title) {
@@ -96,8 +96,17 @@ export async function POST(req: NextRequest) {
         .replace(/-+/g, '-')
         .replace(/^-|-$/g, '');
 
+      // 使用するテストケース: templateId が指定されていればアップロード済みテンプレート、なければ標準cases.json
+      let runCases = casesData;
+      if (templateId) {
+        try {
+          const tf = path.join(process.cwd(), `data/case-templates/${templateId}.json`);
+          if (fs.existsSync(tf)) runCases = JSON.parse(fs.readFileSync(tf, 'utf-8'));
+        } catch (e) {}
+      }
+
       const initialResults: Record<string, any> = {};
-      casesData.forEach((tc: any) => {
+      runCases.forEach((tc: any) => {
         initialResults[tc.id] = {
           status: 'UNTESTED',
           tester: tc.defaultTester || '',
@@ -111,6 +120,7 @@ export async function POST(req: NextRequest) {
         title: title,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
+        cases: runCases,
         results: initialResults,
       };
 

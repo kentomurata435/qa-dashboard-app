@@ -22,7 +22,7 @@ export default function RootLayout({
             <div className="text-sm text-slate-400">GitHub Sync Integrated</div>
           </div>
         </nav>
-        <main className="max-w-7xl mx-auto p-6">{children}</main>
+        <main className="max-w-[2100px] mx-auto p-6">{children}</main>
       </body>
     </html>
   );

@@ -49,6 +49,19 @@ const DEFAULT_COLUMN_VISIBILITY = Object.fromEntries(
   COLUMN_DEFS.map((column) => [column.key, true])
 ) as Record<string, boolean>;
 
+// 右端に常時固定表示する列（スクロールしても「実施者」「結果」が見えるようにする）
+// 左から右へ「tester → status → note」の順。右端を固定させるため、後続列も連動して固定する
+const RIGHT_STICKY_KEYS = ['tester', 'status', 'note'] as const;
+
+// ボディ行用の右端固定スタイル（左端の固定列には境界線を引いてスクロール区切りを分かりやすく）
+const bodyStickyStyle = (offsets: Record<string, number>, key: string, bg: string, leftEdge: boolean) => ({
+  position: 'sticky' as const,
+  right: offsets[key] ?? 0,
+  zIndex: 30,
+  backgroundColor: bg,
+  boxShadow: leftEdge ? 'inset 1px 0 0 rgb(203 213 225)' : undefined,
+});
+
 const TableRow = memo(function TableRow({
   tc,
   result,
@@ -61,6 +74,7 @@ const TableRow = memo(function TableRow({
   onPasteGrid,
   onKeyDown,
   onResizeTextarea,
+  stickyOffsets,
 }: {
   tc: any;
   result: any;
@@ -73,6 +87,7 @@ const TableRow = memo(function TableRow({
   onPasteGrid: (startCaseId: string, startField: string, e: React.ClipboardEvent) => void;
   onKeyDown: (caseId: string, fieldKey: string, e: React.KeyboardEvent) => void;
   onResizeTextarea: (element: HTMLTextAreaElement | null) => void;
+  stickyOffsets: Record<string, number>;
 }) {
   const shiftPressedRef = useRef(false);
   const priorityVal = result.priority !== undefined ? result.priority : (tc.priority || '');
@@ -201,7 +216,7 @@ const TableRow = memo(function TableRow({
       )}
 
       {visibleColumns.tester && (
-        <td className="p-1 align-top bg-blue-50/20">
+        <td className="p-1 align-top bg-blue-50/20" style={bodyStickyStyle(stickyOffsets, 'tester', '#eff6ff', true)}>
           <input
             id={`cell-tester-${tc.id}`}
             type="text"
@@ -216,7 +231,7 @@ const TableRow = memo(function TableRow({
       )}
 
       {visibleColumns.status && (
-        <td className="p-1 align-top">
+        <td className="p-1 align-top" style={bodyStickyStyle(stickyOffsets, 'status', '#f8fafc', false)}>
           <div className="flex items-center justify-center">
             <select
               id={`cell-status-${tc.id}`}
@@ -224,19 +239,7 @@ const TableRow = memo(function TableRow({
               onChange={(e) => onUpdateField(tc.id, 'status', e.target.value, true)}
               onPaste={(e) => onPasteGrid(tc.id, 'status', e)}
               onKeyDown={(e) => onKeyDown(tc.id, 'status', e)}
-              className={`w-full min-w-[88px] py-1.5 px-2 text-[11px] font-bold rounded-md border cursor-pointer shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-200 ${
-                statusVal === 'PASSED'
-                  ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
-                  : statusVal === 'FAILED'
-                  ? 'bg-rose-50 text-rose-700 border-rose-200'
-                  : statusVal === 'BLOCKED'
-                  ? 'bg-amber-50 text-amber-700 border-amber-200'
-                  : statusVal === 'AUTOMATED'
-                  ? 'bg-sky-50 text-sky-700 border-sky-200'
-                  : statusVal === 'EXCLUDED'
-                  ? 'bg-slate-100 text-slate-700 border-slate-200'
-                  : 'bg-slate-50 text-slate-600 border-slate-200'
-              }`}
+              className="w-full min-w-[88px] py-1.5 px-2 text-[11px] font-bold rounded-md border border-slate-300 bg-white text-slate-700 cursor-pointer shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-200"
             >
               <option value="UNTESTED">未実施</option>
               <option value="PASSED">OK</option>
@@ -250,7 +253,7 @@ const TableRow = memo(function TableRow({
       )}
 
       {visibleColumns.note && (
-        <td className="p-1 align-top">
+        <td className="p-1 align-top" style={bodyStickyStyle(stickyOffsets, 'note', '#ffffff', false)}>
           <textarea
             id={`cell-note-${tc.id}`}
             rows={1}
@@ -312,15 +315,42 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     check: 40,
     id: 85,
     priority: 70,
-    screen: 160,
-    feature: 180,
-    precondition: 260,
-    steps: 520,
-    expected: 520,
-    tester: 120,
-    status: 120,
-    note: 260,
+    screen: 150,
+    feature: 170,
+    precondition: 230,
+    steps: 320,
+    expected: 400,
+    tester: 160,
+    status: 160,
+    note: 300,
   });
+
+  // 実行データ固有のテストケース（xlsxアップロード由来の run.cases があればそれを優先）
+  const runCases = Array.isArray(runData?.cases) ? runData.cases : casesData;
+
+  // 右端固定列の right オフセット（非表示時は自動で詰める）
+  const stickyRightOffsets = useMemo(() => {
+    const visibleRight = RIGHT_STICKY_KEYS.filter((key) => visibleColumns[key]);
+    const offsets: Record<string, number> = {};
+    let acc = 0;
+    for (let i = visibleRight.length - 1; i >= 0; i--) {
+      const key = visibleRight[i];
+      offsets[key] = acc;
+      acc += colWidths[key] ?? 0;
+    }
+    return offsets;
+  }, [colWidths, visibleColumns]);
+
+  // 動的テーブル幅: 表示中の列の合計でテーブル全体の横幅を調整
+  // check + id は常に固定で、その他は visibleColumns に応じて加算
+  const visibleTableWidth = useMemo(() => {
+    let w = colWidths.check + colWidths.id;
+    (COLUMN_DEFS as readonly { key: string }[]).forEach((col) => {
+      if (col.key === 'check' || col.key === 'id') return;
+      if (visibleColumns[col.key]) w += colWidths[col.key as keyof typeof colWidths];
+    });
+    return w;
+  }, [colWidths, visibleColumns]);
 
   const startResizing = (colKey: string, e: React.MouseEvent) => {
     e.preventDefault();
@@ -449,7 +479,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
 
     e.preventDefault();
 
-    const startRowIdx = casesData.findIndex((c: any) => c.id === startCaseId);
+    const startRowIdx = runCases.findIndex((c: any) => c.id === startCaseId);
     const startColIdx = EDITABLE_FIELDS.indexOf(startField as any);
 
     if (startRowIdx === -1 || startColIdx === -1) return;
@@ -457,7 +487,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
     const newResults = { ...runData.results };
 
     rows.forEach((rowCells, rOffset) => {
-      const targetCase = casesData[startRowIdx + rOffset];
+      const targetCase = runCases[startRowIdx + rOffset];
       if (!targetCase) return;
 
       const current = newResults[targetCase.id] || {};
@@ -493,14 +523,14 @@ export default function RunPage({ params }: { params: { runId: string } }) {
   const handleKeyDown = useCallback((caseId: string, fieldKey: string, e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
-      const caseIndex = casesData.findIndex((c: any) => c.id === caseId);
-      if (caseIndex !== -1 && caseIndex + 1 < casesData.length) {
-        const nextCaseId = casesData[caseIndex + 1].id;
+      const caseIndex = runCases.findIndex((c: any) => c.id === caseId);
+      if (caseIndex !== -1 && caseIndex + 1 < runCases.length) {
+        const nextCaseId = runCases[caseIndex + 1].id;
         const nextElem = document.getElementById(`cell-${fieldKey}-${nextCaseId}`);
         if (nextElem) nextElem.focus();
       }
     }
-  }, []);
+  }, [runData]);
 
   // 選択中に対して一括更新する共通処理（実施者・結果の両方に使用）
   const applyBatch = useCallback((patch: (current: any) => Record<string, any>) => {
@@ -581,7 +611,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
   const filteredCases = useMemo(() => {
     if (!runData) return [];
 
-    return casesData.filter((tc: any) => {
+    return runCases.filter((tc: any) => {
       const result = runData.results?.[tc.id] || {};
 
       const currentPriority = result.priority !== undefined ? result.priority : tc.priority;
@@ -671,7 +701,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
       });
     }
 
-    const total = casesData.length;
+    const total = runCases.length;
     const completed = summary.PASSED + summary.FAILED + summary.BLOCKED + summary.EXCLUDED + summary.AUTOMATED;
     const progressRate = total > 0 ? (completed / total) * 100 : 0;
 
@@ -692,13 +722,23 @@ export default function RunPage({ params }: { params: { runId: string } }) {
 
   const rowHeight = 42;
   const overscan = 12;
-  const visibleStartIndex = Math.max(0, Math.floor(scrollTop / rowHeight) - overscan);
+  // 絞り込みで残りが極端に少なく（1件など）なっても土台が小さくなりすぎないよう、
+  // 表示領域の最低高さを確保する（ヘッダーに隠れてテストケースが見えなくなるのを防止）
+  const minTableHeight = Math.max((viewportHeight || 720), rowHeight * 3);
+  const totalTableHeight = Math.max(filteredCases.length * rowHeight, minTableHeight);
+  // フィルタ変更時は先頭にリセットする。加えて、見えないオフセットにならないようクランプ
+  const visibleStartIndex = Math.max(
+    0,
+    Math.min(
+      Math.max(0, filteredCases.length - 1),
+      Math.max(0, Math.floor(scrollTop / rowHeight) - overscan)
+    )
+  );
   const visibleEndIndex = Math.min(
     filteredCases.length,
     visibleStartIndex + Math.ceil((viewportHeight || 720) / rowHeight) + overscan * 2
   );
   const visibleCases = filteredCases.slice(visibleStartIndex, visibleEndIndex);
-  const totalTableHeight = filteredCases.length * rowHeight;
 
   useEffect(() => {
     const updateViewport = () => {
@@ -716,12 +756,12 @@ export default function RunPage({ params }: { params: { runId: string } }) {
   if (!runData || runData.error) return <div className="p-8 text-center text-red-500 font-medium">対象のテスト項目書が見つかりませんでした</div>;
 
   return (
-    <div className="space-y-3 max-w-[1900px] mx-auto pb-12">
+    <div className="space-y-3 max-w-[2048px] mx-auto pb-12">
       <div className="flex items-center justify-between gap-2 px-1 py-1">
         <div>
           <h1 className="text-[18px] md:text-[20px] font-bold text-slate-900 tracking-tight leading-none">{runData.title}</h1>
           <p className="text-[11px] text-slate-500 mt-1.5">
-            Run ID: <span className="font-mono text-slate-700">{runData.id}</span> | 全 {casesData.length} 件 (表示中: {filteredCases.length} 件)
+            Run ID: <span className="font-mono text-slate-700">{runData.id}</span> | 全 {runCases.length} 件 (表示中: {filteredCases.length} 件)
           </p>
         </div>
 
@@ -986,20 +1026,16 @@ export default function RunPage({ params }: { params: { runId: string } }) {
         <div style={{ height: `${totalTableHeight}px`, position: 'relative' }}>
           <table
             className="text-left border-collapse table-fixed w-max"
-            style={{ minWidth: '2100px', position: 'absolute', inset: 0, top: `${visibleStartIndex * rowHeight}px` }}
+            style={{ minWidth: `${Math.max(visibleTableWidth, 1500)}px`, position: 'absolute', top: `${visibleStartIndex * rowHeight}px` }}
           >
             <colgroup>
               <col style={{ width: `${colWidths.check}px` }} />
               <col style={{ width: `${colWidths.id}px` }} />
-              <col style={{ width: `${colWidths.screen}px` }} />
-              <col style={{ width: `${colWidths.feature}px` }} />
-              <col style={{ width: `${colWidths.priority}px` }} />
-              <col style={{ width: `${colWidths.precondition}px` }} />
-              <col style={{ width: `${colWidths.steps}px` }} />
-              <col style={{ width: `${colWidths.expected}px` }} />
-              <col style={{ width: `${colWidths.tester}px` }} />
-              <col style={{ width: `${colWidths.status}px` }} />
-              <col style={{ width: `${colWidths.note}px` }} />
+              {COLUMN_DEFS.map((column) =>
+                visibleColumns[column.key] ? (
+                  <col key={column.key} style={{ width: `${colWidths[column.key as keyof typeof colWidths]}px` }} />
+                ) : null
+              )}
             </colgroup>
             <thead>
               <tr className="bg-slate-100 text-[11px] text-slate-700 font-bold uppercase select-none border-b border-slate-200">
@@ -1053,19 +1089,50 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                   </th>
                 )}
                 {visibleColumns.tester && (
-                  <th style={{ width: `${colWidths.tester}px` }} className="relative p-2 align-middle bg-sky-50 text-sky-700">
+                  <th
+                    style={{
+                      width: `${colWidths.tester}px`,
+                      position: 'sticky',
+                      right: stickyRightOffsets['tester'] ?? 0,
+                      top: 0,
+                      zIndex: 60,
+                      backgroundColor: '#e0f2fe',
+                      boxShadow: 'inset 1px 0 0 rgb(203 213 225)',
+                    }}
+                    className="relative p-2 align-middle z-[60]"
+                  >
                     実施者
                     <div onMouseDown={(e) => startResizing('tester', e)} className="resizer" />
                   </th>
                 )}
                 {visibleColumns.status && (
-                  <th style={{ width: `${colWidths.status}px` }} className="relative p-2 align-middle bg-slate-50 text-slate-700">
+                  <th
+                    style={{
+                      width: `${colWidths.status}px`,
+                      position: 'sticky',
+                      right: stickyRightOffsets['status'] ?? 0,
+                      top: 0,
+                      zIndex: 60,
+                      backgroundColor: '#f8fafc',
+                    }}
+                    className="relative p-2 align-middle text-slate-700"
+                  >
                     結果
                     <div onMouseDown={(e) => startResizing('status', e)} className="resizer" />
                   </th>
                 )}
                 {visibleColumns.note && (
-                  <th style={{ width: `${colWidths.note}px` }} className="relative p-2 align-middle">
+                  <th
+                    style={{
+                      width: `${colWidths.note}px`,
+                      position: 'sticky',
+                      right: stickyRightOffsets['note'] ?? 0,
+                      top: 0,
+                      zIndex: 60,
+                      backgroundColor: '#f1f5f9',
+                    }}
+                    className="relative p-2 align-middle"
+                  >
                     備考
                     <div onMouseDown={(e) => startResizing('note', e)} className="resizer" />
                   </th>
@@ -1091,6 +1158,7 @@ export default function RunPage({ params }: { params: { runId: string } }) {
                     onPasteGrid={handlePasteGrid}
                     onKeyDown={handleKeyDown}
                     onResizeTextarea={resizeTextarea}
+                    stickyOffsets={stickyRightOffsets}
                   />
                 );
               })}
