@@ -2,7 +2,7 @@
   "id": "2026-08-21-stg",
   "title": "2026-08-21 STG環境 スルーテスト",
   "createdAt": "2026-08-20T09:45:05.171Z",
-  "updatedAt": "2026-08-20T09:50:39.098Z",
+  "updatedAt": "2026-08-20T09:50:41.208Z",
   "cases": [
     {
       "id": "TC-001",
@@ -5865,10 +5865,10 @@
       "updatedAt": "2026-08-20T09:50:39.098Z"
     },
     "TC-013": {
-      "status": "UNTESTED",
+      "status": "PASSED",
       "tester": "",
       "note": "",
-      "updatedAt": ""
+      "updatedAt": "2026-08-20T09:50:41.208Z"
     },
     "TC-014": {
       "status": "UNTESTED",
